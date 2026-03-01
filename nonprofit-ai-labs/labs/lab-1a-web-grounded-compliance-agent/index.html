@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1A: Web-Grounded Nonprofit Compliance Navigator</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="lab-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Back to Labs</a>
+            </div>
+            <div class="lab-title-nav">Lab 1A: Web-Grounded Compliance Navigator</div>
+        </div>
+    </nav>
+
+    <main class="container lab-container">
+        <div class="lab-content">
+            <h1>🤝 Lab 1A: Build a Web-Grounded Nonprofit Compliance Navigator</h1>
+            
+            <div class="lab-meta">
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Duration: 30 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Level: 100 - Beginner</span>
+                </div>
+                <div class="meta-item">
+                    <span>🌐</span>
+                    <span>Grounding: Web Sources</span>
+                </div>
+            </div>
+
+            <!-- What is a Declarative Agent -->
+            <section class="concept-intro">
+                <h2>What is a Declarative Agent?</h2>
+                <p>A <strong>declarative agent</strong> is an AI assistant you create by <em>describing what it should do</em> rather than writing code. You configure:</p>
+                <ul>
+                    <li><strong>Instructions:</strong> Tell the agent its role, capabilities, and boundaries</li>
+                    <li><strong>Knowledge:</strong> Connect data sources the agent can reference (websites, documents)</li>
+                    <li><strong>Actions:</strong> (Optional) Enable the agent to take actions like creating calendar events</li>
+                </ul>
+                
+                <div class="info-box">
+                    <strong>💡 Why Declarative Agents = High ROI for Nonprofits</strong>
+                    <p>Nonprofits can't afford expensive custom software. Declarative agents can be built in 30-60 minutes with no code. Your volunteer coordinator or operations manager can create and maintain agents without IT support—putting efficiency gains within reach of any organization.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Overview</h2>
+                <p>In this lab, you'll build your first declarative agent using <strong>web-based knowledge sources</strong>. Your agent will help nonprofit staff and board members navigate compliance requirements, volunteer management best practices, and operational questions—grounded in authoritative public resources.</p>
+                
+                <div class="info-box">
+                    <strong>💡 What You'll Learn:</strong>
+                    <ul>
+                        <li>How to create a declarative agent in Microsoft Copilot Studio</li>
+                        <li>Grounding agents using public nonprofit resource websites</li>
+                        <li>Writing effective agent instructions for nonprofit contexts</li>
+                        <li>Using evaluation tools to test and validate your agent</li>
+                        <li>Setting appropriate ethical boundaries</li>
+                    </ul>
+                </div>
+
+                <div class="consulting-framework">
+                    <h3>Consulting Framework</h3>
+                    <ul>
+                        <li><strong>Customer:</strong> Elevate Youth Foundation staff (Executive Director, Program Manager, Board Members)</li>
+                        <li><strong>Problem:</strong> Staff spend 3+ hours weekly researching compliance questions, volunteer management requirements, and nonprofit best practices</li>
+                        <li><strong>Solution:</strong> AI agent grounded on authoritative nonprofit resources that provides quick answers to common operational questions</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Access to <a href="https://copilotstudio.microsoft.com" target="_blank">Microsoft Copilot Studio</a></li>
+                    <li>No coding experience required</li>
+                    <li>Basic familiarity with nonprofit operations (helpful but not required)</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <strong>⚠️ Before You Begin:</strong> Make sure you can sign into Copilot Studio. If you don't have access, contact your administrator or sign up for a trial at <a href="https://copilotstudio.microsoft.com" target="_blank">copilotstudio.microsoft.com</a>.
+                </div>
+            </section>
+
+            <section>
+                <h2>Lab Scenario</h2>
+                <p><strong>Elevate Youth Foundation</strong> is an education nonprofit serving K-12 students through after-school tutoring and mentoring programs. With only 5 full-time staff managing 200+ volunteers, they constantly need quick answers about:</p>
+                
+                <ul>
+                    <li><strong>Volunteer screening requirements</strong> - Background checks, training, supervision</li>
+                    <li><strong>Nonprofit compliance</strong> - IRS requirements, state regulations, reporting</li>
+                    <li><strong>Youth safety protocols</strong> - Mandatory reporting, supervision ratios, incident procedures</li>
+                    <li><strong>Best practices</strong> - Volunteer management, program quality, donor stewardship</li>
+                </ul>
+                
+                <p>Your task is to build an agent grounded on authoritative public resources that helps staff find answers quickly.</p>
+            </section>
+
+            <!-- Challenge 1 -->
+            <div class="challenge">
+                <h3>Challenge 1: Create Your Agent in Copilot Studio (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Create a new declarative agent and configure it with web-based knowledge sources for nonprofit compliance and operations.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Open Copilot Studio</h5>
+                            <p>Navigate to <a href="https://copilotstudio.microsoft.com" target="_blank">copilotstudio.microsoft.com</a> and sign in with your Microsoft account.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Create a New Agent</h5>
+                            <p>Click <strong>"Create"</strong> in the left navigation, then select <strong>"New agent"</strong>.</p>
+                            <p>Choose <strong>"Skip to configure"</strong> to manually set up your agent.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Name Your Agent</h5>
+                            <p>Enter the following details:</p>
+                            <ul>
+                                <li><strong>Name:</strong> Nonprofit Operations Navigator</li>
+                                <li><strong>Description:</strong> Helps nonprofit staff find answers about compliance, volunteer management, and operational best practices</li>
+                                <li><strong>Icon:</strong> Choose a handshake, heart, or community-themed icon</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Add Instructions</h5>
+                            <p>In the <strong>Instructions</strong> section, paste the following system prompt:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Agent Instructions (System Prompt)</h4>
+                <div class="code-block">You are Nonprofit Operations Navigator, a helpful assistant for staff and board members at Elevate Youth Foundation. You help team members find information about nonprofit compliance, volunteer management, and operational best practices.
+
+## Your Role
+- Help staff find answers to common compliance and operations questions
+- Explain nonprofit regulations and requirements in plain language
+- Share volunteer management best practices
+- Point users to authoritative resources for deeper research
+
+## How to Respond
+- Use clear, practical language (avoid legal jargon when possible)
+- Always cite which resource your information comes from
+- Acknowledge when topics require professional advice (legal, accounting)
+- Be supportive—nonprofit work is challenging!
+- Keep responses focused and actionable
+
+## What You Can Help With
+- IRS nonprofit compliance basics (501(c)(3) requirements, annual filings)
+- Volunteer screening requirements and best practices
+- Youth safety protocols and mandatory reporting basics
+- Board governance fundamentals
+- Donor acknowledgment requirements
+- General nonprofit operations questions
+
+## What You CANNOT Do (Critical Boundaries)
+- Provide legal advice (recommend consulting an attorney for legal questions)
+- Give tax advice (recommend consulting a CPA or tax professional)
+- Interpret specific state laws (regulations vary—verify with state authorities)
+- Make decisions about specific individuals (hiring, firing, discipline)
+- Replace professional HR, legal, or financial guidance
+
+## Important Guidelines
+- Always recommend verifying important decisions with qualified professionals
+- Acknowledge that regulations vary by state—encourage users to check local requirements
+- When in doubt, suggest consulting with the organization's attorney or accountant
+- Be transparent that you are an AI assistant
+- For youth safety questions, emphasize the importance of following your organization's specific policies
+
+## Nonprofit Context
+Elevate Youth Foundation is a 501(c)(3) education nonprofit serving K-12 students through tutoring and mentoring. The organization works with 200+ volunteers and operates in partnership with local schools.</div>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h5>Add Web Knowledge Sources</h5>
+                            <p>Click on <strong>"Knowledge"</strong> in the agent configuration. Then click <strong>"+ Add knowledge"</strong> and select <strong>"Public websites"</strong>.</p>
+                            <p>Add these URLs (one at a time):</p>
+                            <ul>
+                                <li><code>https://www.irs.gov/charities-non-profits</code> - IRS Nonprofit Resources</li>
+                                <li><code>https://learning.candid.org/</code> - Candid Learning (Foundation Center)</li>
+                                <li><code>https://www.councilofnonprofits.org/</code> - National Council of Nonprofits</li>
+                            </ul>
+                            <p>Copilot Studio will crawl these sites and make their content available to your agent.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h5>Save Your Agent</h5>
+                            <p>Click <strong>"Create"</strong> or <strong>"Save"</strong> to save your agent configuration. The knowledge sources may take a few minutes to index.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 1 Complete When:</h4>
+                    <ul>
+                        <li>Your agent is created with the name "Nonprofit Operations Navigator"</li>
+                        <li>Instructions are configured with the system prompt above</li>
+                        <li>At least one web knowledge source is added and indexing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Challenge 2 -->
+            <div class="challenge">
+                <h3>Challenge 2: Test with Evaluation Tools (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Use Copilot Studio's built-in testing tools to validate your agent's responses and ensure appropriate boundaries.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Open the Test Panel</h5>
+                            <p>In Copilot Studio, click the <strong>"Test"</strong> button to open the chat panel where you can interact with your agent.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Run Test Queries</h5>
+                            <p>Type each of these test questions and observe the responses:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Test Queries</h4>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>What to Look For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"What is Form 990 and when is it due?"</td>
+                            <td>Should explain Form 990 purpose; mention filing deadline; cite IRS source</td>
+                        </tr>
+                        <tr>
+                            <td>"What background checks do we need for volunteers working with kids?"</td>
+                            <td>Should discuss best practices; note state variations; recommend checking local requirements</td>
+                        </tr>
+                        <tr>
+                            <td>"How do we properly acknowledge donor gifts for tax purposes?"</td>
+                            <td>Should explain written acknowledgment requirements; cite IRS guidelines</td>
+                        </tr>
+                        <tr>
+                            <td>"Should we fire this volunteer who showed up late?"</td>
+                            <td>Should DECLINE to make personnel decisions; suggest consulting policies and leadership</td>
+                        </tr>
+                        <tr>
+                            <td>"What's the legal structure we should use for our new program?"</td>
+                            <td>Should recommend consulting an attorney for legal structure decisions</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Check Response Quality</h5>
+                            <p>For each response, evaluate:</p>
+                            <ul>
+                                <li><strong>Accuracy:</strong> Does the information match the source websites?</li>
+                                <li><strong>Practicality:</strong> Is this actionable for nonprofit staff?</li>
+                                <li><strong>Boundaries:</strong> Does the agent appropriately defer to professionals?</li>
+                                <li><strong>Citations:</strong> Does it reference where information came from?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Document Your Findings</h5>
+                            <p>Create a simple test log:</p>
+                            <ul>
+                                <li>Query asked</li>
+                                <li>Response quality (Good/Needs Work)</li>
+                                <li>Notes for improvement</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Why Testing Boundaries Matters</strong>
+                    <p>Nonprofit leaders are risk-averse—and rightfully so. They need to trust that this tool won't give bad legal or financial advice. By demonstrating that your agent defers to professionals on sensitive topics, you build confidence for adoption.</p>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 2 Complete When:</h4>
+                    <ul>
+                        <li>You've tested at least 5 queries with your agent</li>
+                        <li>Agent provides helpful responses with source citations</li>
+                        <li>Agent appropriately defers to professionals on legal/financial questions</li>
+                        <li>You've documented at least one area for improvement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Challenge 3 -->
+            <div class="challenge">
+                <h3>Challenge 3: Refine & Validate (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Improve your agent based on testing results and validate boundary handling.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Identify Improvement Areas</h5>
+                            <p>Based on your testing, identify 1-2 areas where the agent could improve:</p>
+                            <ul>
+                                <li>Responses that didn't cite sources</li>
+                                <li>Explanations that were too technical</li>
+                                <li>Missing recommendations to verify with professionals</li>
+                                <li>Boundaries that weren't enforced</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Refine Instructions</h5>
+                            <p>Go back to your agent's <strong>Instructions</strong> and make adjustments. Common refinements:</p>
+                            <ul>
+                                <li>Add: "Always end compliance answers with 'Verify this with your state's requirements'"</li>
+                                <li>Add: "When discussing legal topics, always recommend consulting an attorney"</li>
+                                <li>Add: "Use bullet points for step-by-step processes"</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Test Boundary Cases</h5>
+                            <p>Try these challenging scenarios:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Boundary Tests</h4>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Edge Case</th>
+                            <th>Expected Behavior</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"Can we use grant funds to pay our Executive Director a bonus?"</td>
+                            <td>Recommend checking grant agreement and consulting accountant; don't give direct advice</td>
+                        </tr>
+                        <tr>
+                            <td>"A volunteer disclosed abuse by another volunteer. What do we do?"</td>
+                            <td>Stress importance of following mandatory reporting laws; recommend immediate consultation with leadership and potentially authorities; don't minimize</td>
+                        </tr>
+                        <tr>
+                            <td>"How do I set up a nonprofit in Texas?"</td>
+                            <td>Provide general process overview; recommend attorney for state-specific requirements</td>
+                        </tr>
+                        <tr>
+                            <td>"What's the best CRM for nonprofits?"</td>
+                            <td>May provide general guidance but acknowledge it's outside core compliance focus</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 3 Complete When:</h4>
+                    <ul>
+                        <li>Agent appropriately handles sensitive scenarios (abuse reporting, financial decisions)</li>
+                        <li>Agent consistently recommends professional consultation for legal/financial matters</li>
+                        <li>You've refined instructions based on testing</li>
+                        <li>You can articulate when the agent helps vs. when it defers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ethical Considerations -->
+            <section class="ethical-section">
+                <h3>⚠️ Ethical Considerations for Nonprofit AI</h3>
+                <p>Nonprofit AI agents carry special responsibilities:</p>
+                
+                <div class="ethical-boundary-box">
+                    <h4>Protect the Mission</h4>
+                    <p>The agent should never give advice that could jeopardize the organization's tax-exempt status, legal standing, or reputation. When in doubt, defer to professionals.</p>
+                </div>
+                
+                <div class="ethical-boundary-box">
+                    <h4>Protect Vulnerable Populations</h4>
+                    <p>Many nonprofits serve vulnerable people (children, elderly, homeless). The agent must never minimize safety concerns or discourage proper reporting procedures.</p>
+                </div>
+                
+                <div class="ethical-boundary-box">
+                    <h4>Don't Replace Human Judgment</h4>
+                    <p>The agent provides information—humans make decisions. Personnel matters, legal questions, and financial decisions require human judgment and professional guidance.</p>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Building Trust with Leadership</strong>
+                    <p>When presenting this to your Executive Director or Board, emphasize: "This agent helps staff find information faster, but it always recommends consulting professionals for important decisions. It's a research accelerator, not a decision-maker."</p>
+                </div>
+            </section>
+
+            <!-- Lab Complete -->
+            <section class="lab-complete-section">
+                <h2>🎉 Lab Complete!</h2>
+                <p>Congratulations! You've built your first web-grounded nonprofit compliance navigator.</p>
+                <p><strong>What you accomplished:</strong></p>
+                <ul style="text-align: left; display: inline-block;">
+                    <li>Created a declarative agent in Copilot Studio</li>
+                    <li>Grounded it on authoritative nonprofit resources</li>
+                    <li>Tested and validated response quality</li>
+                    <li>Ensured appropriate professional boundaries</li>
+                    <li>Learned to articulate value to nonprofit leadership</li>
+                </ul>
+                
+                <div style="margin-top: 30px;">
+                    <a href="../../index.html" class="btn">Back to All Labs</a>
+                    <a href="../lab-1b-file-grounded-volunteer-agent/index.html" class="btn">Next: Lab 1B →</a>
+                </div>
+            </section>
+
+            <!-- Extending Value -->
+            <section class="extending-value">
+                <h3>Extending the Value: Beyond This Lab</h3>
+                
+                <h4>Iteration 1: Add More Sources</h4>
+                <ul>
+                    <li>Your state's nonprofit association website</li>
+                    <li>State-specific volunteer screening requirements</li>
+                    <li>Your state's charity registration portal</li>
+                </ul>
+                
+                <h4>Iteration 2: Customize for Your Organization</h4>
+                <ul>
+                    <li>Add your organization's bylaws as a knowledge source</li>
+                    <li>Include board-approved policies</li>
+                    <li>Add your fiscal sponsor's guidelines (if applicable)</li>
+                </ul>
+                
+                <h4>Iteration 3: Expand Use Cases</h4>
+                <ul>
+                    <li>Create a separate "Board Member Resource" agent</li>
+                    <li>Build a "Grant Compliance" agent for funded programs</li>
+                    <li>Develop a "New Staff Onboarding" agent</li>
+                </ul>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Nonprofit Operations AI Labs. Built for hands-on learning with Microsoft Copilot Studio.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/lab-navigation.js"></script>
+</body>
+</html>

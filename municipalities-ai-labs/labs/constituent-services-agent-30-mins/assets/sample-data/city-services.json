@@ -1,0 +1,231 @@
+[
+  {
+    "service_id": "building_permit",
+    "service_name": "Building Permit Application",
+    "category": "Permits & Licenses",
+    "description": "Required for new construction, additions, structural changes, or major renovations",
+    "who_needs_this": [
+      "Homeowners planning renovations",
+      "Contractors doing structural work",
+      "Businesses modifying buildings"
+    ],
+    "steps": [
+      {
+        "step": 1,
+        "action": "Determine if you need a permit",
+        "details": "Contact Building Department at 555-0123 or visit city website permit lookup tool"
+      },
+      {
+        "step": 2,
+        "action": "Gather required documents",
+        "details": "Property survey, construction plans, contractor license (if applicable)"
+      },
+      {
+        "step": 3,
+        "action": "Submit application",
+        "details": "Submit in person at City Hall Room 201 or online at cityofmaplewood.gov/permits"
+      },
+      {
+        "step": 4,
+        "action": "Pay fees",
+        "details": "Fees vary by project scope. Calculator available at cityofmaplewood.gov/permitfees"
+      },
+      {
+        "step": 5,
+        "action": "Schedule inspection",
+        "details": "Call 555-0124 at least 48 hours before you need inspection"
+      }
+    ],
+    "required_documents": [
+      "Completed application form",
+      "Property survey or site plan",
+      "Construction drawings/blueprints",
+      "Contractor license and insurance (if using contractor)"
+    ],
+    "fees": "Varies by project: $50-$500. Use online calculator for estimate.",
+    "processing_time": "7-14 business days for review",
+    "contact": {
+      "department": "Building & Inspections",
+      "phone": "555-0123",
+      "email": "building@cityofmaplewood.gov",
+      "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+    },
+    "faq": [
+      {
+        "question": "Do I need a permit for a deck?",
+        "answer": "Yes, if the deck is over 30 inches high or attached to the house."
+      },
+      {
+        "question": "How long is my permit valid?",
+        "answer": "Permits are valid for 6 months. Extensions available upon request."
+      }
+    ]
+  },
+  {
+    "service_id": "business_license",
+    "service_name": "Business License",
+    "category": "Permits & Licenses",
+    "description": "Required to operate a business within city limits",
+    "who_needs_this": [
+      "New businesses opening",
+      "Existing businesses (annual renewal)",
+      "Home-based businesses"
+    ],
+    "steps": [
+      {
+        "step": 1,
+        "action": "Check zoning requirements",
+        "details": "Ensure your business type is allowed at your location. Call Planning at 555-0130"
+      },
+      {
+        "step": 2,
+        "action": "Complete application",
+        "details": "Download form at cityofmaplewood.gov/business or pick up at City Hall"
+      },
+      {
+        "step": 3,
+        "action": "Gather required documents",
+        "details": "Proof of insurance, lease agreement or property deed, seller's permit (if applicable)"
+      },
+      {
+        "step": 4,
+        "action": "Submit and pay fee",
+        "details": "Submit in person or by mail with $75 annual fee"
+      },
+      {
+        "step": 5,
+        "action": "Receive license",
+        "details": "Processing takes 5-7 business days. License must be displayed at business location"
+      }
+    ],
+    "required_documents": [
+      "Completed application",
+      "Proof of business insurance",
+      "Lease or property deed",
+      "State seller's permit (retail businesses)"
+    ],
+    "fees": "$75 per year",
+    "processing_time": "5-7 business days",
+    "contact": {
+      "department": "City Clerk",
+      "phone": "555-0100",
+      "email": "cityclerk@cityofmaplewood.gov",
+      "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+    },
+    "faq": [
+      {
+        "question": "Do I need a license for a home-based business?",
+        "answer": "Yes, all businesses operating in the city require a license, including home-based businesses."
+      },
+      {
+        "question": "When does my license expire?",
+        "answer": "Business licenses expire December 31 each year and must be renewed annually."
+      }
+    ]
+  },
+  {
+    "service_id": "report_pothole",
+    "service_name": "Report a Pothole",
+    "category": "Public Works",
+    "description": "Report potholes or street damage for repair",
+    "who_needs_this": [
+      "Residents who notice street damage",
+      "Drivers encountering hazards",
+      "Anyone concerned about street safety"
+    ],
+    "steps": [
+      {
+        "step": 1,
+        "action": "Locate the pothole",
+        "details": "Note the street name, nearest cross street, and approximate location"
+      },
+      {
+        "step": 2,
+        "action": "Report online or by phone",
+        "details": "Online: cityofmaplewood.gov/report-pothole or call Public Works at 555-0150"
+      },
+      {
+        "step": 3,
+        "action": "Provide details",
+        "details": "Size of pothole, traffic hazard level, and your contact info (optional)"
+      },
+      {
+        "step": 4,
+        "action": "Receive work order number",
+        "details": "Keep this number to check status of your request"
+      }
+    ],
+    "required_documents": [],
+    "fees": "Free service",
+    "processing_time": "Inspection within 2 business days, repair within 3-10 days based on priority",
+    "contact": {
+      "department": "Public Works",
+      "phone": "555-0150",
+      "emergency_phone": "555-0911",
+      "email": "publicworks@cityofmaplewood.gov",
+      "hours": "Monday-Friday 7:00 AM - 3:30 PM"
+    },
+    "faq": [
+      {
+        "question": "How quickly will the pothole be fixed?",
+        "answer": "Repairs are prioritized by severity. Emergency hazards within 24 hours, others within 3-10 business days."
+      },
+      {
+        "question": "Can I check the status of my report?",
+        "answer": "Yes, call Public Works at 555-0150 with your work order number."
+      }
+    ]
+  },
+  {
+    "service_id": "water_bill_payment",
+    "service_name": "Water & Sewer Bill Payment",
+    "category": "Utilities",
+    "description": "Pay your monthly water and sewer bill",
+    "who_needs_this": [
+      "All water/sewer customers",
+      "Property owners",
+      "Tenants responsible for utilities"
+    ],
+    "steps": [
+      {
+        "step": 1,
+        "action": "Receive your bill",
+        "details": "Bills mailed monthly, due on the 15th of each month"
+      },
+      {
+        "step": 2,
+        "action": "Choose payment method",
+        "details": "Online, phone, mail, or in-person at City Hall"
+      },
+      {
+        "step": 3,
+        "action": "Make payment",
+        "details": "Online: cityofmaplewood.gov/paybill | Phone: 555-0160 | Mail: City Hall, PO Box 100"
+      }
+    ],
+    "payment_methods": [
+      "Online (credit/debit card, e-check)",
+      "Phone automated system (555-0160)",
+      "Mail (check or money order)",
+      "In person at City Hall (cash, check, card)"
+    ],
+    "fees": "No fee for check/e-check. $2.50 fee for credit/debit cards.",
+    "processing_time": "Immediate for online/phone, 3-5 days for mail",
+    "contact": {
+      "department": "Utility Billing",
+      "phone": "555-0160",
+      "email": "utilities@cityofmaplewood.gov",
+      "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+    },
+    "faq": [
+      {
+        "question": "What if I can't pay my bill on time?",
+        "answer": "Contact Utility Billing at 555-0160 to discuss payment plan options before the due date."
+      },
+      {
+        "question": "Why is my bill higher this month?",
+        "answer": "Check for leaks, seasonal usage changes, or rate adjustments. Call 555-0160 for bill explanation."
+      }
+    ]
+  }
+]

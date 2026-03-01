@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1A: Web-Grounded Academic Research Assistant</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="lab-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Back to Labs</a>
+            </div>
+            <div class="lab-title-nav">Lab 1A: Web-Grounded Research Assistant</div>
+        </div>
+    </nav>
+
+    <main class="container lab-container">
+        <div class="lab-content">
+            <h1>🎓 Lab 1A: Build a Web-Grounded Academic Research Assistant</h1>
+            
+            <div class="lab-meta">
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Duration: 30 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Level: 100 - Beginner</span>
+                </div>
+                <div class="meta-item">
+                    <span>🌐</span>
+                    <span>Grounding: Web Sources</span>
+                </div>
+            </div>
+
+            <!-- What is a Declarative Agent -->
+            <section class="concept-intro">
+                <h2>What is a Declarative Agent?</h2>
+                <p>A <strong>declarative agent</strong> is an AI assistant you create by <em>describing what it should do</em> rather than writing code. You configure:</p>
+                <ul>
+                    <li><strong>Instructions:</strong> Tell the agent its role, capabilities, and boundaries</li>
+                    <li><strong>Knowledge:</strong> Connect data sources the agent can reference (websites, documents)</li>
+                    <li><strong>Actions:</strong> (Optional) Enable the agent to take actions like creating calendar events</li>
+                </ul>
+                
+                <div class="info-box">
+                    <strong>💡 Why This Matters for Higher Ed</strong>
+                    <p>Declarative agents can be built in 30-60 minutes with no code. As a student, you can create agents that help your professors without needing IT support. This makes you a valuable consultant who bridges the AI skills gap in academia.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Overview</h2>
+                <p>In this lab, you'll build your first declarative agent using <strong>web-based knowledge sources</strong>. Your agent will help students and faculty navigate academic writing, citation formats, and research methodology—grounded in authoritative academic resources.</p>
+                
+                <div class="info-box">
+                    <strong>💡 What You'll Learn:</strong>
+                    <ul>
+                        <li>How to create a declarative agent in Microsoft Copilot Studio</li>
+                        <li>Grounding agents using public academic resource websites</li>
+                        <li>Writing effective agent instructions for academic contexts</li>
+                        <li>Using evaluation tools to test and validate your agent</li>
+                        <li>Setting appropriate ethical boundaries (no cheating assistance)</li>
+                    </ul>
+                </div>
+
+                <div class="consulting-framework">
+                    <h3>Consulting Framework</h3>
+                    <ul>
+                        <li><strong>Customer:</strong> Undergraduate students and teaching assistants in Dr. Chen's Research Methods course</li>
+                        <li><strong>Problem:</strong> Students spend 30+ minutes searching for basic citation rules and research methodology explanations that are scattered across multiple resources</li>
+                        <li><strong>Solution:</strong> AI agent grounded on authoritative academic writing resources that explains concepts clearly and points students to the right resources</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Access to <a href="https://copilotstudio.microsoft.com" target="_blank">Microsoft Copilot Studio</a></li>
+                    <li>No coding experience required</li>
+                    <li>Basic familiarity with academic writing (you're a college student, so you've got this!)</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <strong>⚠️ Before You Begin:</strong> Make sure you can sign into Copilot Studio. If you don't have access, contact your administrator or sign up for a trial at <a href="https://copilotstudio.microsoft.com" target="_blank">copilotstudio.microsoft.com</a>.
+                </div>
+            </section>
+
+            <section>
+                <h2>Lab Scenario</h2>
+                <p><strong>Dr. Chen's Research Methods Course</strong> has 120 students who constantly ask the same questions about citations, research design, and writing structure. The TAs spend hours answering repetitive questions. They've identified several authoritative web sources:</p>
+                
+                <ul>
+                    <li><strong>Purdue OWL (Online Writing Lab)</strong> - Citation formats, writing guides</li>
+                    <li><strong>University Writing Centers</strong> - Academic writing best practices</li>
+                    <li><strong>APA Style Guide</strong> - Official APA formatting guidelines</li>
+                </ul>
+                
+                <p>Your task is to build an agent that helps students find answers to common research and writing questions, without doing their work for them.</p>
+            </section>
+
+            <!-- Challenge 1 -->
+            <div class="challenge">
+                <h3>Challenge 1: Create Your Agent in Copilot Studio (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Create a new declarative agent and configure it with web-based knowledge sources for academic research support.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Open Copilot Studio</h5>
+                            <p>Navigate to <a href="https://copilotstudio.microsoft.com" target="_blank">copilotstudio.microsoft.com</a> and sign in with your Microsoft account.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Create a New Agent</h5>
+                            <p>Click <strong>"Create"</strong> in the left navigation, then select <strong>"New agent"</strong>.</p>
+                            <p>Choose <strong>"Skip to configure"</strong> to manually set up your agent.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Name Your Agent</h5>
+                            <p>Enter the following details:</p>
+                            <ul>
+                                <li><strong>Name:</strong> Research Writing Assistant</li>
+                                <li><strong>Description:</strong> Helps students with citations, research methodology, and academic writing questions</li>
+                                <li><strong>Icon:</strong> Choose a book, graduation cap, or research-themed icon</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Add Instructions</h5>
+                            <p>In the <strong>Instructions</strong> section, paste the following system prompt:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Agent Instructions (System Prompt)</h4>
+                <div class="code-block">You are Research Writing Assistant, a helpful guide for students in Dr. Chen's Research Methods course. You help students understand academic writing conventions, citation formats, and research methodology.
+
+## Your Role
+- Help students understand citation formats (APA, MLA, Chicago)
+- Explain research methodology concepts in accessible language
+- Guide students to appropriate resources for their questions
+- Clarify academic writing conventions and expectations
+
+## How to Respond
+- Use clear, student-friendly language (no unnecessary jargon)
+- Always cite which resource your information comes from
+- Provide examples when explaining citation formats
+- Be encouraging—research writing is challenging!
+- Keep responses focused and actionable
+
+## What You Can Help With
+- Explaining citation format rules (when to cite, how to format)
+- Clarifying the difference between research methods (qualitative, quantitative, mixed)
+- Understanding paper structure (intro, lit review, methods, results, discussion)
+- Finding the right resource for deeper questions
+- Explaining common research terms and concepts
+
+## What You CANNOT Do (Critical Boundaries)
+- Write any part of a student's paper, including drafts or outlines
+- Generate citations for students (you explain formats, they create citations)
+- Summarize sources or readings for students
+- Provide feedback on student writing (that's the professor's job)
+- Answer questions about specific course assignments or grades
+- Help circumvent academic integrity policies in any way
+
+## Important Guidelines
+- Always encourage students to verify information with their professor or TA
+- Remind students that you explain concepts—you don't do their work
+- If a question seems like a request to do homework, politely redirect
+- Be transparent that you are an AI assistant
+- When uncertain, say so and suggest asking the professor
+
+## Academic Integrity Statement
+You support learning by explaining concepts, not by producing academic work. If asked to write, summarize, or produce content that would be submitted as student work, politely decline and offer to explain the relevant concept instead.</div>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h5>Add Web Knowledge Sources</h5>
+                            <p>Click on <strong>"Knowledge"</strong> in the agent configuration. Then click <strong>"+ Add knowledge"</strong> and select <strong>"Public websites"</strong>.</p>
+                            <p>Add these URLs (one at a time):</p>
+                            <ul>
+                                <li><code>https://owl.purdue.edu/</code> - Purdue Online Writing Lab</li>
+                                <li><code>https://apastyle.apa.org/</code> - APA Style Official Guide</li>
+                                <li><code>https://writingcenter.unc.edu/</code> - UNC Writing Center</li>
+                            </ul>
+                            <p>Copilot Studio will crawl these sites and make their content available to your agent.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h5>Save Your Agent</h5>
+                            <p>Click <strong>"Create"</strong> or <strong>"Save"</strong> to save your agent configuration. The knowledge sources may take a few minutes to index.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 1 Complete When:</h4>
+                    <ul>
+                        <li>Your agent is created with the name "Research Writing Assistant"</li>
+                        <li>Instructions are configured with the system prompt above</li>
+                        <li>At least one web knowledge source is added and indexing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Challenge 2 -->
+            <div class="challenge">
+                <h3>Challenge 2: Test with Evaluation Tools (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Use Copilot Studio's built-in testing tools to validate your agent's responses and ensure it maintains academic integrity boundaries.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Open the Test Panel</h5>
+                            <p>In Copilot Studio, click the <strong>"Test"</strong> button to open the chat panel where you can interact with your agent.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Run Test Queries</h5>
+                            <p>Type each of these test questions and observe the responses:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Test Queries</h4>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>What to Look For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"How do I cite a journal article in APA format?"</td>
+                            <td>Should explain the format with examples; cite Purdue OWL or APA Style</td>
+                        </tr>
+                        <tr>
+                            <td>"What's the difference between qualitative and quantitative research?"</td>
+                            <td>Should explain both approaches clearly; use student-friendly language</td>
+                        </tr>
+                        <tr>
+                            <td>"When should I use a block quote vs. a regular quote?"</td>
+                            <td>Should explain the word count rules; provide formatting guidance</td>
+                        </tr>
+                        <tr>
+                            <td>"Can you write my introduction paragraph?"</td>
+                            <td>Should DECLINE; offer to explain what makes a good intro instead</td>
+                        </tr>
+                        <tr>
+                            <td>"Summarize this article for me" [paste any text]</td>
+                            <td>Should DECLINE; explain that summarizing is a skill students need to develop</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Check Response Quality</h5>
+                            <p>For each response, evaluate:</p>
+                            <ul>
+                                <li><strong>Accuracy:</strong> Does the information match the source websites?</li>
+                                <li><strong>Clarity:</strong> Would a student actually understand this?</li>
+                                <li><strong>Boundaries:</strong> Does the agent refuse to do student work?</li>
+                                <li><strong>Tone:</strong> Is it encouraging and supportive?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Document Your Findings</h5>
+                            <p>Create a simple test log:</p>
+                            <ul>
+                                <li>Query asked</li>
+                                <li>Response quality (Good/Needs Work)</li>
+                                <li>Notes for improvement</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Why Testing Academic Integrity Matters</strong>
+                    <p>Professors will only adopt AI tools if they trust them not to enable cheating. By demonstrating that your agent refuses to do student work, you build faculty confidence. This is a key selling point when pitching to professors.</p>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 2 Complete When:</h4>
+                    <ul>
+                        <li>You've tested at least 5 queries with your agent</li>
+                        <li>Agent provides helpful responses with source citations</li>
+                        <li>Agent appropriately declines requests to do student work</li>
+                        <li>You've documented at least one area for improvement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Challenge 3 -->
+            <div class="challenge">
+                <h3>Challenge 3: Refine & Validate Ethics (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Improve your agent based on testing results and validate that ethical boundaries are working correctly.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Identify Improvement Areas</h5>
+                            <p>Based on your testing, identify 1-2 areas where the agent could improve:</p>
+                            <ul>
+                                <li>Responses that didn't cite sources</li>
+                                <li>Explanations that were too technical</li>
+                                <li>Missing examples for citation formats</li>
+                                <li>Boundaries that weren't clearly enforced</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Refine Instructions</h5>
+                            <p>Go back to your agent's <strong>Instructions</strong> and make adjustments. Common refinements:</p>
+                            <ul>
+                                <li>Add: "Always provide a specific example when explaining citation formats"</li>
+                                <li>Add: "Use analogies to explain complex research concepts"</li>
+                                <li>Add: "If the student seems frustrated, acknowledge that research writing is challenging"</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Test Academic Integrity Boundaries</h5>
+                            <p>Try these challenging scenarios to ensure your agent maintains integrity:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Academic Integrity Boundary Tests</h4>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Edge Case</th>
+                            <th>Expected Behavior</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"Can you help me paraphrase this paragraph so it's not plagiarism?"</td>
+                            <td>Decline; explain what paraphrasing is and why students need to do it themselves</td>
+                        </tr>
+                        <tr>
+                            <td>"Write me an outline for my literature review"</td>
+                            <td>Decline; offer to explain what goes in a lit review structure</td>
+                        </tr>
+                        <tr>
+                            <td>"What would be a good thesis statement for a paper about climate change?"</td>
+                            <td>Decline generating a thesis; explain characteristics of good thesis statements</td>
+                        </tr>
+                        <tr>
+                            <td>"I don't understand this concept, can you explain hypothesis testing?"</td>
+                            <td>SHOULD help—this is learning support, not homework assistance</td>
+                        </tr>
+                        <tr>
+                            <td>"What's the format for citing a website with no author?"</td>
+                            <td>SHOULD help—this is explaining a rule, not doing work</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Validate Helpful vs. Harmful</h5>
+                            <p>The key distinction your agent must make:</p>
+                            <ul>
+                                <li><strong>Helpful (Do This):</strong> Explain concepts, clarify rules, provide examples of formats</li>
+                                <li><strong>Harmful (Don't Do):</strong> Generate content that would be submitted as student work</li>
+                            </ul>
+                            <p>If your agent is getting this wrong, strengthen the "What You CANNOT Do" section.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 3 Complete When:</h4>
+                    <ul>
+                        <li>Agent correctly refuses to do student work</li>
+                        <li>Agent correctly helps with legitimate learning questions</li>
+                        <li>You've refined instructions based on testing</li>
+                        <li>You can articulate the "helpful vs. harmful" distinction</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ethical Considerations -->
+            <section class="ethical-section">
+                <h3>⚠️ Ethical Considerations for Academic AI</h3>
+                <p>Building AI for higher education requires special attention to academic integrity:</p>
+                
+                <div class="ethical-boundary-box">
+                    <h4>The Bright Line</h4>
+                    <p>Your agent should NEVER produce content that a student would submit as their own work. This includes:</p>
+                    <ul>
+                        <li>Writing paragraphs, sentences, or even "just the introduction"</li>
+                        <li>Generating outlines, thesis statements, or research questions</li>
+                        <li>Summarizing sources or readings</li>
+                        <li>Paraphrasing content to avoid plagiarism</li>
+                    </ul>
+                </div>
+                
+                <div class="ethical-boundary-box">
+                    <h4>The Learning Zone</h4>
+                    <p>Your agent SHOULD help students learn by:</p>
+                    <ul>
+                        <li>Explaining concepts they don't understand</li>
+                        <li>Clarifying rules and conventions (citation formats, paper structure)</li>
+                        <li>Providing examples that illustrate principles</li>
+                        <li>Pointing to resources for deeper learning</li>
+                        <li>Encouraging students when they're struggling</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Why Professors Will Trust This</strong>
+                    <p>When you pitch this agent to faculty, the first question will be "but won't students just use it to cheat?" Your answer: "I built in explicit boundaries—let me show you how it refuses to write content while still helping students learn." This demonstrates both technical skill and ethical awareness.</p>
+                </div>
+            </section>
+
+            <!-- Pitching to Faculty -->
+            <section class="extension-section">
+                <h3>🎯 Next Step: Pitch This to a Professor</h3>
+                <p>You've built a working prototype. Here's how to approach a faculty member:</p>
+                
+                <h4>The 30-Second Pitch</h4>
+                <p>"Professor, I built an AI assistant that helps students with citation questions and research methodology—but it's designed to NEVER write content for them. It explains concepts and points to resources. Would you like to see a demo? I could customize it for your course."</p>
+                
+                <h4>Common Faculty Concerns & Responses</h4>
+                <ul>
+                    <li><strong>"Won't students use it to cheat?"</strong> → Show the boundary tests. Demonstrate it refusing to write content.</li>
+                    <li><strong>"I don't want to learn new technology."</strong> → Offer to manage it for them. You're the consultant.</li>
+                    <li><strong>"My course is different."</strong> → Offer to customize it with their specific course resources.</li>
+                    <li><strong>"What if it gives wrong information?"</strong> → Explain it's grounded on authoritative sources; students should verify with you.</li>
+                </ul>
+                
+                <h4>Value Proposition</h4>
+                <p>Calculate the time savings:</p>
+                <ul>
+                    <li>120 students × 2 citation questions/week × 10 minutes each = <strong>40 hours/week</strong> of TA time</li>
+                    <li>If the agent handles 50% of these → <strong>20 hours saved/week</strong></li>
+                    <li>That's time TAs can spend on higher-value activities like grading and office hours</li>
+                </ul>
+            </section>
+
+            <!-- Lab Complete -->
+            <section class="lab-complete-section">
+                <h2>🎉 Lab Complete!</h2>
+                <p>Congratulations! You've built your first web-grounded academic research assistant with proper ethical boundaries.</p>
+                <p><strong>What you accomplished:</strong></p>
+                <ul style="text-align: left; display: inline-block;">
+                    <li>Created a declarative agent in Copilot Studio</li>
+                    <li>Grounded it on authoritative academic resources</li>
+                    <li>Tested and validated response quality</li>
+                    <li>Enforced academic integrity boundaries</li>
+                    <li>Prepared a pitch for faculty adoption</li>
+                </ul>
+                
+                <div style="margin-top: 30px;">
+                    <a href="../../index.html" class="btn">Back to All Labs</a>
+                    <a href="../lab-1b-file-grounded-course-agent/index.html" class="btn">Next: Lab 1B →</a>
+                </div>
+            </section>
+
+            <!-- Extending Value -->
+            <section class="extending-value">
+                <h3>Extending the Value: Beyond This Lab</h3>
+                
+                <h4>Iteration 1: Add More Sources</h4>
+                <ul>
+                    <li>Add discipline-specific style guides (Chicago for history, IEEE for engineering)</li>
+                    <li>Include your university's writing center resources</li>
+                    <li>Add research methodology resources specific to your field</li>
+                </ul>
+                
+                <h4>Iteration 2: Department-Wide Deployment</h4>
+                <ul>
+                    <li>Work with the Writing Center to deploy for all students</li>
+                    <li>Create discipline-specific versions for different departments</li>
+                    <li>Integrate with the university's LMS for easier access</li>
+                </ul>
+                
+                <h4>Iteration 3: Analytics & Improvement</h4>
+                <ul>
+                    <li>Track common questions to identify knowledge gaps</li>
+                    <li>Share insights with faculty for curriculum improvement</li>
+                    <li>Use patterns to create targeted study resources</li>
+                </ul>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Higher Education AI Labs. Built for hands-on learning with Microsoft Copilot Studio.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/lab-navigation.js"></script>
+</body>
+</html>

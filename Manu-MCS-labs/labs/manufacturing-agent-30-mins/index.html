@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manufacturing Intelligence Agent Lab - 30 mins</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="lab-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Back to Labs</a>
+            </div>
+            <div class="lab-title-nav">Manufacturing Intelligence Agent</div>
+        </div>
+    </nav>
+
+    <main class="container lab-container">
+        <div class="lab-content">
+            <h1>🏭 Build a Manufacturing Intelligence Agent</h1>
+            
+            <div class="lab-meta">
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Duration: 30 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Level: Beginner</span>
+                </div>
+                <div class="meta-item">
+                    <span>🎯</span>
+                    <span>3 Challenges</span>
+                </div>
+            </div>
+
+            <section>
+                <h2>Overview</h2>
+                <p>In this hands-on lab, you'll build a declarative AI agent that assists manufacturing floor managers with real-time insights and decision-making. Your agent will help monitor equipment maintenance, optimize production lines, and provide quality control intelligence.</p>
+                
+                <div class="info-box">
+                    <strong>💡 What You'll Learn:</strong>
+                    <ul>
+                        <li>How to design declarative agents for domain-specific use cases</li>
+                        <li>Integrating structured manufacturing data with AI agents</li>
+                        <li>Creating conversational interfaces for technical queries</li>
+                        <li>Implementing industry-specific knowledge bases</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Access to <a href="https://copilotstudio.microsoft.com" target="_blank">Microsoft Copilot Studio</a></li>
+                    <li>Basic understanding of AI agents and prompting</li>
+                    <li>Familiarity with JSON data structures (helpful but not required)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Lab Scenario</h2>
+                <p>You work for <strong>Contoso Manufacturing</strong>, a mid-sized manufacturer producing automotive parts. The company operates multiple production lines with various CNC machines, hydraulic presses, and assembly equipment. Floor managers need quick access to equipment maintenance schedules, production metrics, and quality control data.</p>
+                
+                <p>Your task is to build an intelligent agent that can answer questions and provide insights using the company's manufacturing data.</p>
+            </section>
+
+            <!-- Challenge 1 -->
+            <div class="challenge">
+                <h3>Challenge 1: Equipment Maintenance Assistant (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Scenario:</strong> Floor managers need quick answers about equipment maintenance schedules, history, and upcoming service requirements. Build an agent that can answer maintenance-related questions using the equipment database.
+                </div>
+
+                <h4>Tasks</h4>
+                <ol>
+                    <li>Review the sample equipment data structure below</li>
+                    <li>Create a declarative agent with a system prompt that understands maintenance terminology</li>
+                    <li>Configure the agent to access equipment maintenance data</li>
+                    <li>Test with the sample queries provided</li>
+                </ol>
+
+                <h4>Sample Equipment Data</h4>
+                <div class="code-block">{
+  "equipment_id": "CNC-003",
+  "name": "CNC Milling Machine",
+  "location": "Production Line 3",
+  "status": "operational",
+  "last_maintenance": "2026-01-10",
+  "next_maintenance": "2026-02-10",
+  "maintenance_interval_days": 30,
+  "maintenance_history": [
+    {
+      "date": "2026-01-10",
+      "type": "preventive",
+      "technician": "John Smith",
+      "notes": "Replaced coolant, checked spindle alignment",
+      "duration_hours": 2.5
+    }
+  ],
+  "common_issues": [
+    "Spindle overheating",
+    "Tool changer jamming",
+    "Coolant pump failure"
+  ]
+}</div>
+
+                <h4>Sample System Prompt</h4>
+                <div class="code-block">You are a Manufacturing Maintenance Assistant for Contoso Manufacturing. 
+You help floor managers and maintenance teams with equipment-related questions.
+
+Your capabilities:
+- Provide maintenance schedules and history
+- Explain common equipment issues and solutions
+- Recommend preventive maintenance actions
+- Calculate time until next maintenance
+
+When answering:
+- Be concise and actionable
+- Include specific dates and equipment IDs
+- Highlight urgent maintenance needs
+- Use manufacturing terminology appropriately
+
+Available data: Equipment database with maintenance history, 
+schedules, and specifications for all production line machinery.</div>
+
+                <h4>Test Queries</h4>
+                <ul>
+                    <li>"When was the last maintenance on CNC-003?"</li>
+                    <li>"Which equipment needs maintenance in the next 7 days?"</li>
+                    <li>"What are the common issues with our CNC machines?"</li>
+                    <li>"Who performed the last maintenance on Line 3 equipment?"</li>
+                </ul>
+
+                <div class="success-criteria">
+                    <h4>✅ Success Criteria</h4>
+                    <ul>
+                        <li>Agent accurately retrieves maintenance dates from equipment data</li>
+                        <li>Agent references specific equipment IDs and locations</li>
+                        <li>Agent provides actionable maintenance recommendations</li>
+                        <li>Responses use appropriate manufacturing terminology</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Tip:</strong> Use grounding to connect your agent to the equipment data. In Copilot Studio, click <strong>Knowledge</strong> → <strong>Add knowledge</strong> and upload your equipment data files or connect to SharePoint where your maintenance records are stored.
+                </div>
+            </div>
+
+            <!-- Challenge 2 -->
+            <div class="challenge">
+                <h3>Challenge 2: Production Line Optimizer (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Scenario:</strong> Extend your agent to monitor and analyze production metrics. Floor managers need insights into OEE (Overall Equipment Effectiveness), bottlenecks, and optimization opportunities.
+                </div>
+
+                <h4>Tasks</h4>
+                <ol>
+                    <li>Add production metrics data to your agent's knowledge base</li>
+                    <li>Update the system prompt to handle OEE calculations and analysis</li>
+                    <li>Configure the agent to identify bottlenecks and suggest optimizations</li>
+                    <li>Test with production-related queries</li>
+                </ol>
+
+                <h4>Sample Production Metrics Data</h4>
+                <div class="code-block">{
+  "line_id": "Assembly-002",
+  "shift": "day",
+  "date": "2026-01-14",
+  "metrics": {
+    "planned_production_time": 480,
+    "actual_production_time": 408,
+    "downtime_minutes": 72,
+    "ideal_cycle_time": 2.5,
+    "total_units_produced": 145,
+    "defective_units": 3,
+    "oee": {
+      "availability": 0.85,
+      "performance": 0.89,
+      "quality": 0.98,
+      "overall": 0.74
+    }
+  },
+  "downtime_reasons": [
+    {
+      "reason": "Tool change",
+      "duration_minutes": 25
+    },
+    {
+      "reason": "Material shortage",
+      "duration_minutes": 35
+    }
+  ],
+  "bottleneck_detected": true,
+  "bottleneck_station": "Welding Station 2"
+}</div>
+
+                <h4>OEE Calculation Reference</h4>
+                <div class="code-block">OEE = Availability × Performance × Quality
+
+Availability = (Actual Production Time / Planned Production Time)
+Performance = (Ideal Cycle Time × Total Units) / Actual Production Time
+Quality = (Good Units / Total Units Produced)
+
+World-class OEE: 85% or higher
+Typical OEE: 60% - 70%
+Low OEE: Below 60%</div>
+
+                <h4>Extended System Prompt Addition</h4>
+                <div class="code-block">You also analyze production metrics and calculate OEE (Overall Equipment Effectiveness).
+
+For production analysis:
+- Calculate and explain OEE components (Availability, Performance, Quality)
+- Identify bottlenecks and their impact
+- Suggest specific optimization actions
+- Prioritize recommendations by potential impact
+
+When discussing OEE:
+- Compare to industry benchmarks (world-class = 85%+)
+- Highlight the weakest component needing improvement
+- Provide concrete next steps</div>
+
+                <h4>Test Queries</h4>
+                <ul>
+                    <li>"What's the OEE for Assembly Line 2 today?"</li>
+                    <li>"Why is the OEE low? What's causing the most downtime?"</li>
+                    <li>"Where is the bottleneck in our production?"</li>
+                    <li>"How can we improve availability on Line 2?"</li>
+                    <li>"Compare our OEE to world-class manufacturing standards"</li>
+                </ul>
+
+                <div class="success-criteria">
+                    <h4>✅ Success Criteria</h4>
+                    <ul>
+                        <li>Agent correctly calculates and explains OEE components</li>
+                        <li>Agent identifies root causes of low OEE from downtime data</li>
+                        <li>Agent provides specific, actionable optimization recommendations</li>
+                        <li>Agent compares performance to industry benchmarks</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Note:</strong> When working with time-series production data, ensure your agent understands the temporal context. Specify which shift, date, or time period is being analyzed.
+                </div>
+            </div>
+
+            <!-- Challenge 3 -->
+            <div class="challenge">
+                <h3>Challenge 3: Quality Control Intelligence (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Scenario:</strong> Add quality control capabilities to help identify defect patterns, perform root cause analysis, and recommend corrective actions based on quality inspection data.
+                </div>
+
+                <h4>Tasks</h4>
+                <ol>
+                    <li>Integrate quality inspection data into your agent</li>
+                    <li>Configure the agent to identify defect trends and patterns</li>
+                    <li>Enable root cause analysis capabilities</li>
+                    <li>Test with quality-related queries</li>
+                </ol>
+
+                <h4>Sample Quality Data</h4>
+                <div class="code-block">{
+  "inspection_period": "2026-01-08 to 2026-01-14",
+  "total_inspections": 1250,
+  "defects_found": 37,
+  "defect_rate": 0.0296,
+  "defect_types": [
+    {
+      "type": "Surface finish",
+      "count": 15,
+      "percentage": 40.5,
+      "affected_products": ["Part-A127", "Part-B203"],
+      "severity": "minor"
+    },
+    {
+      "type": "Dimensional tolerance",
+      "count": 12,
+      "percentage": 32.4,
+      "affected_products": ["Part-C445"],
+      "severity": "major"
+    }
+  ],
+  "root_causes": [
+    {
+      "defect_type": "Surface finish",
+      "likely_cause": "Worn cutting tool on CNC-003",
+      "recommended_action": "Replace cutting tool, verify surface finish parameters"
+    }
+  ],
+  "trend": "increasing",
+  "previous_week_defect_rate": 0.0189
+}</div>
+
+                <h4>Quality Analysis System Prompt Addition</h4>
+                <div class="code-block">You also perform quality control analysis using Six Sigma principles.
+
+For quality analysis:
+- Identify defect patterns and trends
+- Perform root cause analysis
+- Recommend corrective and preventive actions (CAPA)
+- Calculate defect rates and compare to targets
+
+Quality terminology you understand:
+- Defect rate, PPM (Parts Per Million)
+- Six Sigma levels (3.4 DPMO = Six Sigma)
+- Root cause analysis (5 Whys, Fishbone)
+- CAPA (Corrective and Preventive Actions)
+
+Target defect rate: < 2% (20000 PPM)
+World-class: < 0.5% (5000 PPM or Six Sigma 4.0+)</div>
+
+                <h4>Test Queries</h4>
+                <ul>
+                    <li>"What are the top defect types this week?"</li>
+                    <li>"What's causing the dimensional tolerance issues?"</li>
+                    <li>"How does our current defect rate compare to last week?"</li>
+                    <li>"What corrective actions should we take for Part-A127 defects?"</li>
+                    <li>"Is our quality improving or declining?"</li>
+                    <li>"Which products have the most quality issues?"</li>
+                </ul>
+
+                <div class="success-criteria">
+                    <h4>✅ Success Criteria</h4>
+                    <ul>
+                        <li>Agent identifies defect patterns from quality data</li>
+                        <li>Agent performs root cause analysis and suggests likely causes</li>
+                        <li>Agent recommends specific corrective actions</li>
+                        <li>Agent identifies trends (improving/declining quality)</li>
+                        <li>Agent uses appropriate quality terminology (Six Sigma, PPM, etc.)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Advanced Tip:</strong> Consider adding visual data interpretation capabilities. If your agent can analyze charts or graphs, you could provide Pareto charts showing the "vital few" defect types that cause the most issues.
+                </div>
+            </div>
+
+            <!-- Bonus Challenges -->
+            <div class="bonus-challenges">
+                <h3>🌟 Bonus Challenges</h3>
+                <p>If you complete the main challenges early, try these advanced scenarios:</p>
+                <ul>
+                    <li><strong>Multilingual Support:</strong> Add Spanish language support for global manufacturing sites</li>
+                    <li><strong>Predictive Alerts:</strong> Configure the agent to proactively alert when equipment is nearing maintenance due or quality trends are declining</li>
+                    <li><strong>Visual Dashboards:</strong> Integrate with a charting library to generate visual OEE or quality trend reports</li>
+                    <li><strong>Cross-functional Analysis:</strong> Correlate maintenance events with quality issues (e.g., "Do defects increase after equipment maintenance?")</li>
+                    <li><strong>Safety Integration:</strong> Add safety compliance checking (e.g., "Has CNC-003 had its safety inspection this month?")</li>
+                </ul>
+            </div>
+
+            <!-- Extending Value -->
+            <section class="extending-value">
+                <h2>🚀 Extending Value: Future Iterations</h2>
+                <p>This lab uses Copilot Studio's built-in knowledge grounding. As your manufacturing AI maturity grows, consider these extensions:</p>
+                
+                <div class="future-iterations">
+                    <h4>Additional Knowledge Sources</h4>
+                    <ul>
+                        <li><strong>SharePoint Integration:</strong> Connect to existing document libraries with SOPs, maintenance manuals, and safety procedures</li>
+                        <li><strong>Dataverse/Dynamics 365:</strong> Ground on live ERP data for real-time inventory and work order information</li>
+                        <li><strong>Custom Connectors:</strong> Connect to MES (Manufacturing Execution Systems) or SCADA data</li>
+                    </ul>
+                    
+                    <h4>Advanced Capabilities (200-Level)</h4>
+                    <ul>
+                        <li><strong>Power Automate Actions:</strong> Enable your agent to create work orders or send alerts</li>
+                        <li><strong>Azure AI Services:</strong> Add computer vision for defect detection or anomaly detection for predictive maintenance</li>
+                        <li><strong>Custom APIs:</strong> Connect to IoT platforms for real-time sensor data</li>
+                    </ul>
+                    
+                    <h4>Potential Outcomes</h4>
+                    <ul>
+                        <li>Reduce unplanned downtime by 15-25% with predictive maintenance insights</li>
+                        <li>Improve first-pass quality by catching defect patterns earlier</li>
+                        <li>Enable self-service reporting, freeing supervisors for higher-value work</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Resources -->
+            <div class="resources-section">
+                <h3>📚 Resources & References</h3>
+                <ul>
+                    <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/" target="_blank">Microsoft Copilot Studio Documentation</a></li>
+                    <li><a href="https://www.oee.com/" target="_blank">Manufacturing OEE Calculation Guide</a></li>
+                    <li><a href="https://asq.org/quality-resources/six-sigma" target="_blank">Six Sigma Quality Control Framework</a></li>
+                    <li><a href="https://www.iso.org/iso-9001-quality-management.html" target="_blank">ISO 9001 Quality Management Standards</a></li>
+                </ul>
+            </div>
+
+            <div class="lab-actions" style="margin-top: 40px; justify-content: center;">
+                <a href="../../index.html" class="btn btn-secondary">← Back to Labs</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Manufacturing AI Labs. Built for hands-on learning.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/lab-navigation.js"></script>
+</body>
+</html>

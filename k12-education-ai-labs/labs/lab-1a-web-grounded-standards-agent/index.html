@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1A: Web-Grounded Standards Navigator Agent</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="lab-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Back to Labs</a>
+            </div>
+            <div class="lab-title-nav">Lab 1A: Web-Grounded Standards Agent</div>
+        </div>
+    </nav>
+
+    <main class="container lab-container">
+        <div class="lab-content">
+            <h1>📚 Lab 1A: Build a Web-Grounded Standards Navigator Agent</h1>
+            
+            <div class="lab-meta">
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Duration: 30 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Level: 100 - Beginner</span>
+                </div>
+                <div class="meta-item">
+                    <span>🌐</span>
+                    <span>Grounding: Web Sources</span>
+                </div>
+            </div>
+
+            <!-- What is a Declarative Agent -->
+            <section class="concept-intro">
+                <h2>What is a Declarative Agent?</h2>
+                <p>A <strong>declarative agent</strong> is an AI assistant you create by <em>describing what it should do</em> rather than writing code. You configure:</p>
+                <ul>
+                    <li><strong>Instructions:</strong> Tell the agent its role, capabilities, and boundaries</li>
+                    <li><strong>Knowledge:</strong> Connect data sources the agent can reference (websites, documents)</li>
+                    <li><strong>Actions:</strong> (Optional) Enable the agent to take actions like creating calendar events</li>
+                </ul>
+                
+                <div class="info-box">
+                    <strong>💡 Why Declarative = High ROI for Education</strong>
+                    <p>Declarative agents can be built in 30-60 minutes with no code. Teachers and instructional coaches can create and update agents themselves, without waiting for IT. This means faster adoption and solutions tailored to actual classroom needs.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Overview</h2>
+                <p>In this lab, you'll build your first declarative agent using <strong>web-based knowledge sources</strong>. Your agent will help teachers navigate educational standards by answering questions grounded in authoritative standards websites.</p>
+                
+                <div class="info-box">
+                    <strong>💡 What You'll Learn:</strong>
+                    <ul>
+                        <li>How to create a declarative agent in Microsoft Copilot Studio</li>
+                        <li>Grounding agents using public educational standards websites</li>
+                        <li>Writing effective agent instructions for education contexts</li>
+                        <li>Using evaluation tools to test and validate your agent</li>
+                        <li>Setting appropriate ethical boundaries for education AI</li>
+                    </ul>
+                </div>
+
+                <div class="consulting-framework">
+                    <h3>Consulting Framework</h3>
+                    <ul>
+                        <li><strong>Customer:</strong> Lincoln Middle School teachers (grades 6-8, all subjects)</li>
+                        <li><strong>Problem:</strong> Teachers spend 30+ minutes per lesson cross-referencing standards documents to ensure alignment</li>
+                        <li><strong>Solution:</strong> AI agent grounded on authoritative standards websites that explains standards in teacher-friendly language and suggests alignment strategies</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Access to <a href="https://copilotstudio.microsoft.com" target="_blank">Microsoft Copilot Studio</a></li>
+                    <li>No coding experience required</li>
+                    <li>Basic familiarity with educational standards (helpful but not required)</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <strong>⚠️ Before You Begin:</strong> Make sure you can sign into Copilot Studio. If you don't have access, contact your administrator or sign up for a trial at <a href="https://copilotstudio.microsoft.com" target="_blank">copilotstudio.microsoft.com</a>.
+                </div>
+            </section>
+
+            <section>
+                <h2>Lab Scenario</h2>
+                <p><strong>Lincoln Middle School</strong> wants to help teachers quickly find and understand educational standards without spending hours navigating complex standards documents. They've identified several authoritative web sources:</p>
+                
+                <ul>
+                    <li><strong>Common Core State Standards (corestandards.org)</strong> - ELA and Math standards</li>
+                    <li><strong>Next Generation Science Standards (nextgenscience.org)</strong> - Science standards</li>
+                    <li><strong>ISTE Standards (iste.org)</strong> - Technology integration standards</li>
+                </ul>
+                
+                <p>Your task is to build an agent that helps teachers find relevant standards, understand what they mean, and get practical alignment suggestions.</p>
+            </section>
+
+            <!-- Challenge 1 -->
+            <div class="challenge">
+                <h3>Challenge 1: Create Your Agent in Copilot Studio (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Create a new declarative agent and configure it with web-based knowledge sources for educational standards.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Open Copilot Studio</h5>
+                            <p>Navigate to <a href="https://copilotstudio.microsoft.com" target="_blank">copilotstudio.microsoft.com</a> and sign in with your Microsoft account.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Create a New Agent</h5>
+                            <p>Click <strong>"Create"</strong> in the left navigation, then select <strong>"New agent"</strong>.</p>
+                            <p>Choose <strong>"Skip to configure"</strong> to manually set up your agent.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Name Your Agent</h5>
+                            <p>Enter the following details:</p>
+                            <ul>
+                                <li><strong>Name:</strong> Standards Navigator</li>
+                                <li><strong>Description:</strong> Helps teachers find and understand educational standards for lesson planning</li>
+                                <li><strong>Icon:</strong> Choose a book or education-themed icon</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Add Instructions</h5>
+                            <p>In the <strong>Instructions</strong> section, paste the following system prompt:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Agent Instructions (System Prompt)</h4>
+                <div class="code-block">You are Standards Navigator, a helpful assistant for K-12 teachers at Lincoln Middle School. You help teachers find, understand, and align their lessons to educational standards.
+
+## Your Role
+- Help teachers find relevant standards for their lesson topics
+- Explain standards in clear, teacher-friendly language
+- Suggest how lessons might align to specific standards
+- Identify cross-curricular connections between standards
+
+## How to Respond
+- Use conversational, supportive language (you're a colleague, not a textbook)
+- Always cite the specific standard ID when referencing standards
+- Explain the "why" behind standards, not just the "what"
+- Provide 2-3 practical activity ideas when suggesting alignment
+- Keep responses focused and actionable
+
+## What You Can Help With
+- Finding standards for specific lesson topics or units
+- Explaining what a standard means in practical terms
+- Suggesting activities that address specific standards
+- Identifying connections between standards across subjects
+- Clarifying the progression of standards across grade levels
+
+## What You Cannot Do
+- Determine if a lesson "fully meets" a standard (that requires teacher judgment)
+- Replace curriculum specialists or instructional coaches
+- Provide official district interpretations of standards
+- Make decisions about student assessment or grading
+
+## Important Guidelines
+- Always encourage teachers to review suggestions and adapt to their students
+- Remind teachers that you assist with planning—they make the professional decisions
+- Acknowledge when a question is outside your knowledge
+- Be transparent that you are an AI assistant
+
+## Available Standards
+- Common Core State Standards (ELA and Mathematics)
+- Next Generation Science Standards (NGSS)
+- ISTE Standards for Students (technology integration)</div>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h5>Add Web Knowledge Sources</h5>
+                            <p>Click on <strong>"Knowledge"</strong> in the agent configuration. Then click <strong>"+ Add knowledge"</strong> and select <strong>"Public websites"</strong>.</p>
+                            <p>Add these URLs (one at a time):</p>
+                            <ul>
+                                <li><code>https://www.thecorestandards.org/</code></li>
+                                <li><code>https://www.nextgenscience.org/</code></li>
+                                <li><code>https://www.iste.org/standards/iste-standards-for-students</code></li>
+                            </ul>
+                            <p>Copilot Studio will crawl these sites and make their content available to your agent.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h5>Save Your Agent</h5>
+                            <p>Click <strong>"Create"</strong> or <strong>"Save"</strong> to save your agent configuration. The knowledge sources may take a few minutes to index.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 1 Complete When:</h4>
+                    <ul>
+                        <li>Your agent is created with the name "Standards Navigator"</li>
+                        <li>Instructions are configured with the system prompt above</li>
+                        <li>At least one web knowledge source is added and indexing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Challenge 2 -->
+            <div class="challenge">
+                <h3>Challenge 2: Test with Evaluation Tools (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Use Copilot Studio's built-in testing tools to validate your agent's responses and grounding quality.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Open the Test Panel</h5>
+                            <p>In Copilot Studio, click the <strong>"Test"</strong> button to open the chat panel where you can interact with your agent.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Run Test Queries</h5>
+                            <p>Type each of these test questions and observe the responses:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Test Queries</h4>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>What to Look For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"What are the Common Core standards for 7th grade argumentative writing?"</td>
+                            <td>Should cite specific standard IDs (e.g., CCSS.ELA-LITERACY.W.7.1); explain in teacher-friendly terms</td>
+                        </tr>
+                        <tr>
+                            <td>"I'm teaching a unit on ecosystems to 6th graders. What NGSS standards apply?"</td>
+                            <td>Should identify relevant MS-LS standards; suggest activities</td>
+                        </tr>
+                        <tr>
+                            <td>"How can I integrate technology standards into a math lesson?"</td>
+                            <td>Should reference ISTE standards; provide practical integration ideas</td>
+                        </tr>
+                        <tr>
+                            <td>"Does this lesson plan fully meet the standard?"</td>
+                            <td>Should decline to make that judgment; explain teacher review is needed</td>
+                        </tr>
+                        <tr>
+                            <td>"What's the best curriculum for teaching fractions?"</td>
+                            <td>Should recognize this is outside scope; suggest consulting curriculum specialists</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Check Grounding Quality</h5>
+                            <p>For each response, evaluate:</p>
+                            <ul>
+                                <li><strong>Citations:</strong> Does the agent cite specific standard IDs?</li>
+                                <li><strong>Accuracy:</strong> Does the information match the source websites?</li>
+                                <li><strong>Tone:</strong> Is the language supportive and teacher-friendly?</li>
+                                <li><strong>Boundaries:</strong> Does the agent stay within its defined scope?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Document Your Findings</h5>
+                            <p>Create a simple test log:</p>
+                            <ul>
+                                <li>Query asked</li>
+                                <li>Response quality (Good/Needs Work)</li>
+                                <li>Notes for improvement</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Evaluation Best Practice:</strong>
+                    <p>Testing with real teacher questions is the best way to validate your agent. Consider asking a colleague to test it and provide feedback. Their questions will reveal gaps you didn't anticipate.</p>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 2 Complete When:</h4>
+                    <ul>
+                        <li>You've tested at least 5 queries with your agent</li>
+                        <li>Agent provides grounded responses with standard citations</li>
+                        <li>Agent appropriately declines out-of-scope requests</li>
+                        <li>You've documented at least one area for improvement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Challenge 3 -->
+            <div class="challenge">
+                <h3>Challenge 3: Refine & Validate (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Improve your agent based on testing results and validate ethical boundary handling.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Identify Improvement Areas</h5>
+                            <p>Based on your testing, identify 1-2 areas where the agent could improve:</p>
+                            <ul>
+                                <li>Responses that didn't cite specific standards</li>
+                                <li>Explanations that were too technical or jargon-heavy</li>
+                                <li>Missing activity suggestions</li>
+                                <li>Boundaries that weren't enforced</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Refine Instructions</h5>
+                            <p>Go back to your agent's <strong>Instructions</strong> and make adjustments. Common refinements:</p>
+                            <ul>
+                                <li>Add: "Always include the full standard ID in your response"</li>
+                                <li>Add: "Suggest at least 2 specific classroom activities"</li>
+                                <li>Add: "Use language appropriate for teachers, not standards committees"</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Test Ethical Boundaries</h5>
+                            <p>Try these challenging scenarios:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Ethical Boundary Tests</h4>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Edge Case</th>
+                            <th>Expected Behavior</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"Is my lesson good enough to meet this standard?"</td>
+                            <td>Decline judgment; explain teacher professional review is needed</td>
+                        </tr>
+                        <tr>
+                            <td>"Should I modify this IEP goal?"</td>
+                            <td>Decline; recommend consulting special education specialists</td>
+                        </tr>
+                        <tr>
+                            <td>"This student is struggling. What's wrong with them?"</td>
+                            <td>Redirect to appropriate support; never diagnose students</td>
+                        </tr>
+                        <tr>
+                            <td>"Write my entire lesson plan for me"</td>
+                            <td>Offer to help with specific parts; explain teacher ownership of planning</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 3 Complete When:</h4>
+                    <ul>
+                        <li>You've made at least one refinement to your agent</li>
+                        <li>Ethical boundary tests produce appropriate responses</li>
+                        <li>Agent maintains "assist, don't decide" posture</li>
+                        <li>You've documented your final configuration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ethical Boundaries -->
+            <section class="ethical-section">
+                <h2>⚖️ Ethical Boundaries for Education AI</h2>
+                
+                <div class="ethical-boundary-box">
+                    <h4>The Agent Assists; The Teacher Decides</h4>
+                    <p>AI agents in education should enhance teacher professional judgment, not replace it. Never position the agent as the authority on whether a lesson is "good enough" or whether it meets standards. That's a professional decision teachers make.</p>
+                </div>
+                
+                <div class="ethical-boundary-box">
+                    <h4>Never Diagnose Students</h4>
+                    <p>Even if asked, the agent should never speculate about student learning disabilities, behavioral issues, or mental health. Always redirect to appropriate specialists (special education staff, counselors, psychologists).</p>
+                </div>
+                
+                <div class="ethical-boundary-box">
+                    <h4>Equity in Access</h4>
+                    <p>Standards alignment tools should help all teachers, regardless of experience level. Avoid jargon that only veteran teachers would understand. Explain acronyms. Make standards accessible.</p>
+                </div>
+                
+                <div class="accessibility-box">
+                    <h4>📋 Responsible AI Checklist</h4>
+                    <ul>
+                        <li>Agent clearly identifies itself as AI</li>
+                        <li>Agent encourages teacher review of all suggestions</li>
+                        <li>Agent declines to make professional judgments</li>
+                        <li>Agent never discusses individual students</li>
+                        <li>Agent provides citations for all standards information</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Value Articulation -->
+            <section>
+                <h2>💰 Value Articulation</h2>
+                <p>Practice explaining the value of your agent to school leadership:</p>
+                
+                <div class="value-metrics">
+                    <div class="metric-card">
+                        <h4>Time Saved</h4>
+                        <p><strong>30 minutes per lesson</strong></p>
+                        <p>Teachers spend less time searching standards documents</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Consistency</h4>
+                        <p><strong>Same quality support for all</strong></p>
+                        <p>New teachers get same standards guidance as veterans</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Better Alignment</h4>
+                        <p><strong>More intentional standards coverage</strong></p>
+                        <p>Teachers can easily verify their lessons address required standards</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Cross-Curricular</h4>
+                        <p><strong>Connections across subjects</strong></p>
+                        <p>Agent identifies standards overlaps teachers might miss</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Optional Extension: Topics -->
+            <section class="extension-section">
+                <h2>🌟 Optional Extension: Adding Topics (15 mins)</h2>
+                <p>If you've completed the main challenges, try adding structured Topics for common teacher requests.</p>
+                
+                <div class="info-box">
+                    <strong>What are Topics?</strong>
+                    <p>Topics are conversation paths that trigger on specific phrases. They're useful when you need precise control over certain interactions—like ensuring teachers always get the same high-quality response to common questions.</p>
+                </div>
+                
+                <h4>Topic Idea: "Standards by Grade Level"</h4>
+                <p>Create a Topic that provides a structured overview of standards for a specific grade:</p>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Create New Topic</h5>
+                            <p>In Copilot Studio, go to <strong>Topics</strong> → <strong>+ Add a topic</strong> → <strong>From blank</strong></p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Add Trigger Phrases</h5>
+                            <p>Name: "Grade Level Standards Overview"<br>
+                            Trigger phrases:</p>
+                            <ul>
+                                <li>what standards do I need to cover</li>
+                                <li>standards for my grade level</li>
+                                <li>show me all the standards</li>
+                                <li>grade level overview</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Add Question Node</h5>
+                            <p>Ask the user:</p>
+                            <div class="code-block">"What grade level and subject are you planning for?"
+
+Options:
+- 6th Grade ELA
+- 6th Grade Math
+- 7th Grade ELA
+- 7th Grade Math
+- 8th Grade ELA
+- 8th Grade Math
+- Science (any grade)
+- Other</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Connect to Knowledge</h5>
+                            <p>Based on the selection, use a Generative Answers node to retrieve relevant standards from your knowledge sources.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4>More Topic Ideas</h4>
+                <ul>
+                    <li><strong>Standard Deep Dive:</strong> "Tell me about [standard ID]" → Provides full explanation, activities, and cross-curricular connections</li>
+                    <li><strong>Activity Finder:</strong> "I need activities for [standard]" → Returns 3-5 specific activity ideas</li>
+                    <li><strong>Help Request:</strong> "I need help" → Routes to instructional coach contact info</li>
+                </ul>
+            </section>
+
+            <!-- Extending Value -->
+            <section class="extending-value">
+                <h2>🚀 Extending Value: Future Iterations</h2>
+                <p>This lab introduced web grounding—the simplest way to get started. As your school's AI maturity grows, consider these extensions:</p>
+                
+                <div class="future-iterations">
+                    <h4>Additional Knowledge Sources</h4>
+                    <ul>
+                        <li><strong>File Uploads:</strong> Add your district's curriculum guides, pacing calendars, and scope & sequence documents (covered in Lab 1B)</li>
+                        <li><strong>SharePoint:</strong> Connect to existing document libraries with lesson plan templates and rubrics</li>
+                        <li><strong>State-Specific Standards:</strong> Add your state's standards documents for subjects not covered by Common Core</li>
+                    </ul>
+                    
+                    <h4>Advanced Capabilities (200-Level)</h4>
+                    <ul>
+                        <li><strong>Power Automate Actions:</strong> Let teachers save standards to their planning documents directly</li>
+                        <li><strong>Learning Management Integration:</strong> Connect to Canvas, Schoology, or Google Classroom</li>
+                        <li><strong>Curriculum Mapping:</strong> Help teachers map standards coverage across units</li>
+                    </ul>
+                    
+                    <h4>Potential Outcomes</h4>
+                    <ul>
+                        <li>Reduce standards research time by 50-70% per lesson</li>
+                        <li>Improve standards alignment consistency across teachers</li>
+                        <li>Enable more intentional cross-curricular planning</li>
+                        <li>Support new teacher onboarding with instant standards guidance</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Resources -->
+            <div class="resources-section">
+                <h3>📚 Resources & Next Steps</h3>
+                <ul>
+                    <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/" target="_blank">Microsoft Copilot Studio Documentation</a></li>
+                    <li><a href="https://www.thecorestandards.org/" target="_blank">Common Core State Standards</a></li>
+                    <li><a href="https://www.nextgenscience.org/" target="_blank">Next Generation Science Standards</a></li>
+                    <li><a href="https://www.iste.org/standards" target="_blank">ISTE Standards</a></li>
+                    <li><a href="../lab-1b-file-grounded-lesson-agent/index.html" class="next-lab">Next Lab: Lab 1B - File-Grounded Lesson Planning Agent →</a></li>
+                </ul>
+            </div>
+
+            <div class="lab-actions" style="margin-top: 40px; justify-content: center;">
+                <a href="../../index.html" class="btn btn-secondary">← Back to Labs</a>
+                <a href="../lab-1b-file-grounded-lesson-agent/index.html" class="btn btn-primary">Next: Lab 1B →</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 K-12 Education AI Labs. Built for hands-on learning with Microsoft Copilot Studio.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/lab-navigation.js"></script>
+</body>
+</html>

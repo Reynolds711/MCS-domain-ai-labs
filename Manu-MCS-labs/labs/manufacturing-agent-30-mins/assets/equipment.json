@@ -1,0 +1,415 @@
+[
+  {
+    "equipment_id": "CNC-003",
+    "name": "CNC Milling Machine",
+    "location": "Production Line 3",
+    "manufacturer": "Haas Automation",
+    "model": "VF-2",
+    "serial_number": "1105432",
+    "year_installed": 2020,
+    "status": "operational",
+    "last_maintenance": "2026-01-10",
+    "next_maintenance": "2026-02-10",
+    "maintenance_interval_days": 30,
+    "hours_operated": 12450,
+    "maintenance_history": [
+      {
+        "date": "2026-01-10",
+        "type": "preventive",
+        "technician": "John Smith",
+        "notes": "Replaced coolant, checked spindle alignment, lubricated ball screws",
+        "duration_hours": 2.5,
+        "cost": 450,
+        "parts_replaced": ["Coolant filter", "Way oil"],
+        "next_action": "Monitor spindle temperature"
+      },
+      {
+        "date": "2025-12-11",
+        "type": "preventive",
+        "technician": "Sarah Johnson",
+        "notes": "Lubricated guides, inspected tool changer, calibrated axes",
+        "duration_hours": 2,
+        "cost": 380,
+        "parts_replaced": [],
+        "next_action": "None"
+      },
+      {
+        "date": "2025-11-12",
+        "type": "corrective",
+        "technician": "Mike Chen",
+        "notes": "Replaced faulty tool changer solenoid causing intermittent failures",
+        "duration_hours": 3.5,
+        "cost": 680,
+        "parts_replaced": ["Tool changer solenoid", "Pneumatic fitting"],
+        "downtime_minutes": 210,
+        "next_action": "Monitor tool changes for 2 weeks"
+      },
+      {
+        "date": "2025-10-13",
+        "type": "preventive",
+        "technician": "John Smith",
+        "notes": "Routine maintenance, checked all systems",
+        "duration_hours": 2,
+        "cost": 350,
+        "parts_replaced": [],
+        "next_action": "None"
+      }
+    ],
+    "common_issues": [
+      {
+        "issue": "Spindle overheating",
+        "frequency": "Occasional",
+        "cause": "Prolonged high-speed operation",
+        "solution": "Reduce spindle speed or add cooling breaks",
+        "severity": "Medium"
+      },
+      {
+        "issue": "Tool changer jamming",
+        "frequency": "Rare",
+        "cause": "Tool holder contamination or solenoid failure",
+        "solution": "Clean tool holders, inspect pneumatic system",
+        "severity": "High"
+      },
+      {
+        "issue": "Coolant pump failure",
+        "frequency": "Rare",
+        "cause": "Clogged filter or worn impeller",
+        "solution": "Replace filter monthly, inspect pump quarterly",
+        "severity": "Medium"
+      }
+    ],
+    "specifications": {
+      "spindle_speed_max_rpm": 8100,
+      "tool_capacity": 20,
+      "max_table_load_lbs": 2000,
+      "travel_x_inches": 30,
+      "travel_y_inches": 16,
+      "travel_z_inches": 20,
+      "rapid_traverse_ipm": 1000,
+      "power_kw": 22.4
+    },
+    "operators_certified": ["Maria Garcia", "Tom Wilson", "Lisa Chen"],
+    "shift_assignment": "Day and swing shifts",
+    "utilization_rate_percent": 78,
+    "mean_time_between_failures_hours": 520,
+    "mean_time_to_repair_hours": 3.2,
+    "warranty_expiration": "2025-03-15",
+    "service_contract": {
+      "provider": "Haas Factory Outlet",
+      "contract_number": "SVC-2024-1134",
+      "coverage": "24/7 emergency support, annual preventive maintenance",
+      "expiration": "2026-12-31"
+    },
+    "safety_features": [
+      "Interlocked doors with E-stop",
+      "Chip guard",
+      "Coolant containment system",
+      "Emergency stop buttons"
+    ],
+    "manuals_location": "\\\\fileserver\\equipment\\CNC-003\\",
+    "notes": "Primary machine for aluminum aerospace components. Critical for production schedule."
+  },
+  {
+    "equipment_id": "CNC-005",
+    "name": "CNC Lathe",
+    "location": "Production Line 5",
+    "manufacturer": "Mazak",
+    "model": "Quick Turn 250MSY",
+    "serial_number": "QT250-8842",
+    "year_installed": 2019,
+    "status": "operational",
+    "last_maintenance": "2026-01-05",
+    "next_maintenance": "2026-02-05",
+    "maintenance_interval_days": 30,
+    "hours_operated": 15220,
+    "maintenance_history": [
+      {
+        "date": "2026-01-05",
+        "type": "preventive",
+        "technician": "Mike Chen",
+        "notes": "Replaced chuck jaws, calibrated turret, checked hydraulic pressure",
+        "duration_hours": 3,
+        "cost": 520,
+        "parts_replaced": ["Chuck jaws (set of 3)", "Hydraulic filter"],
+        "next_action": "Monitor chuck grip force"
+      },
+      {
+        "date": "2025-12-06",
+        "type": "preventive",
+        "technician": "Sarah Johnson",
+        "notes": "Lubricated ways, inspected turret indexing, cleaned chip conveyor",
+        "duration_hours": 2.5,
+        "cost": 400,
+        "parts_replaced": ["Way oil", "Chip conveyor belt"],
+        "next_action": "None"
+      },
+      {
+        "date": "2025-11-07",
+        "type": "corrective",
+        "technician": "John Smith",
+        "notes": "Repaired turret positioning issue - replaced encoder",
+        "duration_hours": 4,
+        "cost": 950,
+        "parts_replaced": ["Turret encoder", "Encoder cable"],
+        "downtime_minutes": 240,
+        "next_action": "Verify positioning accuracy daily for 1 week"
+      }
+    ],
+    "common_issues": [
+      {
+        "issue": "Chuck jaw wear",
+        "frequency": "Periodic",
+        "cause": "Normal wear from heavy part clamping",
+        "solution": "Replace jaws every 6-8 months or when grip is compromised",
+        "severity": "Medium"
+      },
+      {
+        "issue": "Turret positioning errors",
+        "frequency": "Occasional",
+        "cause": "Encoder drift or mechanical backlash",
+        "solution": "Recalibrate turret, check for mechanical wear",
+        "severity": "High"
+      },
+      {
+        "issue": "Chip conveyor jams",
+        "frequency": "Common",
+        "cause": "Long stringy chips or overload",
+        "solution": "Adjust chip breaking parameters, clean conveyor weekly",
+        "severity": "Low"
+      }
+    ],
+    "specifications": {
+      "max_turning_diameter_mm": 250,
+      "max_turning_length_mm": 500,
+      "spindle_speed_max_rpm": 5000,
+      "tool_positions": 12,
+      "chuck_size_inches": 8,
+      "sub_spindle": true,
+      "live_tooling": true,
+      "power_kw": 18.5
+    },
+    "operators_certified": ["David Lee", "Anna Rodriguez", "Mark Thompson"],
+    "shift_assignment": "All three shifts",
+    "utilization_rate_percent": 85,
+    "mean_time_between_failures_hours": 480,
+    "mean_time_to_repair_hours": 2.8,
+    "warranty_expiration": "2024-06-30",
+    "service_contract": {
+      "provider": "Mazak Service",
+      "contract_number": "MZK-2024-5567",
+      "coverage": "Preventive maintenance twice yearly, parts discount",
+      "expiration": "2026-06-30"
+    },
+    "safety_features": [
+      "Automatic door interlock",
+      "Chuck guard",
+      "Spindle brake",
+      "Coolant splash guard"
+    ],
+    "manuals_location": "\\\\fileserver\\equipment\\CNC-005\\",
+    "notes": "High-production shaft turning. Sub-spindle reduces cycle time by 30%."
+  },
+  {
+    "equipment_id": "PRESS-101",
+    "name": "Hydraulic Press 100T",
+    "location": "Stamping Area",
+    "manufacturer": "Schuler",
+    "model": "HP-100",
+    "serial_number": "HP100-3421",
+    "year_installed": 2018,
+    "status": "maintenance_required",
+    "last_maintenance": "2025-12-15",
+    "next_maintenance": "2026-01-15",
+    "maintenance_interval_days": 30,
+    "hours_operated": 18750,
+    "alert": "OVERDUE - Maintenance required immediately",
+    "maintenance_history": [
+      {
+        "date": "2025-12-15",
+        "type": "preventive",
+        "technician": "Robert Garcia",
+        "notes": "Checked hydraulic fluid level and quality, inspected seals for leaks",
+        "duration_hours": 1.5,
+        "cost": 280,
+        "parts_replaced": [],
+        "next_action": "Monitor for hydraulic leaks"
+      },
+      {
+        "date": "2025-11-16",
+        "type": "preventive",
+        "technician": "Mike Chen",
+        "notes": "Replaced hydraulic fluid, cleaned reservoir, inspected pump",
+        "duration_hours": 3,
+        "cost": 650,
+        "parts_replaced": ["Hydraulic fluid (50 gal)", "Reservoir filter"],
+        "next_action": "None"
+      },
+      {
+        "date": "2025-10-17",
+        "type": "corrective",
+        "technician": "Robert Garcia",
+        "notes": "Replaced leaking ram seal - significant fluid loss detected",
+        "duration_hours": 5,
+        "cost": 1200,
+        "parts_replaced": ["Ram seal", "Backup ring", "Hydraulic fluid (20 gal)"],
+        "downtime_minutes": 300,
+        "next_action": "Inspect seal weekly for 1 month"
+      }
+    ],
+    "common_issues": [
+      {
+        "issue": "Hydraulic seal leaks",
+        "frequency": "Common",
+        "cause": "Age, contamination, or pressure spikes",
+        "solution": "Replace seals proactively, maintain fluid cleanliness",
+        "severity": "High"
+      },
+      {
+        "issue": "Pressure fluctuations",
+        "frequency": "Occasional",
+        "cause": "Worn pump or air in system",
+        "solution": "Inspect pump, bleed air from hydraulic lines",
+        "severity": "Medium"
+      },
+      {
+        "issue": "Die alignment issues",
+        "frequency": "Periodic",
+        "cause": "Worn guide pins or bed plate",
+        "solution": "Inspect and replace guide pins, check bed flatness",
+        "severity": "Medium"
+      }
+    ],
+    "specifications": {
+      "tonnage": 100,
+      "bed_size_mm": "1000x800",
+      "stroke_mm": 300,
+      "strokes_per_minute": 20,
+      "shut_height_mm": 600,
+      "power_kw": 30,
+      "hydraulic_pressure_bar": 200
+    },
+    "operators_certified": ["Carlos Martinez", "Jennifer Wong"],
+    "shift_assignment": "Day shift only",
+    "utilization_rate_percent": 62,
+    "mean_time_between_failures_hours": 380,
+    "mean_time_to_repair_hours": 4.5,
+    "warranty_expiration": "2023-08-15",
+    "service_contract": {
+      "provider": "None",
+      "contract_number": null,
+      "coverage": "No active service contract",
+      "expiration": null
+    },
+    "safety_features": [
+      "Two-hand control",
+      "Light curtain",
+      "Emergency stop bar",
+      "Pressure relief valve"
+    ],
+    "manuals_location": "\\\\fileserver\\equipment\\PRESS-101\\",
+    "notes": "Requires attention - overdue for maintenance. Schedule immediately to avoid production impact."
+  },
+  {
+    "equipment_id": "WELD-202",
+    "name": "Robotic Welding Station",
+    "location": "Assembly Line 2",
+    "manufacturer": "FANUC",
+    "model": "ArcMate 120iC/10L",
+    "serial_number": "F-234567",
+    "year_installed": 2021,
+    "status": "operational",
+    "last_maintenance": "2026-01-12",
+    "next_maintenance": "2026-02-12",
+    "maintenance_interval_days": 30,
+    "hours_operated": 8920,
+    "maintenance_history": [
+      {
+        "date": "2026-01-12",
+        "type": "preventive",
+        "technician": "Lisa Martinez",
+        "notes": "Cleaned welding torch and nozzle, checked gas flow rates, calibrated robot TCP",
+        "duration_hours": 2,
+        "cost": 400,
+        "parts_replaced": ["Contact tips (10 pack)", "Nozzle", "Anti-spatter spray"],
+        "next_action": "Monitor weld quality on first parts each shift"
+      },
+      {
+        "date": "2025-12-13",
+        "type": "preventive",
+        "technician": "John Smith",
+        "notes": "Replaced wire feed liner, inspected robot cables, cleaned positioner",
+        "duration_hours": 2.5,
+        "cost": 380,
+        "parts_replaced": ["Wire feed liner", "Cable strain relief"],
+        "next_action": "None"
+      },
+      {
+        "date": "2025-11-14",
+        "type": "corrective",
+        "technician": "Lisa Martinez",
+        "notes": "Resolved wire feed consistency issue - replaced drive rolls",
+        "duration_hours": 1.5,
+        "cost": 320,
+        "parts_replaced": ["Drive rolls", "Pressure spring"],
+        "downtime_minutes": 90,
+        "next_action": "Check wire feed speed weekly"
+      }
+    ],
+    "common_issues": [
+      {
+        "issue": "Wire feed issues",
+        "frequency": "Occasional",
+        "cause": "Worn liner, incorrect tension, or kinked wire",
+        "solution": "Replace liner every 6 months, check wire path",
+        "severity": "Medium"
+      },
+      {
+        "issue": "Gas flow problems",
+        "frequency": "Rare",
+        "cause": "Regulator failure or hose damage",
+        "solution": "Inspect gas delivery system monthly",
+        "severity": "High"
+      },
+      {
+        "issue": "Robot positioning drift",
+        "frequency": "Rare",
+        "cause": "Calibration loss or encoder issues",
+        "solution": "Recalibrate TCP, check mastering",
+        "severity": "High"
+      }
+    ],
+    "specifications": {
+      "reach_mm": 1811,
+      "payload_kg": 20,
+      "repeatability_mm": 0.08,
+      "axes": 6,
+      "welding_process": "GMAW (MIG)",
+      "wire_diameter_mm": 1.2,
+      "shielding_gas": "75% Argon / 25% CO2",
+      "power_source": "Lincoln Powerwave 455M",
+      "power_kw": 15
+    },
+    "operators_certified": ["Eric Johnson", "Sofia Patel", "Kevin Brown"],
+    "shift_assignment": "Day and swing shifts",
+    "utilization_rate_percent": 72,
+    "mean_time_between_failures_hours": 680,
+    "mean_time_to_repair_hours": 1.8,
+    "warranty_expiration": "2026-03-20",
+    "service_contract": {
+      "provider": "FANUC Authorized Integrator",
+      "contract_number": "FAN-2024-8899",
+      "coverage": "Annual robot calibration, 24/7 phone support",
+      "expiration": "2027-03-20"
+    },
+    "safety_features": [
+      "Safety-rated light curtains",
+      "Emergency stop stations",
+      "Weld cell interlock",
+      "Automatic ventilation system"
+    ],
+    "program_count": 47,
+    "active_programs": ["Frame_Weld_A", "Bracket_Assembly_B", "Chassis_Weld_C"],
+    "manuals_location": "\\\\fileserver\\equipment\\WELD-202\\",
+    "notes": "Primary welding cell for structural assemblies. Recently upgraded with newer torch."
+  }
+]

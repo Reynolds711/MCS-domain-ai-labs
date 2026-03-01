@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Productivity Agent Lab - 30 mins</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="lab-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Back to Labs</a>
+            </div>
+            <div class="lab-title-nav">Teacher Productivity Agent</div>
+        </div>
+    </nav>
+
+    <main class="container lab-container">
+        <div class="lab-content">
+            <h1>📚 Build a Teacher Productivity Agent</h1>
+            
+            <div class="lab-meta">
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Duration: 30 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Level: Beginner</span>
+                </div>
+                <div class="meta-item">
+                    <span>🎯</span>
+                    <span>3 Challenges</span>
+                </div>
+            </div>
+
+            <section>
+                <h2>Overview</h2>
+                <p>In this hands-on lab, you'll build a declarative AI agent that saves teachers time on lesson planning, rubric creation, and parent communications. Your agent will help educators focus more on teaching and less on administrative tasks.</p>
+                
+                <div class="info-box">
+                    <strong>💡 What You'll Learn:</strong>
+                    <ul>
+                        <li>How to design AI agents for education-specific use cases</li>
+                        <li>Aligning content to academic standards using AI</li>
+                        <li>Creating tone-appropriate communications for different audiences</li>
+                        <li>Implementing responsible AI boundaries in education</li>
+                    </ul>
+                </div>
+
+                <div class="consulting-framework">
+                    <h3>Consulting Framework</h3>
+                    <ul>
+                        <li><strong>Customer:</strong> K-12 Teachers (all subjects, grades 6-12)</li>
+                        <li><strong>Problem:</strong> Teachers spend 3-5 hours/week on lesson planning, rubric creation, and parent communications</li>
+                        <li><strong>Solution:</strong> AI agent that drafts standards-aligned materials and communications, reducing prep time by 60%</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Access to Microsoft Copilot Studio (or compatible AI platform)</li>
+                    <li>Basic understanding of AI agents and prompting</li>
+                    <li>Familiarity with educational standards (helpful but not required)</li>
+                    <li>Code editor (VS Code recommended)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Lab Scenario</h2>
+                <p>You're consulting for <strong>Lincoln Middle School</strong>, a public school serving grades 6-8 with 450 students. Teachers report spending excessive time on lesson planning, rubric creation, and parent communications—time that could be spent on instruction and student support.</p>
+                
+                <p>Your task is to build an AI agent that assists teachers with these repetitive tasks while maintaining appropriate educational standards and ethical boundaries.</p>
+            </section>
+
+            <!-- Challenge 1 -->
+            <div class="challenge">
+                <h3>Challenge 1: Lesson Plan Alignment Assistant (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Scenario:</strong> Teachers need to create lesson plans aligned to state standards (Common Core, NGSS, etc.). Currently, they manually cross-reference standards documents, which takes significant time. Build an agent that helps align lesson topics to appropriate standards.
+                </div>
+
+                <h4>Tasks</h4>
+                <ol>
+                    <li>Review the sample state standards data structure below</li>
+                    <li>Create a declarative agent with a system prompt that understands educational standards</li>
+                    <li>Configure the agent to suggest relevant standards for lesson topics</li>
+                    <li>Test with the sample queries provided</li>
+                </ol>
+
+                <h4>Sample State Standards Data</h4>
+                <div class="code-block">{
+  "standard_id": "CCSS.ELA-LITERACY.RL.8.1",
+  "grade": "8",
+  "subject": "English Language Arts",
+  "domain": "Reading: Literature",
+  "standard": "Cite the textual evidence that most strongly supports an analysis of what the text says explicitly as well as inferences drawn from the text.",
+  "description": "Students analyze text and cite specific evidence to support their analysis and inferences.",
+  "keywords": ["textual evidence", "inference", "analysis", "citing sources"],
+  "example_activities": [
+    "Close reading with annotation",
+    "Evidence-based discussion",
+    "Literary analysis essay"
+  ]
+}</div>
+
+                <h4>Sample System Prompt</h4>
+                <div class="code-block">You are a Lesson Planning Assistant for K-12 teachers.
+You help teachers align their lesson topics to appropriate state standards.
+
+Your capabilities:
+- Suggest relevant standards for lesson topics
+- Explain standards in teacher-friendly language
+- Recommend activities that address specific standards
+- Identify cross-curricular standard connections
+
+When answering:
+- Always cite the specific standard ID
+- Explain WHY the standard fits the lesson topic
+- Suggest 2-3 concrete activities aligned to the standard
+- Use clear, educator-friendly language
+
+Ethical boundaries:
+- You assist with planning, you don't replace teacher judgment
+- Always encourage teachers to review and customize suggestions
+- Never claim a lesson "fully addresses" a standard without teacher review
+
+Available data: State standards database including Common Core (ELA & Math), 
+NGSS (Science), and state-specific social studies standards.</div>
+
+                <h4>Test Queries</h4>
+                <ul>
+                    <li>"I'm teaching a unit on persuasive writing for 8th grade. Which standards apply?"</li>
+                    <li>"What activities align with CCSS.ELA-LITERACY.RL.8.1?"</li>
+                    <li>"I want to teach photosynthesis to 7th graders. What are the relevant NGSS standards?"</li>
+                    <li>"Can you suggest cross-curricular connections between this ELA standard and science?"</li>
+                </ul>
+
+                <div class="success-criteria">
+                    <h4>✅ Success Criteria</h4>
+                    <ul>
+                        <li>Agent accurately identifies relevant standards for lesson topics</li>
+                        <li>Agent cites specific standard IDs and explains alignment</li>
+                        <li>Agent suggests concrete, grade-appropriate activities</li>
+                        <li>Agent maintains appropriate boundaries (assists, doesn't decide)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Tip:</strong> Use grounding/RAG to connect your agent to standards databases. In Copilot Studio, add your standards JSON as a knowledge source. The agent should retrieve and explain standards, not just list them.
+                </div>
+
+                <div class="ethical-boundary-box">
+                    <h4>⚠️ Ethical Boundary</h4>
+                    <p><strong>The agent assists; the teacher decides.</strong> Never claim a lesson "fully meets" a standard. Teachers must review all suggestions and adapt to their students' needs. Always include disclaimers about teacher review.</p>
+                </div>
+            </div>
+
+            <!-- Challenge 2 -->
+            <div class="challenge">
+                <h3>Challenge 2: Rubric Builder & Feedback Generator (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Scenario:</strong> Creating assessment rubrics is time-consuming. Teachers need rubrics that clearly define performance levels and align with standards. Build an agent that generates draft rubrics and provides feedback examples.
+                </div>
+
+                <h4>Tasks</h4>
+                <ol>
+                    <li>Review sample rubric structures and criteria</li>
+                    <li>Update your agent's system prompt to handle rubric generation</li>
+                    <li>Configure the agent to generate standards-aligned rubrics</li>
+                    <li>Test rubric generation for various assignment types</li>
+                </ol>
+
+                <h4>Sample Rubric Structure</h4>
+                <div class="code-block">{
+  "assignment": "Persuasive Essay - 8th Grade ELA",
+  "aligned_standards": ["CCSS.ELA-LITERACY.W.8.1"],
+  "total_points": 20,
+  "criteria": [
+    {
+      "criterion": "Thesis Statement",
+      "weight": 4,
+      "levels": {
+        "exemplary": {
+          "points": 4,
+          "descriptor": "Clear, compelling thesis with nuanced claim that addresses counterarguments"
+        },
+        "proficient": {
+          "points": 3,
+          "descriptor": "Clear thesis statement with identifiable claim"
+        },
+        "developing": {
+          "points": 2,
+          "descriptor": "Thesis present but unclear or too broad"
+        },
+        "beginning": {
+          "points": 1,
+          "descriptor": "Thesis missing or does not make a claim"
+        }
+      }
+    },
+    {
+      "criterion": "Evidence & Citations",
+      "weight": 5,
+      "levels": {
+        "exemplary": {
+          "points": 5,
+          "descriptor": "Multiple relevant sources cited correctly; evidence strongly supports claim"
+        },
+        "proficient": {
+          "points": 4,
+          "descriptor": "Sources cited with minor errors; evidence supports claim"
+        },
+        "developing": {
+          "points": 3,
+          "descriptor": "Some sources cited; evidence partially supports claim"
+        },
+        "beginning": {
+          "points": 1,
+          "descriptor": "Few or no sources; weak connection to claim"
+        }
+      }
+    }
+  ]
+}</div>
+
+                <h4>Extended System Prompt Addition</h4>
+                <div class="code-block">You also help teachers create assessment rubrics and draft feedback.
+
+For rubric generation:
+- Create 4-level rubrics (Exemplary, Proficient, Developing, Beginning)
+- Align criteria to specific standards
+- Use clear, observable descriptors
+- Suggest point distributions based on assignment importance
+
+For feedback generation:
+- Provide specific, actionable feedback examples for each rubric level
+- Use growth-oriented language
+- Reference specific criteria from the rubric
+- Suggest next steps for improvement
+
+Always include:
+- A note that teachers should customize for their students
+- Reminder to use student-friendly language when sharing rubrics
+- Suggestion to review rubric with students before assignment</div>
+
+                <h4>Test Queries</h4>
+                <ul>
+                    <li>"Generate a rubric for an 8th grade persuasive essay aligned to CCSS.ELA-LITERACY.W.8.1"</li>
+                    <li>"Create a rubric for a 7th grade science lab report on photosynthesis"</li>
+                    <li>"What feedback should I give a student who scored 'Developing' on thesis statement?"</li>
+                    <li>"How should I weight criteria for a research project rubric?"</li>
+                </ul>
+
+                <div class="success-criteria">
+                    <h4>✅ Success Criteria</h4>
+                    <ul>
+                        <li>Agent generates rubrics with clear, measurable criteria</li>
+                        <li>Rubric criteria align to specified standards</li>
+                        <li>Performance level descriptors are specific and observable</li>
+                        <li>Agent provides actionable feedback examples</li>
+                        <li>Agent reminds teachers to customize and review with students</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Important:</strong> Rubrics are teaching tools, not just grading instruments. The agent should encourage teachers to share rubrics with students <em>before</em> assignments to clarify expectations. This promotes equity and student agency.
+                </div>
+            </div>
+
+            <!-- Challenge 3 -->
+            <div class="challenge">
+                <h3>Challenge 3: Parent Communication Drafting Agent (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Scenario:</strong> Teachers send dozens of parent emails weekly about academic progress, behavior, events, and concerns. Drafting professional, tone-appropriate communications takes significant time. Build an agent that helps draft parent communications with appropriate tone control.
+                </div>
+
+                <h4>Tasks</h4>
+                <ol>
+                    <li>Review sample parent communication templates</li>
+                    <li>Configure the agent to draft emails with tone control</li>
+                    <li>Test with various communication scenarios (positive, concern, informational)</li>
+                    <li>Verify appropriate professional tone</li>
+                </ol>
+
+                <h4>Sample Communication Templates</h4>
+                <div class="code-block">{
+  "communication_type": "academic_progress",
+  "tone": "positive",
+  "template": {
+    "subject": "Great Progress in [Subject]!",
+    "opening": "I wanted to share some wonderful news about [Student Name]'s progress in [Subject].",
+    "body": "[Specific examples of progress, growth, or achievement]",
+    "closing": "Please let me know if you have any questions. I'm excited to see [Student Name]'s continued growth!",
+    "signature": "[Teacher Name]\n[Subject] Teacher\n[Contact Information]"
+  }
+}
+
+{
+  "communication_type": "concern",
+  "tone": "constructive",
+  "template": {
+    "subject": "Let's Work Together - [Student Name]'s [Subject]",
+    "opening": "I'm reaching out because I'd like to partner with you to support [Student Name]'s success in [Subject].",
+    "body": "[Specific, observable behaviors or patterns - no judgment]\n\nI believe together we can help [Student Name] by [specific strategies].",
+    "closing": "I'm confident we can support [Student Name]'s growth. Could we schedule a brief call to discuss?",
+    "signature": "[Teacher Name]"
+  }
+}</div>
+
+                <h4>Parent Communication System Prompt Addition</h4>
+                <div class="code-block">You also help teachers draft parent communications.
+
+Communication principles:
+- Use respectful, professional tone
+- Be specific with examples (avoid vague statements)
+- Focus on partnership and collaboration
+- For concerns: describe behaviors, not character judgments
+- For positive news: celebrate specific achievements
+- Always end with an invitation for dialogue
+
+Tone guidelines:
+- POSITIVE: Warm, enthusiastic, specific
+- CONCERN: Constructive, solution-focused, collaborative
+- INFORMATIONAL: Clear, concise, helpful
+
+Always include:
+- A reminder for teachers to personalize before sending
+- Note to review for cultural sensitivity
+- Suggestion to consider translation if needed
+- Reminder that this is a DRAFT requiring teacher review
+
+What NOT to do:
+- Never diagnose students
+- Never guarantee outcomes
+- Never use educational jargon parents may not understand
+- Never discuss other students</div>
+
+                <h4>Test Queries</h4>
+                <ul>
+                    <li>"Draft a positive email about a student who improved their essay writing skills"</li>
+                    <li>"Write an email to parents about a student who isn't turning in homework"</li>
+                    <li>"Create an informational email about an upcoming field trip to a science museum"</li>
+                    <li>"Draft an email requesting a parent-teacher conference about reading struggles"</li>
+                </ul>
+
+                <div class="success-criteria">
+                    <h4>✅ Success Criteria</h4>
+                    <ul>
+                        <li>Agent generates professional, respectful communications</li>
+                        <li>Tone matches communication type (positive, concern, informational)</li>
+                        <li>Language is clear and free of educational jargon</li>
+                        <li>Concern emails focus on behaviors, not judgments</li>
+                        <li>All drafts include partnership language and dialogue invitations</li>
+                        <li>Agent reminds teachers to review and personalize</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Cultural Sensitivity Tip:</strong> Encourage teachers to consider families' preferred communication methods (email, phone, text) and language needs. The agent should remind teachers that translation may be needed and to consider cultural context when discussing student behavior or expectations.
+                </div>
+
+                <div class="ethical-boundary-box">
+                    <h4>⚠️ Critical Ethical Boundary</h4>
+                    <p><strong>Never send AI-generated emails without teacher review.</strong> Parent communications require human judgment, cultural awareness, and personalization. Teachers must review, edit, and personalize all drafts. The agent should never claim emails are "ready to send."</p>
+                </div>
+            </div>
+
+            <!-- Bonus Challenges -->
+            <div class="bonus-challenges">
+                <h3>🌟 Bonus Challenges</h3>
+                <p>If you complete the main challenges early, try these advanced scenarios:</p>
+                <ul>
+                    <li><strong>Differentiation Assistant:</strong> Add capability to suggest lesson modifications for different learning levels</li>
+                    <li><strong>IEP Alignment:</strong> Help teachers align activities to IEP goals (non-decision-making, assistive only)</li>
+                    <li><strong>Multilingual Support:</strong> Generate communications in Spanish or other languages for multilingual families</li>
+                    <li><strong>Time-Saving Calculator:</strong> Track and display estimated time saved per task type</li>
+                    <li><strong>Professional Development:</strong> Suggest relevant PD resources based on standards or teaching challenges</li>
+                </ul>
+            </div>
+
+            <!-- Resources -->
+            <div class="resources-section">
+                <h3>📚 Resources & References</h3>
+                <ul>
+                    <li><a href="http://www.corestandards.org/" target="_blank">Common Core State Standards</a></li>
+                    <li><a href="https://www.nextgenscience.org/" target="_blank">Next Generation Science Standards (NGSS)</a></li>
+                    <li><a href="https://www.ncss.org/standards/" target="_blank">National Council for Social Studies Standards</a></li>
+                    <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/" target="_blank">Microsoft Copilot Studio Documentation</a></li>
+                    <li><a href="https://www.iste.org/standards/iste-standards-for-students" target="_blank">ISTE Standards for Students</a></li>
+                </ul>
+            </div>
+
+            <section>
+                <h2>Value Articulation</h2>
+                <p>Practice articulating the value of your agent using this framework:</p>
+                
+                <div class="value-metrics">
+                    <div class="metric-card">
+                        <h4>Time Saved</h4>
+                        <p><strong>3-5 hours per week per teacher</strong></p>
+                        <p>Lesson planning: 1.5 hrs → 30 min<br>
+                        Rubric creation: 1 hr → 15 min<br>
+                        Parent emails: 2 hrs → 45 min</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Cost Avoided</h4>
+                        <p><strong>$2,400/year per teacher</strong></p>
+                        <p>Based on avg teacher hourly rate of $40/hr × 60 hours saved annually</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Equity Improved</h4>
+                        <p><strong>Consistent, standards-aligned instruction</strong></p>
+                        <p>All students receive lessons aligned to standards; consistent rubric criteria; professional parent communications</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Teacher Well-being</h4>
+                        <p><strong>Reduced burnout risk</strong></p>
+                        <p>More time for instruction, student relationships, and self-care</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="lab-actions" style="margin-top: 40px; justify-content: center;">
+                <a href="../../index.html" class="btn btn-secondary">← Back to Labs</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 K-12 Education AI Labs. Built for hands-on learning with Microsoft Copilot Studio.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/lab-navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1B: File-Grounded Course Assistant Agent</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="lab-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Back to Labs</a>
+            </div>
+            <div class="lab-title-nav">Lab 1B: File-Grounded Course Assistant</div>
+        </div>
+    </nav>
+
+    <main class="container lab-container">
+        <div class="lab-content">
+            <h1>📚 Lab 1B: Build a File-Grounded Course Assistant Agent</h1>
+            
+            <div class="lab-meta">
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Duration: 30 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Level: 100 - Beginner</span>
+                </div>
+                <div class="meta-item">
+                    <span>📁</span>
+                    <span>Grounding: Uploaded Files</span>
+                </div>
+            </div>
+
+            <!-- Concept Introduction -->
+            <section class="concept-intro">
+                <h2>Web Grounding vs. File Grounding</h2>
+                <p>In Lab 1A, you grounded your agent on <strong>public websites</strong>. Now you'll learn <strong>file grounding</strong>—uploading specific documents as knowledge sources.</p>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Web Grounding</th>
+                            <th>File Grounding</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Uses public URLs</td>
+                            <td>Uses uploaded documents</td>
+                        </tr>
+                        <tr>
+                            <td>Content may change over time</td>
+                            <td>You control exactly what's included</td>
+                        </tr>
+                        <tr>
+                            <td>Good for: Standards, public resources</td>
+                            <td>Good for: Course materials, syllabi, internal docs</td>
+                        </tr>
+                        <tr>
+                            <td>Risk: Website structure changes</td>
+                            <td>Risk: Documents become outdated</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="info-box">
+                    <strong>💡 Why File Grounding Matters for Higher Ed</strong>
+                    <p>Every professor has course-specific documents: syllabi, assignment guidelines, rubrics, lecture notes. File grounding lets you create agents that answer questions about <em>this specific course</em>—not generic academic advice. This is the "killer app" for faculty adoption.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Overview</h2>
+                <p>In this lab, you'll build a <strong>Course Assistant Agent</strong> grounded on course-specific documents. Students can ask questions like "When is the midterm?" or "What's the late policy?" and get instant, accurate answers from the actual syllabus.</p>
+                
+                <div class="info-box">
+                    <strong>💡 What You'll Learn:</strong>
+                    <ul>
+                        <li>How to upload documents as knowledge sources</li>
+                        <li>Grounding on multiple document types (syllabus, rubrics, guidelines)</li>
+                        <li>Handling "not in documents" scenarios gracefully</li>
+                        <li>Testing cross-document retrieval accuracy</li>
+                        <li>Maintaining boundaries (no grade discussions, no answers to assignments)</li>
+                    </ul>
+                </div>
+
+                <div class="consulting-framework">
+                    <h3>Consulting Framework</h3>
+                    <ul>
+                        <li><strong>Customer:</strong> Students in COMM 301: Business Communication (75 students)</li>
+                        <li><strong>Problem:</strong> Professor Kim receives 50+ emails per week asking questions that are answered in the syllabus, rubrics, or assignment guidelines</li>
+                        <li><strong>Solution:</strong> AI agent grounded on course documents that provides instant, accurate answers 24/7—reducing "syllabus question" emails by 70%</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Completed Lab 1A (Web-Grounded Research Assistant)</li>
+                    <li>Access to <a href="https://copilotstudio.microsoft.com" target="_blank">Microsoft Copilot Studio</a></li>
+                    <li>Sample course documents (provided below)</li>
+                </ul>
+            </section>
+
+            <!-- Sample Files Section -->
+            <section class="sample-files-section">
+                <h3>📁 Sample Course Documents</h3>
+                <p>For this lab, we've provided sample course documents that simulate real materials from Professor Kim's Business Communication course. Download these to use as your knowledge sources:</p>
+                
+                <div class="file-cards">
+                    <div class="file-card">
+                        <h4>📄 Course Syllabus</h4>
+                        <p>Complete syllabus with schedule, policies, grading breakdown, and contact information.</p>
+                        <p><code>syllabus.md</code> - 15 pages equivalent</p>
+                        <a href="assets/syllabus.md" download class="btn btn-primary" style="margin-top: 10px; padding: 8px 16px; font-size: 0.9rem;">Download</a>
+                    </div>
+                    <div class="file-card">
+                        <h4>📋 Assignment Guidelines</h4>
+                        <p>Detailed instructions for all major assignments including business proposal and presentation.</p>
+                        <p><code>assignment-guidelines.md</code> - 12 pages equivalent</p>
+                        <a href="assets/assignment-guidelines.md" download class="btn btn-primary" style="margin-top: 10px; padding: 8px 16px; font-size: 0.9rem;">Download</a>
+                    </div>
+                    <div class="file-card">
+                        <h4>✅ Grading Rubrics</h4>
+                        <p>Rubrics for written assignments, presentations, and participation.</p>
+                        <p><code>grading-rubrics.md</code> - 10 pages equivalent</p>
+                        <a href="assets/grading-rubrics.md" download class="btn btn-primary" style="margin-top: 10px; padding: 8px 16px; font-size: 0.9rem;">Download</a>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <strong>💡 Real-World Application:</strong> When you build this for an actual professor, you'll use their real syllabus, rubrics, and guidelines. The process is identical—the only difference is the content of the documents.
+                </div>
+            </section>
+
+            <!-- Challenge 1 -->
+            <div class="challenge">
+                <h3>Challenge 1: Create Agent & Upload Documents (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Create a new Course Assistant agent and upload the sample course documents as knowledge sources.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Create a New Agent</h5>
+                            <p>In Copilot Studio, create a new agent with these details:</p>
+                            <ul>
+                                <li><strong>Name:</strong> COMM 301 Course Assistant</li>
+                                <li><strong>Description:</strong> Answers student questions about COMM 301 Business Communication course policies, schedules, and assignments</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Add Instructions</h5>
+                            <p>Paste the following system prompt in the Instructions section:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Agent Instructions (System Prompt)</h4>
+                <div class="code-block">You are the Course Assistant for COMM 301: Business Communication, taught by Professor Kim. You help students find information about the course by answering questions based on the syllabus, assignment guidelines, and rubrics.
+
+## Your Role
+- Answer questions about course policies, schedules, and expectations
+- Explain assignment requirements and deadlines
+- Clarify grading criteria from the rubrics
+- Help students understand what's expected of them in this course
+
+## How to Respond
+- Always base your answers on the course documents
+- Quote specific policies when relevant (e.g., "According to the syllabus...")
+- Be friendly and supportive—you're helping students succeed
+- If information isn't in the documents, say so clearly
+- Keep responses concise but complete
+
+## What You Can Help With
+- Course schedule and important dates ("When is the midterm?")
+- Assignment details and requirements ("What's expected in the business proposal?")
+- Grading criteria ("How will my presentation be graded?")
+- Course policies ("What's the late submission policy?")
+- Professor's contact info and office hours
+- Required materials and textbooks
+
+## What You CANNOT Help With
+- Specific grades or grade predictions ("What grade will I get?")
+- Answers to assignment questions or homework help
+- Feedback on student work (that's Professor Kim's job)
+- Exceptions to policies (students must ask Professor Kim directly)
+- Information not in the course documents
+- Comparisons with other courses or professors
+
+## Important Guidelines
+- If a question requires Professor Kim's judgment, direct students to email or office hours
+- Never guess—if it's not in the documents, say "I don't have that information in the course materials"
+- Encourage students to double-check important deadlines
+- Be transparent that you are an AI assistant based on course documents
+
+## Tone
+Professional but approachable. You're like a well-informed classmate who actually read the syllabus carefully.</div>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Upload Document Knowledge Sources</h5>
+                            <p>Click on <strong>"Knowledge"</strong>, then <strong>"+ Add knowledge"</strong>, and select <strong>"Files"</strong>.</p>
+                            <p>Upload each of the three sample documents:</p>
+                            <ul>
+                                <li><code>syllabus.md</code></li>
+                                <li><code>assignment-guidelines.md</code></li>
+                                <li><code>grading-rubrics.md</code></li>
+                            </ul>
+                            <p>Wait for each file to finish processing before testing.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Save Your Agent</h5>
+                            <p>Click <strong>"Save"</strong> to save your agent configuration.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 1 Complete When:</h4>
+                    <ul>
+                        <li>Agent is created with course-specific name</li>
+                        <li>Instructions are configured</li>
+                        <li>All three documents are uploaded and processed</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Challenge 2 -->
+            <div class="challenge">
+                <h3>Challenge 2: Test Document Retrieval (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Validate that your agent correctly retrieves information from the uploaded course documents and handles edge cases appropriately.
+                </div>
+
+                <h4>Test Queries by Document</h4>
+                <p>Test questions that require retrieving information from each document:</p>
+
+                <h5>Syllabus Questions</h5>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>Expected Response Should Include</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"When is the final exam?"</td>
+                            <td>Specific date from syllabus schedule</td>
+                        </tr>
+                        <tr>
+                            <td>"What's Professor Kim's office hours?"</td>
+                            <td>Days, times, and location from syllabus</td>
+                        </tr>
+                        <tr>
+                            <td>"What's the late submission policy?"</td>
+                            <td>Specific penalty/policy from syllabus</td>
+                        </tr>
+                        <tr>
+                            <td>"How much is participation worth?"</td>
+                            <td>Percentage from grading breakdown</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h5>Assignment Guidelines Questions</h5>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>Expected Response Should Include</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"What are the requirements for the business proposal?"</td>
+                            <td>Length, format, sections required</td>
+                        </tr>
+                        <tr>
+                            <td>"How long should my presentation be?"</td>
+                            <td>Time limit and slide count expectations</td>
+                        </tr>
+                        <tr>
+                            <td>"What sources do I need for the research paper?"</td>
+                            <td>Number and type of sources required</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h5>Rubric Questions</h5>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>Expected Response Should Include</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"How will my business proposal be graded?"</td>
+                            <td>Criteria from proposal rubric</td>
+                        </tr>
+                        <tr>
+                            <td>"What makes an 'A' presentation?"</td>
+                            <td>Criteria for excellent work from rubric</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h5>Cross-Document Questions</h5>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>Expected Behavior</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"When is the business proposal due and how will it be graded?"</td>
+                            <td>Should combine info from syllabus (due date) and rubric (criteria)</td>
+                        </tr>
+                        <tr>
+                            <td>"What's the most important assignment?"</td>
+                            <td>May reference grading weights from syllabus</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <strong>💡 Testing Tip:</strong> Pay attention to whether responses cite the specific document. "According to the syllabus..." or "The rubric states..." shows good grounding behavior.
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 2 Complete When:</h4>
+                    <ul>
+                        <li>Agent correctly answers questions from each document</li>
+                        <li>Agent combines information from multiple documents when needed</li>
+                        <li>Responses cite the source document</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Challenge 3 -->
+            <div class="challenge">
+                <h3>Challenge 3: Handle Edge Cases & Boundaries (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Test how your agent handles questions that aren't in the documents or that cross ethical boundaries.
+                </div>
+
+                <h4>"Not in Documents" Scenarios</h4>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>Expected Behavior</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"What did Professor Kim say in last Tuesday's lecture?"</td>
+                            <td>Should say this isn't in documents; suggest asking classmate or professor</td>
+                        </tr>
+                        <tr>
+                            <td>"Is there a study guide for the exam?"</td>
+                            <td>Should check documents; say if not found and suggest asking professor</td>
+                        </tr>
+                        <tr>
+                            <td>"What's the wifi password for the classroom?"</td>
+                            <td>Should say this isn't course-related information it has</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Boundary Tests (Should Decline)</h4>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>Expected Behavior</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"What grade do you think I'll get on my proposal?"</td>
+                            <td>Decline to predict grades; explain only Professor Kim can evaluate work</td>
+                        </tr>
+                        <tr>
+                            <td>"Can you review my draft and tell me if it's good enough?"</td>
+                            <td>Decline; suggest using the rubric for self-assessment</td>
+                        </tr>
+                        <tr>
+                            <td>"I have a family emergency, can you extend my deadline?"</td>
+                            <td>Decline; direct to Professor Kim for exceptions to policies</td>
+                        </tr>
+                        <tr>
+                            <td>"Is Professor Kim a hard grader compared to other professors?"</td>
+                            <td>Decline to compare; stick to documented grading criteria</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Refine for "Not in Documents" Handling</h5>
+                            <p>If your agent is making things up when information isn't available, strengthen the instructions:</p>
+                            <p>Add: "If you cannot find the answer in the course documents, clearly state: 'I don't see that information in the syllabus, assignment guidelines, or rubrics. I recommend asking Professor Kim directly.'"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Strengthen Boundary Language</h5>
+                            <p>If your agent is crossing boundaries, add explicit examples:</p>
+                            <p>Add: "When students ask about grades they might receive, say: 'I can't predict grades—only Professor Kim can evaluate your work. However, I can share the grading criteria from the rubric if that would help.'"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 3 Complete When:</h4>
+                    <ul>
+                        <li>Agent gracefully handles "not in documents" questions</li>
+                        <li>Agent refuses to predict grades or review student work</li>
+                        <li>Agent directs policy exceptions to the professor</li>
+                        <li>Agent doesn't hallucinate information</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Value Articulation -->
+            <section class="ethical-section">
+                <h3>💰 Articulating Value to Faculty</h3>
+                <p>When pitching this to Professor Kim (or any faculty member), quantify the impact:</p>
+                
+                <div class="ethical-boundary-box">
+                    <h4>Time Savings Calculation</h4>
+                    <ul>
+                        <li><strong>Current state:</strong> 50 emails/week × 5 min/email = 250 min/week (4+ hours)</li>
+                        <li><strong>With Course Assistant:</strong> 70% of emails are "syllabus questions"</li>
+                        <li><strong>Savings:</strong> 35 emails/week × 5 min = 175 min/week saved (3 hours)</li>
+                        <li><strong>Semester impact:</strong> 3 hours × 15 weeks = 45 hours recovered</li>
+                    </ul>
+                </div>
+                
+                <div class="ethical-boundary-box">
+                    <h4>Student Experience Improvement</h4>
+                    <ul>
+                        <li><strong>Instant answers:</strong> No waiting for email replies (especially nights/weekends)</li>
+                        <li><strong>24/7 availability:</strong> Questions answered at 2am before an assignment is due</li>
+                        <li><strong>Reduced anxiety:</strong> Students can quickly confirm policies without feeling like they're "bothering" the professor</li>
+                        <li><strong>Better preparation:</strong> Clear understanding of expectations leads to better work</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Lab Complete -->
+            <section class="lab-complete-section">
+                <h2>🎉 Lab Complete!</h2>
+                <p>Congratulations! You've built a file-grounded Course Assistant that answers student questions from actual course documents.</p>
+                <p><strong>What you accomplished:</strong></p>
+                <ul style="text-align: left; display: inline-block;">
+                    <li>Uploaded course documents as knowledge sources</li>
+                    <li>Tested single-document and cross-document retrieval</li>
+                    <li>Handled "not in documents" scenarios gracefully</li>
+                    <li>Maintained appropriate boundaries</li>
+                    <li>Learned to articulate value to faculty</li>
+                </ul>
+                
+                <div style="margin-top: 30px;">
+                    <a href="../../index.html" class="btn">Back to All Labs</a>
+                    <a href="../lab-1a-web-grounded-research-agent/index.html" class="btn">← Review Lab 1A</a>
+                </div>
+            </section>
+
+            <!-- Extending Value -->
+            <section class="extending-value">
+                <h3>Extending the Value: Real-World Deployment</h3>
+                
+                <h4>Iteration 1: Add More Course Materials</h4>
+                <ul>
+                    <li>Upload lecture slides as additional knowledge sources</li>
+                    <li>Add reading list with summaries (not the readings themselves)</li>
+                    <li>Include FAQ documents from previous semesters</li>
+                </ul>
+                
+                <h4>Iteration 2: Multi-Course Deployment</h4>
+                <ul>
+                    <li>Create separate agents for each of a professor's courses</li>
+                    <li>Work with a department to deploy for all introductory courses</li>
+                    <li>Create a template that other faculty can easily customize</li>
+                </ul>
+                
+                <h4>Iteration 3: Integration with LMS</h4>
+                <ul>
+                    <li>If your university uses Canvas, Blackboard, or similar—explore integration options</li>
+                    <li>Embed the agent in the course page for easy student access</li>
+                    <li>Connect to Microsoft Teams for the course</li>
+                </ul>
+                
+                <h4>Iteration 4: Analytics for Course Improvement</h4>
+                <ul>
+                    <li>Track what questions students ask most frequently</li>
+                    <li>Identify policies that cause confusion (candidates for syllabus revision)</li>
+                    <li>Share insights with faculty for continuous improvement</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>💡 Your Value as a Student Consultant</strong>
+                    <p>You now have skills that most faculty don't have. You understand how to build AI agents grounded on specific documents. You can articulate value in terms faculty care about (time savings, student experience). This makes you a valuable partner—not just a student asking for help, but someone offering solutions.</p>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Higher Education AI Labs. Built for hands-on learning with Microsoft Copilot Studio.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/lab-navigation.js"></script>
+</body>
+</html>

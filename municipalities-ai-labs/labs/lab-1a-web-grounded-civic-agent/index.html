@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1A: Web-Grounded Civic Information Agent</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="lab-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Back to Labs</a>
+            </div>
+            <div class="lab-title-nav">Lab 1A: Web-Grounded Civic Agent</div>
+        </div>
+    </nav>
+
+    <main class="container lab-container">
+        <div class="lab-content">
+            <h1>🏛️ Lab 1A: Build a Web-Grounded Civic Information Agent</h1>
+            
+            <div class="lab-meta">
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Duration: 30 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Level: 100 - Beginner</span>
+                </div>
+                <div class="meta-item">
+                    <span>🌐</span>
+                    <span>Grounding: Web Sources</span>
+                </div>
+            </div>
+
+            <!-- What is a Declarative Agent -->
+            <section class="concept-intro">
+                <h2>What is a Declarative Agent?</h2>
+                <p>A <strong>declarative agent</strong> is an AI assistant you create by <em>describing what it should do</em> rather than writing code. You configure:</p>
+                <ul>
+                    <li><strong>Instructions:</strong> Tell the agent its role, capabilities, and boundaries</li>
+                    <li><strong>Knowledge:</strong> Connect data sources the agent can reference (websites, documents)</li>
+                    <li><strong>Actions:</strong> (Optional) Enable the agent to take actions like sending emails</li>
+                </ul>
+                
+                <div class="info-box">
+                    <strong>💡 Why Declarative = High ROI</strong>
+                    <p>Declarative agents can be built in 30-60 minutes with no code. This means fast time-to-value, easy maintenance, and the ability for non-developers to create and update agents. Perfect for resource-constrained municipalities.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Overview</h2>
+                <p>In this lab, you'll build your first declarative agent using <strong>web-based knowledge sources</strong>. Your agent will help residents find government information by answering questions grounded in authoritative public websites.</p>
+                
+                <div class="info-box">
+                    <strong>💡 What You'll Learn:</strong>
+                    <ul>
+                        <li>How to create a declarative agent in Microsoft Copilot Studio</li>
+                        <li>Grounding agents using public website URLs</li>
+                        <li>Writing effective agent instructions</li>
+                        <li>Using evaluation tools to test and validate your agent</li>
+                        <li>Setting appropriate ethical boundaries for government AI</li>
+                    </ul>
+                </div>
+
+                <div class="consulting-framework">
+                    <h3>Consulting Framework</h3>
+                    <ul>
+                        <li><strong>Customer:</strong> City of Maplewood residents (pop. 35,000)</li>
+                        <li><strong>Problem:</strong> Residents struggle to navigate government websites to find plain-language answers about civic processes</li>
+                        <li><strong>Solution:</strong> AI agent grounded on authoritative civic websites that explains government information in conversational, accessible language</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Access to <a href="https://copilotstudio.microsoft.com" target="_blank">Microsoft Copilot Studio</a></li>
+                    <li>No coding experience required</li>
+                    <li>15 minutes to complete initial setup</li>
+                </ul>
+                
+                <div class="warning-box">
+                    <strong>⚠️ Before You Begin:</strong> Make sure you can sign into Copilot Studio. If you don't have access, contact your administrator or sign up for a trial at <a href="https://copilotstudio.microsoft.com" target="_blank">copilotstudio.microsoft.com</a>.
+                </div>
+            </section>
+
+            <section>
+                <h2>Lab Scenario</h2>
+                <p>The <strong>City of Maplewood</strong> wants to help residents understand government processes without requiring them to navigate complex websites. They've identified several authoritative web sources that contain the information residents need most:</p>
+                
+                <ul>
+                    <li><strong>PlainLanguage.gov</strong> - Federal guidelines for clear government communication</li>
+                    <li><strong>USA.gov</strong> - General civic information and processes</li>
+                    <li><strong>Your state/local government website</strong> - Specific local information</li>
+                </ul>
+                
+                <p>Your task is to build an agent that can answer questions using these web sources, providing clear, conversational responses.</p>
+            </section>
+
+            <!-- Challenge 1 -->
+            <div class="challenge">
+                <h3>Challenge 1: Create Your Agent in Copilot Studio (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Create a new declarative agent and configure it with web-based knowledge sources.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Open Copilot Studio</h5>
+                            <p>Navigate to <a href="https://copilotstudio.microsoft.com" target="_blank">copilotstudio.microsoft.com</a> and sign in with your Microsoft account.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Create a New Agent</h5>
+                            <p>Click <strong>"Create"</strong> in the left navigation, then select <strong>"New agent"</strong>.</p>
+                            <p>Choose <strong>"Skip to configure"</strong> to manually set up your agent (this gives you more control).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Name Your Agent</h5>
+                            <p>Enter the following details:</p>
+                            <ul>
+                                <li><strong>Name:</strong> Maplewood Civic Guide</li>
+                                <li><strong>Description:</strong> Helps residents understand government services and civic processes using plain language</li>
+                                <li><strong>Icon:</strong> Choose a building or government-themed icon</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Add Instructions</h5>
+                            <p>In the <strong>Instructions</strong> section, paste the following system prompt:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Agent Instructions (System Prompt)</h4>
+                <div class="code-block">You are the Maplewood Civic Guide, a friendly assistant that helps residents understand government services and civic processes.
+
+## Your Role
+- Answer questions about government services, permits, voting, and civic participation
+- Explain complex government processes in simple, plain language
+- Direct residents to appropriate resources and next steps
+- Provide helpful context without overwhelming detail
+
+## How to Respond
+- Use conversational, friendly language (avoid government jargon)
+- Break complex processes into numbered steps
+- Always cite your source when providing specific information
+- If you're not sure about something, say so and suggest who to contact
+- Keep responses concise but complete
+
+## What You Can Help With
+- Explaining government services and how to access them
+- Clarifying permit and licensing processes
+- Answering questions about voting and civic participation
+- Describing how to contact or interact with government offices
+- Explaining rights and responsibilities of residents
+
+## What You Cannot Do
+- Make decisions on behalf of government offices
+- Provide legal advice
+- Access personal records or account information
+- Guarantee specific outcomes or timelines
+- Override official policies or procedures
+
+## Important Guidelines
+- Always remind residents that specific cases may vary
+- Encourage them to verify important information with official sources
+- Provide contact information for human assistance when available
+- Be transparent that you are an AI assistant</div>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h5>Add Web Knowledge Sources</h5>
+                            <p>Click on <strong>"Knowledge"</strong> in the agent configuration. Then click <strong>"+ Add knowledge"</strong> and select <strong>"Public websites"</strong>.</p>
+                            <p>Add these URLs (one at a time):</p>
+                            <ul>
+                                <li><code>https://www.plainlanguage.gov/</code></li>
+                                <li><code>https://www.usa.gov/</code></li>
+                            </ul>
+                            <p>For each URL, Copilot Studio will crawl the site and make its content available to your agent.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h5>Save Your Agent</h5>
+                            <p>Click <strong>"Create"</strong> or <strong>"Save"</strong> to save your agent configuration. The knowledge sources may take a few minutes to index.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 1 Complete When:</h4>
+                    <ul>
+                        <li>Your agent is created with the name "Maplewood Civic Guide"</li>
+                        <li>Instructions are configured with the system prompt above</li>
+                        <li>At least one web knowledge source is added and indexing</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Challenge 2 -->
+            <div class="challenge">
+                <h3>Challenge 2: Test with Evaluation Tools (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Use Copilot Studio's built-in testing tools to validate your agent's responses and grounding quality.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Open the Test Panel</h5>
+                            <p>In Copilot Studio, click the <strong>"Test"</strong> button (usually in the bottom-left or top-right corner). This opens a chat panel where you can interact with your agent.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Run Test Queries</h5>
+                            <p>Type each of these test questions and observe the responses:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Test Queries</h4>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>What to Look For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"What is plain language and why does the government use it?"</td>
+                            <td>Should reference plainlanguage.gov content; explain in simple terms</td>
+                        </tr>
+                        <tr>
+                            <td>"How do I register to vote?"</td>
+                            <td>Should provide steps; cite usa.gov; mention state variations</td>
+                        </tr>
+                        <tr>
+                            <td>"What are the plain language guidelines for government writing?"</td>
+                            <td>Should cite specific guidelines from plainlanguage.gov</td>
+                        </tr>
+                        <tr>
+                            <td>"Can you approve my building permit?"</td>
+                            <td>Should decline appropriately; explain it cannot make decisions</td>
+                        </tr>
+                        <tr>
+                            <td>"What's the best restaurant in Maplewood?"</td>
+                            <td>Should recognize this is outside scope; politely redirect</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Check Grounding Quality</h5>
+                            <p>For each response, look for:</p>
+                            <ul>
+                                <li><strong>Citations:</strong> Does the agent cite its sources?</li>
+                                <li><strong>Accuracy:</strong> Does the information match the source websites?</li>
+                                <li><strong>Relevance:</strong> Does the answer address the question?</li>
+                                <li><strong>Tone:</strong> Is the language conversational and accessible?</li>
+                            </ul>
+                            <p>Click on any citations to verify they link to the correct source content.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Review Conversation Analytics</h5>
+                            <p>In Copilot Studio, navigate to <strong>"Analytics"</strong> to see:</p>
+                            <ul>
+                                <li>Session transcripts from your testing</li>
+                                <li>How the agent retrieved and used knowledge</li>
+                                <li>Any fallback or error responses</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Evaluation Best Practice:</strong>
+                    <p>Create a simple tracking document with your test queries, expected responses, and actual results. This helps you identify patterns and improve your agent over time. Professional consultants call this a "test case matrix."</p>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 2 Complete When:</h4>
+                    <ul>
+                        <li>You've tested at least 5 queries with your agent</li>
+                        <li>Agent provides grounded responses with citations for relevant queries</li>
+                        <li>Agent appropriately declines out-of-scope requests</li>
+                        <li>You've documented at least one area for improvement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Challenge 3 -->
+            <div class="challenge">
+                <h3>Challenge 3: Refine & Validate (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Improve your agent based on testing results and validate edge case handling.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Identify Improvement Areas</h5>
+                            <p>Based on your testing, identify 1-2 areas where the agent could improve:</p>
+                            <ul>
+                                <li>Responses that were too long or too short</li>
+                                <li>Missing information that should have been included</li>
+                                <li>Tone that wasn't quite right</li>
+                                <li>Citations that were missing or unclear</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Refine Instructions</h5>
+                            <p>Go back to your agent's <strong>Instructions</strong> and make adjustments. Common refinements include:</p>
+                            <ul>
+                                <li>Adding specific guidance for common question types</li>
+                                <li>Clarifying response length preferences</li>
+                                <li>Adding examples of good responses</li>
+                                <li>Strengthening ethical boundaries</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Test Edge Cases</h5>
+                            <p>Try these challenging scenarios to validate boundaries:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Edge Case Tests</h4>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Edge Case</th>
+                            <th>Expected Behavior</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"Give me legal advice about my property dispute"</td>
+                            <td>Decline; suggest consulting an attorney or legal aid</td>
+                        </tr>
+                        <tr>
+                            <td>"I need this information in Spanish"</td>
+                            <td>Acknowledge limitation; suggest official translation resources</td>
+                        </tr>
+                        <tr>
+                            <td>"This is urgent! I need an answer right now!"</td>
+                            <td>Provide helpful info but clarify limitations; offer human contact</td>
+                        </tr>
+                        <tr>
+                            <td>"What's your opinion on the mayor's new policy?"</td>
+                            <td>Remain neutral; explain it provides facts, not opinions</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Document Your Configuration</h5>
+                            <p>Before finishing, make note of:</p>
+                            <ul>
+                                <li>Your final instructions (copy to a document)</li>
+                                <li>Knowledge sources you added</li>
+                                <li>Any refinements you made</li>
+                                <li>Outstanding improvements for future work</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 3 Complete When:</h4>
+                    <ul>
+                        <li>You've made at least one refinement to your agent</li>
+                        <li>Edge case tests produce appropriate responses</li>
+                        <li>Agent maintains ethical boundaries under pressure</li>
+                        <li>You've documented your final configuration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ethical Boundaries -->
+            <section class="ethical-section">
+                <h2>⚖️ Ethical Boundaries for Government AI</h2>
+                
+                <div class="ethical-boundary-box">
+                    <h4>Transparency Requirement</h4>
+                    <p>Government AI must always disclose that it is an AI. Residents have a right to know they're not speaking with a human city employee. Include clear disclosure in your agent's responses.</p>
+                </div>
+                
+                <div class="ethical-boundary-box">
+                    <h4>Accuracy Over Speed</h4>
+                    <p>It's better for your agent to say "I'm not sure, please contact the office directly" than to provide incorrect information. Government misinformation can have serious consequences.</p>
+                </div>
+                
+                <div class="ethical-boundary-box">
+                    <h4>Equity & Accessibility</h4>
+                    <p>Your agent should provide equal quality information to all residents. Consider language access, reading levels, and digital literacy when designing responses.</p>
+                </div>
+                
+                <div class="accessibility-box">
+                    <h4>♿ Accessibility Checklist</h4>
+                    <ul>
+                        <li>Responses use plain language (8th grade reading level)</li>
+                        <li>Agent provides multiple ways to get help (phone, email, in-person)</li>
+                        <li>Complex processes are broken into numbered steps</li>
+                        <li>Agent acknowledges when human assistance may be needed</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Value Articulation -->
+            <section>
+                <h2>💰 Value Articulation</h2>
+                <p>Practice explaining the value of your agent to city leadership:</p>
+                
+                <div class="value-metrics">
+                    <div class="metric-card">
+                        <h4>24/7 Availability</h4>
+                        <p><strong>60% of inquiries</strong> occur outside business hours</p>
+                        <p>Agent provides immediate answers when City Hall is closed</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Consistent Information</h4>
+                        <p><strong>100% consistency</strong> in responses</p>
+                        <p>Every resident gets the same quality information</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Staff Time Saved</h4>
+                        <p><strong>5-10 hours/week</strong> potential savings</p>
+                        <p>Reduced repetitive questions to front desk</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Low Implementation Cost</h4>
+                        <p><strong>No code required</strong></p>
+                        <p>Built in 30 minutes using existing public data</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Optional Extension: Topics -->
+            <section class="extension-section">
+                <h2>🌟 Optional Extension: Adding Topics (15 mins)</h2>
+                <p>If you've completed the main challenges, try this advanced extension to learn about Topics.</p>
+                
+                <div class="info-box">
+                    <strong>What are Topics?</strong>
+                    <p>Topics are structured conversation paths that trigger when users express specific intents. While your agent handles most questions using instructions + knowledge, Topics give you precise control over specific interactions.</p>
+                </div>
+                
+                <h4>When to Use Topics vs. Instructions</h4>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Use Instructions When...</th>
+                            <th>Use Topics When...</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Questions are open-ended and varied</td>
+                            <td>You need exact responses for specific intents</td>
+                        </tr>
+                        <tr>
+                            <td>Answers come from knowledge sources</td>
+                            <td>Multi-turn conversations require slot-filling</td>
+                        </tr>
+                        <tr>
+                            <td>Flexibility is more important than precision</td>
+                            <td>Compliance requires specific language</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h4>Try It: Create an "Emergency Redirect" Topic</h4>
+                <p>Create a Topic that immediately redirects emergency situations to 911:</p>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Create New Topic</h5>
+                            <p>In Copilot Studio, go to <strong>Topics</strong> → <strong>+ Add a topic</strong> → <strong>From blank</strong></p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Add Trigger Phrases</h5>
+                            <p>Name: "Emergency Redirect"<br>
+                            Trigger phrases:</p>
+                            <ul>
+                                <li>emergency</li>
+                                <li>fire</li>
+                                <li>crime in progress</li>
+                                <li>medical emergency</li>
+                                <li>someone is hurt</li>
+                                <li>call 911</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Add Response Message</h5>
+                            <p>Add a Message node with this text:</p>
+                            <div class="code-block">🚨 **If this is an emergency, please call 911 immediately.**
+
+I'm an AI assistant and cannot dispatch emergency services. For:
+- 🔥 Fire emergencies: Call 911
+- 🚑 Medical emergencies: Call 911  
+- 🚔 Crime in progress: Call 911
+
+For non-emergency city services, I'm happy to help. What can I assist you with?</div>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Test the Topic</h5>
+                            <p>Save the topic and test with: "There's a fire!" - it should trigger your emergency redirect.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4>Bonus Topics to Try</h4>
+                <ul>
+                    <li><strong>Office Hours Topic:</strong> Triggers on "when are you open?" - provides City Hall hours</li>
+                    <li><strong>Human Handoff Topic:</strong> Triggers on "talk to a person" - provides contact options</li>
+                    <li><strong>Feedback Topic:</strong> Triggers on "give feedback" - thanks user and provides survey link</li>
+                </ul>
+            </section>
+
+            <!-- Extending Value -->
+            <section class="extending-value">
+                <h2>🚀 Extending Value: Future Iterations</h2>
+                <p>This lab introduced web grounding—the simplest way to get started. As your civic AI maturity grows, consider these extensions:</p>
+                
+                <div class="future-iterations">
+                    <h4>Additional Knowledge Sources</h4>
+                    <ul>
+                        <li><strong>File Uploads:</strong> Add city-specific PDFs, Word docs, and Excel files (covered in Lab 1B)</li>
+                        <li><strong>SharePoint:</strong> Connect to existing document libraries with ordinances, policies, and procedures</li>
+                        <li><strong>Dataverse:</strong> Ground on structured city data for permits, licenses, and service requests</li>
+                    </ul>
+                    
+                    <h4>Advanced Capabilities (200-Level)</h4>
+                    <ul>
+                        <li><strong>Power Automate Actions:</strong> Enable your agent to submit service requests or schedule appointments</li>
+                        <li><strong>Multilingual Support:</strong> Add translation capabilities for diverse communities</li>
+                        <li><strong>Authentication:</strong> Allow residents to check their specific permit or utility account status</li>
+                    </ul>
+                    
+                    <h4>Potential Outcomes</h4>
+                    <ul>
+                        <li>Reduce call volume by 40-60% for routine inquiries</li>
+                        <li>Extend service hours to 24/7 without additional staffing costs</li>
+                        <li>Improve equity by providing consistent, accessible information to all residents</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Resources -->
+            <div class="resources-section">
+                <h3>📚 Resources & Next Steps</h3>
+                <ul>
+                    <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/" target="_blank">Microsoft Copilot Studio Documentation</a></li>
+                    <li><a href="https://www.plainlanguage.gov/" target="_blank">Plain Language Guidelines</a></li>
+                    <li><a href="https://digital.gov/topics/customer-experience/" target="_blank">Digital.gov Customer Experience Resources</a></li>
+                    <li><a href="../lab-1b-file-grounded-services-agent/index.html" class="next-lab">Next Lab: Lab 1B - File-Grounded Services Agent →</a></li>
+                </ul>
+            </div>
+
+            <div class="lab-actions" style="margin-top: 40px; justify-content: center;">
+                <a href="../../index.html" class="btn btn-secondary">← Back to Labs</a>
+                <a href="../lab-1b-file-grounded-services-agent/index.html" class="btn btn-primary">Next: Lab 1B →</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Municipalities AI Labs. Built for hands-on learning with Microsoft Copilot Studio.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/lab-navigation.js"></script>
+</body>
+</html>

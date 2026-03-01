@@ -1,0 +1,200 @@
+[
+  {
+    "permit_type": "Building Permit",
+    "permit_id": "BP-2024",
+    "category": "Construction",
+    "description": "Required for new construction, additions, remodels, or structural changes",
+    "common_projects": [
+      "Room additions",
+      "Garage construction",
+      "Structural renovations",
+      "New home construction",
+      "Deck installation (over 30 inches high)"
+    ],
+    "exemptions": [
+      "Minor repairs (patching, painting)",
+      "Replacing existing fixtures",
+      "Cosmetic updates (flooring, cabinets)",
+      "Fences under 6 feet",
+      "Small sheds under 120 sq ft"
+    ],
+    "application_form": {
+      "form_name": "Building Permit Application",
+      "form_number": "BP-APP-01",
+      "download_url": "cityofmaplewood.gov/forms/building-permit",
+      "fillable": true
+    },
+    "required_attachments": [
+      "Site plan showing property boundaries",
+      "Construction drawings or blueprints",
+      "Structural calculations (if applicable)",
+      "Contractor license and insurance (if using contractor)",
+      "HOA approval (if applicable)"
+    ],
+    "fees": {
+      "base_fee": "$50",
+      "calculation": "Plus $3 per $1,000 of construction value",
+      "example": "For $10,000 project: $50 + ($10,000 ÷ 1,000 × $3) = $80",
+      "calculator_url": "cityofmaplewood.gov/permitfees"
+    },
+    "review_process": {
+      "step1": "Completeness check (2 business days)",
+      "step2": "Plan review by Building Official (5-10 business days)",
+      "step3": "Approval or request for revisions",
+      "step4": "Permit issued upon approval and fee payment"
+    },
+    "inspections_required": [
+      "Foundation inspection (before pouring concrete)",
+      "Framing inspection (before covering walls)",
+      "Final inspection (upon completion)"
+    ],
+    "validity": "6 months from issue date. Extensions available upon request.",
+    "contact": {
+      "department": "Building & Inspections",
+      "phone": "555-0123",
+      "email": "building@cityofmaplewood.gov"
+    }
+  },
+  {
+    "permit_type": "Fence Permit",
+    "permit_id": "FP-2024",
+    "category": "Property Improvement",
+    "description": "Required for fences over 6 feet in height or in front yard setback areas",
+    "when_required": [
+      "Any fence over 6 feet tall",
+      "Fences in front yard setback (typically 25 feet from street)",
+      "Fences along property lines (survey may be required)"
+    ],
+    "exemptions": [
+      "Fences 6 feet or shorter in back/side yards",
+      "Temporary construction fencing"
+    ],
+    "application_form": {
+      "form_name": "Fence Permit Application",
+      "form_number": "FP-APP-01",
+      "download_url": "cityofmaplewood.gov/forms/fence-permit",
+      "fillable": true
+    },
+    "required_attachments": [
+      "Property survey or site plan",
+      "Fence design and materials specification",
+      "HOA approval (if applicable)"
+    ],
+    "fees": {
+      "residential": "$25",
+      "commercial": "$50"
+    },
+    "regulations": {
+      "max_height_back_yard": "6 feet (without permit)",
+      "max_height_front_yard": "4 feet",
+      "setback_from_street": "Must be behind front building line",
+      "property_line": "Must be on your property or have neighbor written consent"
+    },
+    "review_process": {
+      "typical_timeline": "3-5 business days",
+      "note": "May require survey to verify property lines"
+    },
+    "contact": {
+      "department": "Planning & Zoning",
+      "phone": "555-0130",
+      "email": "planning@cityofmaplewood.gov"
+    }
+  },
+  {
+    "permit_type": "Right-of-Way Work Permit",
+    "permit_id": "ROW-2024",
+    "category": "Public Works",
+    "description": "Required for any work in city right-of-way (sidewalks, streets, curbs)",
+    "when_required": [
+      "Driveway installation or repair",
+      "Sidewalk construction or replacement",
+      "Utility connections crossing right-of-way",
+      "Temporary closures for moving/construction",
+      "Tree work in city right-of-way"
+    ],
+    "application_form": {
+      "form_name": "Right-of-Way Work Permit",
+      "form_number": "ROW-APP-01",
+      "download_url": "cityofmaplewood.gov/forms/right-of-way",
+      "fillable": true
+    },
+    "required_attachments": [
+      "Site plan showing work area",
+      "Traffic control plan (if affecting traffic)",
+      "Contractor license and insurance",
+      "Proof of liability insurance ($1M minimum)",
+      "Restoration plan"
+    ],
+    "fees": {
+      "driveway_permit": "$100",
+      "sidewalk_permit": "$50",
+      "temporary_closure": "$25 per day",
+      "deposit": "$500 (refundable upon satisfactory restoration)"
+    },
+    "requirements": {
+      "notice": "Must notify adjacent property owners 48 hours in advance",
+      "hours": "Work hours: 7:00 AM - 6:00 PM, Monday-Saturday only",
+      "restoration": "All disturbed areas must be restored to original or better condition",
+      "inspection": "City inspection required before and after work"
+    },
+    "review_process": {
+      "typical_timeline": "7-10 business days",
+      "note": "Emergency repairs may be expedited"
+    },
+    "contact": {
+      "department": "Public Works",
+      "phone": "555-0150",
+      "email": "publicworks@cityofmaplewood.gov"
+    }
+  },
+  {
+    "permit_type": "Special Event Permit",
+    "permit_id": "SE-2024",
+    "category": "Events",
+    "description": "Required for public events, block parties, festivals, or gatherings on city property",
+    "when_required": [
+      "Block parties or street closures",
+      "Events in city parks (over 50 people)",
+      "Festivals or fairs",
+      "Runs/walks using city streets",
+      "Events with amplified sound"
+    ],
+    "application_form": {
+      "form_name": "Special Event Permit Application",
+      "form_number": "SE-APP-01",
+      "download_url": "cityofmaplewood.gov/forms/special-event",
+      "fillable": true
+    },
+    "application_deadline": "Minimum 30 days before event (60 days recommended)",
+    "required_attachments": [
+      "Event plan and timeline",
+      "Site map showing layout, parking, access",
+      "Traffic control plan (if applicable)",
+      "Proof of liability insurance",
+      "Food vendor permits (if applicable)",
+      "Alcohol permit (if applicable)"
+    ],
+    "fees": {
+      "park_reservation": "$50-$200 depending on size",
+      "street_closure": "$100",
+      "police_services": "Cost recovery (if required)",
+      "cleanup_deposit": "$250 (refundable)"
+    },
+    "requirements": {
+      "insurance": "$1M general liability naming City as additional insured",
+      "notification": "Notify neighbors within 300 feet",
+      "cleanup": "Area must be cleaned and restored within 24 hours",
+      "noise_ordinance": "Amplified sound must end by 10:00 PM"
+    },
+    "review_process": {
+      "review_by": "Police, Fire, Public Works, Parks departments",
+      "typical_timeline": "2-3 weeks",
+      "approval_required_from": "City Manager or designee"
+    },
+    "contact": {
+      "department": "Parks & Recreation",
+      "phone": "555-0140",
+      "email": "parks@cityofmaplewood.gov"
+    }
+  }
+]

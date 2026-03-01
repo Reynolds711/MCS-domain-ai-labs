@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1B: File-Grounded Services Agent</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="lab-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Back to Labs</a>
+            </div>
+            <div class="lab-title-nav">Lab 1B: File-Grounded Services Agent</div>
+        </div>
+    </nav>
+
+    <main class="container lab-container">
+        <div class="lab-content">
+            <h1>🏛️ Lab 1B: Build a File-Grounded Services Agent</h1>
+            
+            <div class="lab-meta">
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Duration: 30 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Level: 100 - Beginner</span>
+                </div>
+                <div class="meta-item">
+                    <span>📄</span>
+                    <span>Grounding: File Sources</span>
+                </div>
+            </div>
+
+            <!-- Building on Lab 1A -->
+            <section class="prereq-section">
+                <h2>Building on Lab 1A</h2>
+                <p>In <a href="../lab-1a-web-grounded-civic-agent/index.html">Lab 1A</a>, you created an agent grounded on public websites. In this lab, you'll learn to ground agents on <strong>local files</strong>—documents that contain your organization's specific information.</p>
+                
+                <div class="comparison-box">
+                    <h4>Web Grounding vs. File Grounding</h4>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Web Grounding (Lab 1A)</th>
+                                <th>File Grounding (Lab 1B)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Uses public website URLs</td>
+                                <td>Uses uploaded documents (Word, Excel, PDF)</td>
+                            </tr>
+                            <tr>
+                                <td>Content updates automatically as sites change</td>
+                                <td>You control exactly what content is included</td>
+                            </tr>
+                            <tr>
+                                <td>Good for general public information</td>
+                                <td>Good for organization-specific data</td>
+                            </tr>
+                            <tr>
+                                <td>Limited control over content quality</td>
+                                <td>Full control over content accuracy</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="info-box">
+                    <strong>💡 Real-World Use Case:</strong>
+                    <p>Most enterprise scenarios use file grounding because organizations have proprietary information stored in SharePoint, file shares, or document management systems. This lab teaches you to work with the file types you'll encounter in actual deployments.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Overview</h2>
+                <p>In this lab, you'll build a declarative agent grounded on <strong>local document files</strong> that contain city services information. You'll use provided sample files that mirror real municipal documents: a services guide, permit matrix, and department directory.</p>
+                
+                <div class="info-box">
+                    <strong>💡 What You'll Learn:</strong>
+                    <ul>
+                        <li>How to prepare documents for AI grounding</li>
+                        <li>Uploading and indexing file-based knowledge sources</li>
+                        <li>Differences between document formats (PDF, Word, Excel)</li>
+                        <li>Testing grounding accuracy with file sources</li>
+                        <li>Evaluating citation quality for document references</li>
+                    </ul>
+                </div>
+
+                <div class="consulting-framework">
+                    <h3>Consulting Framework</h3>
+                    <ul>
+                        <li><strong>Customer:</strong> City of Maplewood staff and residents</li>
+                        <li><strong>Problem:</strong> City services information is scattered across multiple documents; residents and staff struggle to find answers</li>
+                        <li><strong>Solution:</strong> AI agent that searches across city documents and provides instant answers with citations to source documents</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Completed <a href="../lab-1a-web-grounded-civic-agent/index.html">Lab 1A</a> (or familiarity with Copilot Studio basics)</li>
+                    <li>Access to <a href="https://copilotstudio.microsoft.com" target="_blank">Microsoft Copilot Studio</a></li>
+                    <li>Download the lab files (provided below)</li>
+                </ul>
+                
+                <div class="download-section">
+                    <h4>📥 Download Lab Files</h4>
+                    <p>Download these files to use as knowledge sources. In a real scenario, these would be your organization's actual documents.</p>
+                    <ul class="download-list">
+                        <li>
+                            <strong>City Services Guide</strong> (PDF-style content)
+                            <br><small>Comprehensive guide to all city services</small>
+                            <br><a href="assets/city-services-guide.md" download class="btn btn-small">Download city-services-guide.md</a>
+                        </li>
+                        <li>
+                            <strong>Permit Requirements Matrix</strong> (Excel-style content)
+                            <br><small>Which permits need what documents and fees</small>
+                            <br><a href="assets/permit-requirements-matrix.md" download class="btn btn-small">Download permit-requirements-matrix.md</a>
+                        </li>
+                        <li>
+                            <strong>Department Directory</strong> (Word-style content)
+                            <br><small>Contact information for all city departments</small>
+                            <br><a href="assets/department-directory.md" download class="btn btn-small">Download department-directory.md</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="info-box">
+                    <strong>💡 File Format Note:</strong>
+                    <p>These lab files are provided in Markdown format for easy viewing, but Copilot Studio supports Word (.docx), Excel (.xlsx), PDF, and other common formats. In your organization, you'd use the actual document formats from your file systems.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Lab Scenario</h2>
+                <p>The City of Maplewood has created comprehensive documentation for their services, but residents still call with basic questions because they can't find information in lengthy documents. The city wants an AI agent that can:</p>
+                
+                <ul>
+                    <li>Search across all city documents instantly</li>
+                    <li>Answer questions using specific document content</li>
+                    <li>Cite the exact source document and section</li>
+                    <li>Handle the specific services, permits, and contacts Maplewood offers</li>
+                </ul>
+            </section>
+
+            <!-- Challenge 1 -->
+            <div class="challenge">
+                <h3>Challenge 1: Prepare and Upload Knowledge Files (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Create a new agent and configure it with file-based knowledge sources.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Review the Lab Files</h5>
+                            <p>Before uploading, open each downloaded file and review its structure:</p>
+                            <ul>
+                                <li><strong>City Services Guide:</strong> Comprehensive service descriptions, eligibility, fees</li>
+                                <li><strong>Permit Matrix:</strong> Structured table of permit types, requirements, costs</li>
+                                <li><strong>Department Directory:</strong> Contact info organized by department</li>
+                            </ul>
+                            <p>Understanding your source content helps you write better agent instructions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Create a New Agent</h5>
+                            <p>In Copilot Studio, create a new agent:</p>
+                            <ul>
+                                <li><strong>Name:</strong> Maplewood Services Assistant</li>
+                                <li><strong>Description:</strong> Helps residents and staff find information about city services, permits, and department contacts</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Add Instructions</h5>
+                            <p>Configure the agent with these instructions:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Agent Instructions (System Prompt)</h4>
+                <div class="code-block">You are the Maplewood Services Assistant, helping residents and city staff find information about city services, permits, and department contacts.
+
+## Your Knowledge Sources
+You have access to three key city documents:
+1. **City Services Guide** - Descriptions of all services, eligibility, fees, and how to apply
+2. **Permit Requirements Matrix** - Specific permits, required documents, fees, and processing times
+3. **Department Directory** - Contact information for all city departments and key staff
+
+## How to Respond
+- Always search your knowledge sources before answering
+- Cite the specific document and section where you found information
+- If information exists in multiple documents, synthesize it helpfully
+- Use exact figures for fees, timeframes, and requirements (don't approximate)
+- Format complex information with bullet points or numbered steps
+
+## Response Format
+When answering questions:
+1. Provide the direct answer first
+2. Include specific details (fees, timeframes, documents needed)
+3. Cite your source: "According to the [Document Name]..."
+4. Offer related helpful information if relevant
+5. Provide contact information for follow-up
+
+## Handling Questions Outside Your Knowledge
+If a question isn't covered in your documents:
+- Clearly state that this information isn't in your current knowledge
+- Suggest the most relevant department to contact
+- Never make up information that isn't in your sources
+
+## What You Cannot Do
+- Approve permits or applications
+- Access personal resident accounts
+- Make exceptions to stated policies
+- Provide legal or financial advice
+- Guarantee specific outcomes
+
+## Important Reminders
+- Fees and requirements may change; encourage residents to verify for large projects
+- Always provide a phone number or contact for complex situations
+- Be helpful but direct residents to staff for anything requiring judgment</div>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Upload Knowledge Files</h5>
+                            <p>Go to <strong>Knowledge</strong> → <strong>+ Add knowledge</strong> → <strong>Files</strong></p>
+                            <p>Upload each of the three lab files. Copilot Studio will index them for search.</p>
+                            <p><strong>Tip:</strong> You can also use <strong>SharePoint</strong> or <strong>OneDrive</strong> as sources if your files are stored there.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h5>Wait for Indexing</h5>
+                            <p>File indexing typically takes 1-3 minutes. You'll see a status indicator showing when files are ready.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 1 Complete When:</h4>
+                    <ul>
+                        <li>Agent is created with the name "Maplewood Services Assistant"</li>
+                        <li>All three knowledge files are uploaded and indexed</li>
+                        <li>Instructions are configured with the system prompt above</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Challenge 2 -->
+            <div class="challenge">
+                <h3>Challenge 2: Test Grounding Accuracy (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Validate that your agent correctly retrieves and cites information from your uploaded documents.
+                </div>
+
+                <h4>Test Queries - Services Guide</h4>
+                <p>These questions should be answered using the City Services Guide:</p>
+                
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>Expected Source</th>
+                            <th>Key Information to Include</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"How do I sign up for trash collection?"</td>
+                            <td>City Services Guide - Utilities section</td>
+                            <td>Registration process, cart sizes, fees</td>
+                        </tr>
+                        <tr>
+                            <td>"What recreation programs do you offer for kids?"</td>
+                            <td>City Services Guide - Parks & Recreation</td>
+                            <td>Youth programs, registration, fees</td>
+                        </tr>
+                        <tr>
+                            <td>"How do I report a pothole?"</td>
+                            <td>City Services Guide - Public Works</td>
+                            <td>Reporting methods, response time</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Test Queries - Permit Matrix</h4>
+                <p>These questions should be answered using the Permit Requirements Matrix:</p>
+                
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>Expected Source</th>
+                            <th>Key Information to Include</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"What do I need for a building permit?"</td>
+                            <td>Permit Matrix - Building Permit row</td>
+                            <td>Required documents, fee, processing time</td>
+                        </tr>
+                        <tr>
+                            <td>"How much does a fence permit cost?"</td>
+                            <td>Permit Matrix - Fence Permit row</td>
+                            <td>Exact fee amount, when permits are required</td>
+                        </tr>
+                        <tr>
+                            <td>"Do I need a permit for a garage sale?"</td>
+                            <td>Permit Matrix - Special permits section</td>
+                            <td>Garage sale permit requirements or exemptions</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Test Queries - Department Directory</h4>
+                <p>These questions should be answered using the Department Directory:</p>
+                
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>Expected Source</th>
+                            <th>Key Information to Include</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"Who do I contact about my water bill?"</td>
+                            <td>Department Directory - Utilities</td>
+                            <td>Contact name, phone, email, hours</td>
+                        </tr>
+                        <tr>
+                            <td>"What's the phone number for the building department?"</td>
+                            <td>Department Directory - Building & Zoning</td>
+                            <td>Phone number, address, hours</td>
+                        </tr>
+                        <tr>
+                            <td>"Who is the city manager?"</td>
+                            <td>Department Directory - Administration</td>
+                            <td>Name, contact information</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Evaluation Checklist</h4>
+                <p>For each response, verify:</p>
+                <ul class="evaluation-checklist">
+                    <li>☐ Answer includes information from the correct document</li>
+                    <li>☐ Specific figures (fees, phone numbers) are accurate</li>
+                    <li>☐ Response cites the source document</li>
+                    <li>☐ Information is complete (doesn't omit important details)</li>
+                    <li>☐ Format is clear and easy to read</li>
+                </ul>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 2 Complete When:</h4>
+                    <ul>
+                        <li>Tested at least 2 queries per document source (6 total)</li>
+                        <li>Agent cites the correct source document for each answer</li>
+                        <li>Specific figures (fees, phone numbers) are accurate</li>
+                        <li>You've documented any inaccuracies for refinement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Challenge 3 -->
+            <div class="challenge">
+                <h3>Challenge 3: Cross-Document Queries & Edge Cases (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Test advanced scenarios where the agent must synthesize information from multiple documents or handle questions outside its knowledge.
+                </div>
+
+                <h4>Cross-Document Test Queries</h4>
+                <p>These questions require information from multiple documents:</p>
+                
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>Expected Synthesis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"I want to add a deck to my house. What permit do I need and who do I contact?"</td>
+                            <td>Permit Matrix (deck permit requirements) + Department Directory (Building Dept contact)</td>
+                        </tr>
+                        <tr>
+                            <td>"What recreation programs are available and how do I register?"</td>
+                            <td>Services Guide (programs) + Department Directory (Parks Dept contact) + possibly Services Guide (registration process)</td>
+                        </tr>
+                        <tr>
+                            <td>"I want to open a business in Maplewood. What do I need to do?"</td>
+                            <td>Permit Matrix (business license) + Services Guide (business services) + Department Directory (contacts)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Edge Case Tests</h4>
+                <p>Test how the agent handles challenging scenarios:</p>
+                
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Edge Case</th>
+                            <th>Expected Behavior</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"What's the mayor's email address?" (may not be in docs)</td>
+                            <td>Check knowledge first; if not found, admit it and suggest Administration contact</td>
+                        </tr>
+                        <tr>
+                            <td>"Can you waive the permit fee for me?"</td>
+                            <td>Decline; explain it cannot make exceptions; provide staff contact</td>
+                        </tr>
+                        <tr>
+                            <td>"The permit fee on your website is different than what you said"</td>
+                            <td>Acknowledge discrepancy possibility; recommend calling to verify current fees</td>
+                        </tr>
+                        <tr>
+                            <td>"Is my permit application approved?"</td>
+                            <td>Explain it cannot access personal records; provide contact to check status</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Refine Based on Results</h4>
+                <p>If you find issues in testing, consider these refinements:</p>
+                <ul>
+                    <li><strong>Missing citations:</strong> Add instruction to always cite sources</li>
+                    <li><strong>Incomplete answers:</strong> Add instruction to check multiple documents for comprehensive answers</li>
+                    <li><strong>Wrong information:</strong> Check that files uploaded correctly; verify content is in documents</li>
+                    <li><strong>Poor formatting:</strong> Add formatting guidance in instructions</li>
+                </ul>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 3 Complete When:</h4>
+                    <ul>
+                        <li>Agent successfully synthesizes information from multiple documents</li>
+                        <li>Edge cases are handled appropriately (declines what it can't do)</li>
+                        <li>You've made at least one refinement based on testing</li>
+                        <li>Agent provides helpful alternatives when it can't answer</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ethical Boundaries -->
+            <section class="ethical-section">
+                <h2>⚖️ Ethical Boundaries for Document-Grounded Agents</h2>
+                
+                <div class="ethical-boundary-box">
+                    <h4>Document Accuracy Responsibility</h4>
+                    <p>When using file grounding, you're responsible for the accuracy of your source documents. Unlike web grounding (where content is maintained by others), file content is under your control. Establish a process to keep documents current.</p>
+                </div>
+                
+                <div class="ethical-boundary-box">
+                    <h4>Citation Transparency</h4>
+                    <p>File-grounded agents should always cite which document information came from. This helps users verify information and builds trust. It also helps you identify when documents need updating.</p>
+                </div>
+                
+                <div class="ethical-boundary-box">
+                    <h4>Handling Conflicts</h4>
+                    <p>If documents contain conflicting information (e.g., an old fee in one document, new fee in another), the agent should acknowledge the conflict and recommend contacting staff. Train your agent to handle this gracefully.</p>
+                </div>
+            </section>
+
+            <!-- Value Articulation -->
+            <section>
+                <h2>💰 Value Articulation</h2>
+                <p>File-grounded agents offer unique value propositions:</p>
+                
+                <div class="value-metrics">
+                    <div class="metric-card">
+                        <h4>Instant Document Search</h4>
+                        <p><strong>Seconds vs. minutes</strong></p>
+                        <p>Residents get answers instantly instead of searching through 50+ page guides</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Controlled Accuracy</h4>
+                        <p><strong>100% source control</strong></p>
+                        <p>You control exactly what content the agent uses—no hallucination risk from web sources</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Knowledge Unification</h4>
+                        <p><strong>Multiple docs, one interface</strong></p>
+                        <p>Agent searches across all documents simultaneously</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Version Management</h4>
+                        <p><strong>Update once, reflects everywhere</strong></p>
+                        <p>Update your source document; agent automatically uses new content</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Optional Extension: Topics -->
+            <section class="extension-section">
+                <h2>🌟 Optional Extension: Service-Specific Topics (15 mins)</h2>
+                <p>Create Topics for high-frequency, structured interactions that benefit from precise control.</p>
+                
+                <h4>Topic Idea 1: Permit Lookup Wizard</h4>
+                <p>Create a multi-turn conversation that guides users through permit selection:</p>
+                
+                <div class="code-block">Topic: Permit Finder
+Trigger phrases: "what permit do I need", "help me find a permit", "permit lookup"
+
+Flow:
+1. Ask: "What type of project are you planning?"
+   - Options: Home improvement, Business, Event, Other
+   
+2. Based on answer, ask follow-up:
+   - Home improvement → "What kind of work?" (Building, Electrical, Plumbing, Fence/Deck)
+   - Business → "Is this a new business or existing?" 
+   
+3. Provide specific permit information from knowledge base
+4. Include: requirements, fee, contact information
+5. End with: "Would you like me to explain the application process?"</div>
+
+                <h4>Topic Idea 2: Department Finder</h4>
+                <p>Quick routing to the right department:</p>
+                
+                <div class="code-block">Topic: Department Finder
+Trigger phrases: "who do I call", "find a department", "I need to talk to someone about"
+
+Flow:
+1. Ask: "What topic do you need help with?"
+   - Categories: Permits & Zoning, Utilities, Streets & Roads, Parks, Police/Fire, Other
+   
+2. Retrieve department info from Directory
+3. Provide: Name, phone, email, hours, location
+4. Ask: "Can I help with anything else about [topic]?"</div>
+
+                <h4>Topic Idea 3: Fee Calculator</h4>
+                <p>Structured fee lookup with clear outputs:</p>
+                
+                <div class="code-block">Topic: Fee Calculator  
+Trigger phrases: "how much does it cost", "what's the fee for", "permit cost"
+
+Flow:
+1. Ask: "What service or permit are you asking about?"
+2. Search Permit Matrix and Services Guide for fees
+3. Present in clear format:
+   - Fee amount
+   - What's included
+   - Payment methods accepted
+   - Any additional fees that may apply
+4. Caveat: "Fees are subject to change. Verify with the department for large projects."</div>
+            </section>
+
+            <!-- Extending Value -->
+            <section class="extending-value">
+                <h2>🚀 Extending Value: Future Iterations</h2>
+                <p>You've now mastered both web and file grounding—the foundation for any Copilot Studio agent. Here's how to extend your agent's value over time:</p>
+                
+                <div class="future-iterations">
+                    <h4>Additional Knowledge Sources</h4>
+                    <ul>
+                        <li><strong>SharePoint Libraries:</strong> Connect to existing document repositories for automatic updates when files change</li>
+                        <li><strong>Dataverse Tables:</strong> Ground on structured city data (permits, cases, contacts) for real-time accuracy</li>
+                        <li><strong>Multiple Sites:</strong> Combine web + file grounding for comprehensive coverage</li>
+                    </ul>
+                    
+                    <h4>Advanced Capabilities (200-Level)</h4>
+                    <ul>
+                        <li><strong>Power Automate Actions:</strong> Let residents submit service requests directly through the agent</li>
+                        <li><strong>Authenticated Experiences:</strong> Enable "Check my permit status" by connecting to city systems</li>
+                        <li><strong>Proactive Notifications:</strong> Alert residents about service disruptions or upcoming deadlines</li>
+                    </ul>
+                    
+                    <h4>Potential Outcomes</h4>
+                    <ul>
+                        <li>Self-service resolution for 60-80% of routine inquiries</li>
+                        <li>Reduced permit application errors through guided assistance</li>
+                        <li>Improved accessibility for residents with limited mobility or transportation</li>
+                        <li>Data insights on common questions to improve city communications</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Resources -->
+            <div class="resources-section">
+                <h3>📚 Resources & Next Steps</h3>
+                <ul>
+                    <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-file" target="_blank">Copilot Studio: Add Files as Knowledge</a></li>
+                    <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/knowledge-sharepoint" target="_blank">Copilot Studio: SharePoint as Knowledge Source</a></li>
+                    <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/analytics-overview" target="_blank">Copilot Studio: Analytics & Evaluation</a></li>
+                </ul>
+                
+                <div class="next-steps">
+                    <h4>🎓 You've Completed the 100-Level Labs!</h4>
+                    <p>You now know how to build declarative agents with both web and file grounding. Next steps:</p>
+                    <ul>
+                        <li>Try the <a href="../constituent-services-agent-30-mins/index.html">Constituent Services Agent</a> lab for more advanced scenarios</li>
+                        <li>Explore adding <strong>Actions</strong> to your agents (200-level)</li>
+                        <li>Learn about <strong>SharePoint</strong> and <strong>Dataverse</strong> knowledge sources</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="lab-actions" style="margin-top: 40px; justify-content: center;">
+                <a href="../lab-1a-web-grounded-civic-agent/index.html" class="btn btn-secondary">← Back to Lab 1A</a>
+                <a href="../../index.html" class="btn btn-primary">Back to Lab Hub</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Municipalities AI Labs. Built for hands-on learning with Microsoft Copilot Studio.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/lab-navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+[
+  {
+    "template_id": "basic_lesson",
+    "grade_range": "6-12",
+    "subject": "Any",
+    "structure": {
+      "objective": "Students will be able to [measurable outcome] by [method/activity].",
+      "standards_addressed": ["List relevant standard IDs"],
+      "materials": ["List materials and resources needed"],
+      "lesson_phases": {
+        "introduction": {
+          "duration": "5-10 minutes",
+          "purpose": "Activate prior knowledge, introduce topic",
+          "example_activities": ["Hook/engagement", "Essential question", "Learning objective review"]
+        },
+        "direct_instruction": {
+          "duration": "10-15 minutes",
+          "purpose": "Present new content",
+          "example_activities": ["Mini-lecture", "Demonstration", "Modeling"]
+        },
+        "guided_practice": {
+          "duration": "15-20 minutes",
+          "purpose": "Practice with teacher support",
+          "example_activities": ["Think-pair-share", "Worked examples", "Collaborative problem-solving"]
+        },
+        "independent_practice": {
+          "duration": "10-15 minutes",
+          "purpose": "Apply learning independently",
+          "example_activities": ["Individual work", "Exit ticket", "Quick write"]
+        },
+        "closure": {
+          "duration": "5 minutes",
+          "purpose": "Review and preview",
+          "example_activities": ["Summary", "Questions", "Preview next lesson"]
+        }
+      },
+      "assessment": {
+        "formative": ["Observation", "Exit ticket", "Class discussion"],
+        "summative": ["Quiz", "Project", "Essay"]
+      },
+      "differentiation": {
+        "support": ["Visual aids", "Sentence frames", "Partner work"],
+        "extension": ["Advanced problems", "Leadership roles", "Research extensions"]
+      }
+    }
+  },
+  {
+    "template_id": "inquiry_based",
+    "grade_range": "6-12",
+    "subject": "Science, Social Studies",
+    "structure": {
+      "objective": "Students will investigate [question] and develop explanations based on evidence.",
+      "standards_addressed": ["List relevant standard IDs"],
+      "materials": ["Investigation materials", "Data collection tools"],
+      "lesson_phases": {
+        "engage": {
+          "duration": "10 minutes",
+          "purpose": "Spark curiosity and generate questions",
+          "example_activities": ["Phenomenon observation", "Discrepant event", "Driving question"]
+        },
+        "explore": {
+          "duration": "20-25 minutes",
+          "purpose": "Hands-on investigation",
+          "example_activities": ["Lab investigation", "Data collection", "Primary source analysis"]
+        },
+        "explain": {
+          "duration": "10-15 minutes",
+          "purpose": "Make sense of findings",
+          "example_activities": ["Class discussion", "Student presentations", "Concept development"]
+        },
+        "elaborate": {
+          "duration": "10-15 minutes",
+          "purpose": "Apply to new contexts",
+          "example_activities": ["New problem", "Real-world connection", "Extension investigation"]
+        },
+        "evaluate": {
+          "duration": "10 minutes",
+          "purpose": "Assess understanding",
+          "example_activities": ["Written explanation", "Argument construction", "Concept map"]
+        }
+      },
+      "assessment": {
+        "formative": ["Lab notebook check", "Discussion participation", "Draft explanations"],
+        "summative": ["Lab report", "Presentation", "Argument essay"]
+      }
+    }
+  },
+  {
+    "template_id": "workshop_model",
+    "grade_range": "6-12",
+    "subject": "English Language Arts",
+    "structure": {
+      "objective": "Students will develop [skill] through guided practice and independent application.",
+      "standards_addressed": ["List relevant standard IDs"],
+      "materials": ["Texts", "Writing tools", "Mentor examples"],
+      "lesson_phases": {
+        "mini_lesson": {
+          "duration": "10-15 minutes",
+          "purpose": "Teach specific skill or strategy",
+          "example_activities": ["Model text analysis", "Writing technique demonstration", "Strategy instruction"]
+        },
+        "independent_work": {
+          "duration": "25-30 minutes",
+          "purpose": "Students practice independently",
+          "example_activities": ["Reading", "Writing", "Skill application"]
+        },
+        "conferencing": {
+          "duration": "During independent work",
+          "purpose": "Individual feedback and support",
+          "example_activities": ["One-on-one conferences", "Small group instruction", "Targeted feedback"]
+        },
+        "sharing": {
+          "duration": "10 minutes",
+          "purpose": "Celebrate work and learn from peers",
+          "example_activities": ["Author's chair", "Gallery walk", "Peer feedback"]
+        }
+      },
+      "assessment": {
+        "formative": ["Conference notes", "Work-in-progress review", "Self-assessment"],
+        "summative": ["Published writing", "Portfolio", "Presentation"]
+      }
+    }
+  }
+]

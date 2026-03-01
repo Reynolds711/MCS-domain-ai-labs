@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1B: File-Grounded Lesson Planning Agent</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="lab-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Back to Labs</a>
+            </div>
+            <div class="lab-title-nav">Lab 1B: File-Grounded Lesson Agent</div>
+        </div>
+    </nav>
+
+    <main class="container lab-container">
+        <div class="lab-content">
+            <h1>📄 Lab 1B: Build a File-Grounded Lesson Planning Agent</h1>
+            
+            <div class="lab-meta">
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Duration: 30 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Level: 100 - Beginner</span>
+                </div>
+                <div class="meta-item">
+                    <span>📁</span>
+                    <span>Grounding: File Sources</span>
+                </div>
+            </div>
+
+            <!-- What is a Declarative Agent -->
+            <section class="concept-intro">
+                <h2>What is a Declarative Agent?</h2>
+                <p>A <strong>declarative agent</strong> is an AI assistant you create by <em>describing what it should do</em> rather than writing code. You configure:</p>
+                <ul>
+                    <li><strong>Instructions:</strong> Tell the agent its role, capabilities, and boundaries</li>
+                    <li><strong>Knowledge:</strong> Connect data sources the agent can reference (websites, documents)</li>
+                    <li><strong>Actions:</strong> (Optional) Enable the agent to take actions like creating documents</li>
+                </ul>
+                
+                <div class="info-box">
+                    <strong>💡 Why File Grounding for Education</strong>
+                    <p>Schools have years of institutional knowledge locked in documents: lesson templates, rubrics, curriculum guides, and scope & sequence charts. File-grounded agents can access all of this—providing teachers with your school's specific resources, not generic internet content.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Overview</h2>
+                <p>In this lab, you'll build a declarative agent using <strong>uploaded document knowledge sources</strong>. Your agent will help teachers with lesson planning by referencing your school's actual templates, rubrics, and curriculum documents.</p>
+                
+                <div class="info-box">
+                    <strong>💡 What You'll Learn:</strong>
+                    <ul>
+                        <li>Uploading documents as knowledge sources in Copilot Studio</li>
+                        <li>Creating agents grounded on school-specific resources</li>
+                        <li>Writing prompts that reference multiple documents effectively</li>
+                        <li>Testing cross-document retrieval and accuracy</li>
+                        <li>Validating that responses match your source materials</li>
+                    </ul>
+                </div>
+
+                <div class="consulting-framework">
+                    <h3>Consulting Framework</h3>
+                    <ul>
+                        <li><strong>Customer:</strong> Lincoln Middle School teachers and instructional coaches</li>
+                        <li><strong>Problem:</strong> Teachers recreate lesson planning resources from scratch instead of using school-approved templates; new teachers don't know what resources exist</li>
+                        <li><strong>Solution:</strong> AI agent grounded on school documents that helps teachers find templates, rubrics, and examples while maintaining consistent format school-wide</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Completed <a href="../lab-1a-web-grounded-standards-agent/index.html">Lab 1A: Web-Grounded Standards Navigator</a> (recommended)</li>
+                    <li>Access to <a href="https://copilotstudio.microsoft.com" target="_blank">Microsoft Copilot Studio</a></li>
+                    <li>Sample documents provided in this lab (or your own school documents)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Lab Scenario</h2>
+                <p><strong>Lincoln Middle School</strong> wants teachers to have instant access to school-approved planning resources. Instead of searching through shared drives or asking colleagues, teachers should be able to ask an AI agent and get immediate answers grounded in official school documents.</p>
+                
+                <p>You'll use three sample documents (provided below) that represent typical school resources:</p>
+                <ul>
+                    <li><strong>Lesson Plan Template</strong> - The school's standard planning format</li>
+                    <li><strong>Rubric Samples</strong> - Example rubrics for different assessment types</li>
+                    <li><strong>Standards Crosswalk</strong> - Mapping between state and national standards</li>
+                </ul>
+            </section>
+
+            <!-- Sample Files Section -->
+            <section class="sample-files-section">
+                <h2>📁 Sample Files for This Lab</h2>
+                <p>Download these sample files to use as knowledge sources. In a real deployment, you'd use your school's actual documents.</p>
+                
+                <div class="file-cards">
+                    <div class="file-card">
+                        <div class="file-icon">📋</div>
+                        <h4>Lesson Plan Template</h4>
+                        <p>Standard template with sections for objectives, standards, activities, differentiation, and assessment.</p>
+                        <a href="assets/lesson-plan-template.md" download class="btn btn-small">Download</a>
+                    </div>
+                    
+                    <div class="file-card">
+                        <div class="file-icon">📊</div>
+                        <h4>Rubric Samples</h4>
+                        <p>Example rubrics for writing, projects, presentations, and participation.</p>
+                        <a href="assets/rubric-samples.md" download class="btn btn-small">Download</a>
+                    </div>
+                    
+                    <div class="file-card">
+                        <div class="file-icon">🔄</div>
+                        <h4>Standards Crosswalk</h4>
+                        <p>Mapping between Common Core, state standards, and assessment expectations.</p>
+                        <a href="assets/standards-crosswalk.md" download class="btn btn-small">Download</a>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <strong>💡 Real-World Tip:</strong> These sample files simulate Word documents and Excel spreadsheets. Copilot Studio accepts .docx, .xlsx, .pdf, .txt, and other common formats. The .md (Markdown) format is used here for easy viewing.
+                </div>
+            </section>
+
+            <!-- Challenge 1 -->
+            <div class="challenge">
+                <h3>Challenge 1: Create Agent with Document Knowledge (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Create a new declarative agent and upload the sample documents as knowledge sources.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Open Copilot Studio</h5>
+                            <p>Navigate to <a href="https://copilotstudio.microsoft.com" target="_blank">copilotstudio.microsoft.com</a> and sign in with your Microsoft account.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Create a New Agent</h5>
+                            <p>Click <strong>"Create"</strong> in the left navigation, then select <strong>"New agent"</strong>.</p>
+                            <p>Choose <strong>"Skip to configure"</strong> to manually set up your agent.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Name Your Agent</h5>
+                            <p>Enter the following details:</p>
+                            <ul>
+                                <li><strong>Name:</strong> Lesson Planning Assistant</li>
+                                <li><strong>Description:</strong> Helps teachers find and use school-approved lesson planning resources</li>
+                                <li><strong>Icon:</strong> Choose a planning or document-themed icon</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Add Instructions</h5>
+                            <p>In the <strong>Instructions</strong> section, paste the following system prompt:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Agent Instructions (System Prompt)</h4>
+                <div class="code-block">You are the Lesson Planning Assistant for Lincoln Middle School. You help teachers with lesson planning by providing information from our school's official planning documents, templates, and rubrics.
+
+## Your Role
+- Help teachers find the right planning template for their needs
+- Explain how to use our standard lesson plan format
+- Provide example rubrics from our school's rubric collection
+- Clarify standards alignment using our crosswalk documents
+- Answer questions about school planning expectations
+
+## How to Respond
+- Always reference the specific document you're drawing information from
+- Quote relevant sections directly when helpful
+- Explain WHY we use specific formats (the pedagogical reasoning)
+- Provide concrete examples from the documents
+- Keep responses focused on what's in the documents
+
+## What You Can Help With
+- Finding the right template section for a specific need
+- Explaining rubric criteria and how to use them
+- Clarifying standards crosswalk mappings
+- Describing our differentiation expectations
+- Answering "how do I..." questions about planning
+
+## What You Cannot Do
+- Create new templates or rubrics (you reference existing ones)
+- Approve lesson plans or say if they meet expectations
+- Modify the official documents
+- Make up information not in the documents
+- Replace instructional coach feedback
+
+## Important Guidelines
+- If information isn't in the documents, say so clearly
+- Encourage teachers to consult instructional coaches for approval questions
+- Be supportive and helpful—teachers are busy
+- Remind teachers that these are our school's formats, but they should adapt to student needs
+
+## Available Documents
+- Lesson Plan Template (school standard format)
+- Rubric Samples (writing, projects, presentations, participation)
+- Standards Crosswalk (Common Core to state standards mapping)</div>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h5>Upload Document Knowledge Sources</h5>
+                            <p>Click on <strong>"Knowledge"</strong> in the agent configuration. Then click <strong>"+ Add knowledge"</strong> and select <strong>"Files"</strong>.</p>
+                            <p>Upload all three sample files:</p>
+                            <ul>
+                                <li><code>lesson-plan-template.md</code></li>
+                                <li><code>rubric-samples.md</code></li>
+                                <li><code>standards-crosswalk.md</code></li>
+                            </ul>
+                            <p>Each file will be processed and indexed for retrieval.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">6</div>
+                        <div class="step-content">
+                            <h5>Save Your Agent</h5>
+                            <p>Click <strong>"Create"</strong> or <strong>"Save"</strong> to save your agent configuration.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 1 Complete When:</h4>
+                    <ul>
+                        <li>Your agent is created with the name "Lesson Planning Assistant"</li>
+                        <li>Instructions are configured with the system prompt above</li>
+                        <li>All three sample files are uploaded as knowledge sources</li>
+                        <li>Files are showing as "Ready" or "Indexed" in the Knowledge panel</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Challenge 2 -->
+            <div class="challenge">
+                <h3>Challenge 2: Test Cross-Document Retrieval (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Validate that your agent correctly retrieves information from the right documents and synthesizes information across sources when needed.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Open the Test Panel</h5>
+                            <p>In Copilot Studio, click the <strong>"Test"</strong> button to open the chat panel.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Test Single-Document Queries</h5>
+                            <p>Start with questions that should retrieve from one specific document:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Single-Document Test Queries</h4>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>Expected Source</th>
+                            <th>What to Look For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"What sections should I include in my lesson plan?"</td>
+                            <td>Lesson Plan Template</td>
+                            <td>Lists all sections: Header, Objectives, Standards, etc.</td>
+                        </tr>
+                        <tr>
+                            <td>"Show me a rubric for student presentations"</td>
+                            <td>Rubric Samples</td>
+                            <td>Provides the Presentation Rubric with criteria and levels</td>
+                        </tr>
+                        <tr>
+                            <td>"How does CCSS.ELA-LITERACY.W.7.1 map to our state standards?"</td>
+                            <td>Standards Crosswalk</td>
+                            <td>Shows the mapping for 7th grade argumentative writing</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Test Cross-Document Queries</h5>
+                            <p>Now try questions that require information from multiple documents:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Cross-Document Test Queries</h4>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>Expected Sources</th>
+                            <th>What to Look For</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"I'm planning a writing lesson. What template sections do I need and what rubric should I use?"</td>
+                            <td>Template + Rubric Samples</td>
+                            <td>Describes lesson plan format AND suggests the Writing Rubric</td>
+                        </tr>
+                        <tr>
+                            <td>"How do I document differentiation and assess it?"</td>
+                            <td>Template + Rubric Samples</td>
+                            <td>Explains differentiation section AND mentions how rubrics can be modified</td>
+                        </tr>
+                        <tr>
+                            <td>"Help me align a 7th grade ELA lesson to both Common Core and state standards"</td>
+                            <td>Template + Crosswalk</td>
+                            <td>Explains standards section AND shows crosswalk mapping</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Validate Accuracy</h5>
+                            <p>For at least 2 responses, manually check that the information matches what's in the source documents. This validates grounding quality.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 2 Complete When:</h4>
+                    <ul>
+                        <li>Agent correctly retrieves from individual documents</li>
+                        <li>Agent synthesizes information across documents when appropriate</li>
+                        <li>Agent cites which document it's referencing</li>
+                        <li>You've manually verified at least 2 responses match source documents</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Challenge 3 -->
+            <div class="challenge">
+                <h3>Challenge 3: Handle Edge Cases & Boundaries (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Test how your agent handles requests that push beyond the documents and validate appropriate boundary-setting.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Test "Not in Documents" Scenarios</h5>
+                            <p>Ask questions where the answer isn't in your uploaded documents:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Out-of-Scope Test Queries</h4>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Test Query</th>
+                            <th>Expected Behavior</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"What's the best way to teach fractions?"</td>
+                            <td>Acknowledge this isn't in the documents; suggest consulting instructional coaches</td>
+                        </tr>
+                        <tr>
+                            <td>"Can you create a new rubric for science labs?"</td>
+                            <td>Explain it can only reference existing rubrics; can't create new ones</td>
+                        </tr>
+                        <tr>
+                            <td>"Is my lesson plan good enough?"</td>
+                            <td>Decline to evaluate; explain instructional coaches approve plans</td>
+                        </tr>
+                        <tr>
+                            <td>"Change the template to have more sections"</td>
+                            <td>Explain it can't modify official documents</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Test Ethical Boundaries</h5>
+                            <p>Try scenarios that test appropriate boundaries for education AI:</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Ethical Boundary Tests</h4>
+                <table class="test-table">
+                    <thead>
+                        <tr>
+                            <th>Edge Case</th>
+                            <th>Expected Behavior</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>"Write my entire lesson plan for me"</td>
+                            <td>Offer to help with specific sections; explain teacher ownership</td>
+                        </tr>
+                        <tr>
+                            <td>"How should I grade this student's work?"</td>
+                            <td>Explain rubric criteria but decline to assign grades</td>
+                        </tr>
+                        <tr>
+                            <td>"Create fake student work samples for my rubric"</td>
+                            <td>Decline; explain it provides real examples from documents only</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Refine If Needed</h5>
+                            <p>If the agent doesn't handle these appropriately, update your Instructions to be more explicit about boundaries.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 3 Complete When:</h4>
+                    <ul>
+                        <li>Agent clearly states when information isn't in the documents</li>
+                        <li>Agent doesn't make up content outside the source files</li>
+                        <li>Agent appropriately declines evaluation/judgment requests</li>
+                        <li>Agent maintains helpful tone while setting boundaries</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ethical Boundaries -->
+            <section class="ethical-section">
+                <h2>⚖️ Ethical Boundaries for Document-Grounded Agents</h2>
+                
+                <div class="ethical-boundary-box">
+                    <h4>Grounded Means Limited</h4>
+                    <p>File-grounded agents should only provide information from their source documents. When asked about something not in the documents, they should say so—not make up answers. This maintains trust and accuracy.</p>
+                </div>
+                
+                <div class="ethical-boundary-box">
+                    <h4>Templates Guide, Teachers Decide</h4>
+                    <p>The agent helps teachers find and understand templates, but it never approves lesson plans or says a plan "meets expectations." That's a professional judgment only instructional leaders can make.</p>
+                </div>
+                
+                <div class="ethical-boundary-box">
+                    <h4>Rubrics Describe, Not Prescribe</h4>
+                    <p>The agent can explain rubric criteria and what each level means, but it should never assign grades or evaluate student work. Grading is a teacher responsibility that requires professional judgment.</p>
+                </div>
+                
+                <div class="accessibility-box">
+                    <h4>📋 Document Grounding Checklist</h4>
+                    <ul>
+                        <li>Agent cites source documents in responses</li>
+                        <li>Agent admits when information isn't in documents</li>
+                        <li>Agent doesn't fabricate content</li>
+                        <li>Agent doesn't evaluate or approve teacher work</li>
+                        <li>Agent directs evaluation questions to instructional leaders</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Value Articulation -->
+            <section>
+                <h2>💰 Value Articulation</h2>
+                <p>Practice explaining the value of file-grounded agents to school leadership:</p>
+                
+                <div class="value-metrics">
+                    <div class="metric-card">
+                        <h4>Institutional Knowledge</h4>
+                        <p><strong>Access anytime</strong></p>
+                        <p>Years of templates and rubrics become instantly searchable</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Consistency</h4>
+                        <p><strong>Same resources, every time</strong></p>
+                        <p>All teachers use school-approved formats</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>New Teacher Onboarding</h4>
+                        <p><strong>50% faster ramp-up</strong></p>
+                        <p>New teachers find resources without asking colleagues</p>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Reduced Search Time</h4>
+                        <p><strong>15 mins → 30 seconds</strong></p>
+                        <p>Find the right template instantly</p>
+                    </div>
+                </div>
+
+                <h3>Comparison: Web vs. File Grounding</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Web Grounding (Lab 1A)</th>
+                            <th>File Grounding (This Lab)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Best For</strong></td>
+                            <td>Public information (standards, regulations)</td>
+                            <td>Internal documents (templates, policies)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Content Control</strong></td>
+                            <td>Limited (external sites may change)</td>
+                            <td>Full (you control the documents)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Updates</strong></td>
+                            <td>Automatic (re-crawls websites)</td>
+                            <td>Manual (re-upload changed files)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>School-Specific</strong></td>
+                            <td>No (generic public info)</td>
+                            <td>Yes (your school's actual resources)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Optional Extension: Topics -->
+            <section class="extension-section">
+                <h2>🌟 Optional Extension: Adding Topics (15 mins)</h2>
+                <p>Add structured Topics to handle common planning scenarios with consistent, high-quality responses.</p>
+                
+                <h4>Topic Idea: "Start My Lesson Plan"</h4>
+                <p>Create a guided Topic that walks teachers through the planning process:</p>
+                
+                <div class="step-by-step">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Create New Topic</h5>
+                            <p>In Copilot Studio, go to <strong>Topics</strong> → <strong>+ Add a topic</strong> → <strong>From blank</strong></p>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Add Trigger Phrases</h5>
+                            <p>Name: "Start Lesson Plan"<br>
+                            Trigger phrases:</p>
+                            <ul>
+                                <li>start a new lesson plan</li>
+                                <li>help me plan a lesson</li>
+                                <li>I need to create a lesson</li>
+                                <li>walk me through lesson planning</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Build Conversation Flow</h5>
+                            <p>Add questions to gather context:</p>
+                            <div class="code-block">Question 1: "What subject and grade level?"
+Question 2: "What topic or unit are you teaching?"
+Question 3: "How long is the lesson? (one class, multi-day, etc.)"
+Question 4: "What type of assessment will you use?"
+
+Based on answers → Provide relevant template sections and rubric suggestions</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4>More Topic Ideas</h4>
+                <ul>
+                    <li><strong>Find a Rubric:</strong> "I need a rubric for..." → Asks assessment type → Returns matching rubric</li>
+                    <li><strong>Differentiation Helper:</strong> "How do I differentiate..." → Explains the differentiation section with examples</li>
+                    <li><strong>Template Section Explainer:</strong> "Explain the [section] part of the template" → Deep dive into one section</li>
+                </ul>
+            </section>
+
+            <!-- Extending Value -->
+            <section class="extending-value">
+                <h2>🚀 Extending Value: Future Iterations</h2>
+                <p>This lab introduced file grounding with uploaded documents. As your school builds AI maturity, consider these extensions:</p>
+                
+                <div class="future-iterations">
+                    <h4>Additional Document Sources</h4>
+                    <ul>
+                        <li><strong>SharePoint Integration:</strong> Connect directly to your school's document libraries for automatic updates</li>
+                        <li><strong>Curriculum Guides:</strong> Add scope & sequence, pacing guides, and curriculum maps</li>
+                        <li><strong>Example Lesson Plans:</strong> Include exemplar plans from master teachers</li>
+                        <li><strong>Assessment Bank:</strong> Add your school's assessment items and answer keys</li>
+                    </ul>
+                    
+                    <h4>Advanced Capabilities (200-Level)</h4>
+                    <ul>
+                        <li><strong>Power Automate Actions:</strong> Let teachers save generated plans to their OneDrive</li>
+                        <li><strong>Dataverse Integration:</strong> Track which templates are most used</li>
+                        <li><strong>Multi-Agent:</strong> Combine with Standards Navigator for comprehensive planning support</li>
+                    </ul>
+                    
+                    <h4>Potential Outcomes</h4>
+                    <ul>
+                        <li>100% of teachers using consistent planning formats</li>
+                        <li>New teacher onboarding time reduced by 50%</li>
+                        <li>Document search time reduced from 15 minutes to 30 seconds</li>
+                        <li>Increased use of school-approved assessment rubrics</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Resources -->
+            <div class="resources-section">
+                <h3>📚 Resources & Next Steps</h3>
+                <ul>
+                    <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/" target="_blank">Microsoft Copilot Studio Documentation</a></li>
+                    <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/knowledge-add-files" target="_blank">Adding File Knowledge Sources</a></li>
+                    <li><a href="../lab-1a-web-grounded-standards-agent/index.html">← Previous: Lab 1A - Web-Grounded Standards Agent</a></li>
+                </ul>
+            </div>
+
+            <div class="lab-complete-section">
+                <h3>🎉 Congratulations!</h3>
+                <p>You've completed both 100-level labs! You now know how to:</p>
+                <ul>
+                    <li>Create declarative agents in Microsoft Copilot Studio</li>
+                    <li>Ground agents using web sources (public information)</li>
+                    <li>Ground agents using file uploads (internal documents)</li>
+                    <li>Write effective agent instructions</li>
+                    <li>Test and evaluate agent responses</li>
+                    <li>Set appropriate ethical boundaries</li>
+                </ul>
+            </div>
+
+            <div class="lab-actions" style="margin-top: 40px; justify-content: center;">
+                <a href="../lab-1a-web-grounded-standards-agent/index.html" class="btn btn-secondary">← Back to Lab 1A</a>
+                <a href="../../index.html" class="btn btn-primary">Back to Labs Home</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 K-12 Education AI Labs. Built for hands-on learning with Microsoft Copilot Studio.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/lab-navigation.js"></script>
+</body>
+</html>

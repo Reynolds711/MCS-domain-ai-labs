@@ -1,0 +1,122 @@
+[
+  {
+    "standard_id": "CCSS.ELA-LITERACY.RL.8.1",
+    "grade": "8",
+    "subject": "English Language Arts",
+    "domain": "Reading: Literature",
+    "standard": "Cite the textual evidence that most strongly supports an analysis of what the text says explicitly as well as inferences drawn from the text.",
+    "description": "Students analyze text and cite specific evidence to support their analysis and inferences.",
+    "keywords": ["textual evidence", "inference", "analysis", "citing sources"],
+    "example_activities": [
+      "Close reading with annotation",
+      "Evidence-based discussion",
+      "Literary analysis essay",
+      "Quote sandwich paragraph practice"
+    ]
+  },
+  {
+    "standard_id": "CCSS.ELA-LITERACY.W.8.1",
+    "grade": "8",
+    "subject": "English Language Arts",
+    "domain": "Writing",
+    "standard": "Write arguments to support claims with clear reasons and relevant evidence.",
+    "description": "Students write persuasive texts using logical reasoning, credible evidence, and appropriate organization.",
+    "keywords": ["argument", "claim", "evidence", "persuasive writing", "reasoning"],
+    "example_activities": [
+      "Persuasive essay on current events",
+      "Debate preparation and position papers",
+      "Editorial writing",
+      "Claim-evidence-reasoning (CER) paragraphs"
+    ]
+  },
+  {
+    "standard_id": "CCSS.MATH.CONTENT.7.RP.A.2",
+    "grade": "7",
+    "subject": "Mathematics",
+    "domain": "Ratios and Proportional Relationships",
+    "standard": "Recognize and represent proportional relationships between quantities.",
+    "description": "Students identify, graph, and solve problems involving proportional relationships.",
+    "keywords": ["ratio", "proportion", "unit rate", "constant of proportionality"],
+    "example_activities": [
+      "Unit rate word problems",
+      "Graphing proportional relationships",
+      "Recipe scaling activities",
+      "Scale model projects"
+    ]
+  },
+  {
+    "standard_id": "NGSS.MS-LS1-6",
+    "grade": "6-8",
+    "subject": "Science",
+    "domain": "Life Science",
+    "standard": "Construct a scientific explanation based on evidence for the role of photosynthesis in the cycling of matter and flow of energy into and out of organisms.",
+    "description": "Students explain how photosynthesis converts light energy to chemical energy and cycles matter through ecosystems.",
+    "keywords": ["photosynthesis", "energy flow", "matter cycling", "chemical energy", "producers"],
+    "example_activities": [
+      "Photosynthesis lab investigation",
+      "Energy pyramid construction",
+      "Plant growth experiments",
+      "Food web analysis"
+    ]
+  },
+  {
+    "standard_id": "NGSS.MS-PS3-5",
+    "grade": "6-8",
+    "subject": "Science",
+    "domain": "Physical Science",
+    "standard": "Construct, use, and present arguments to support the claim that when the kinetic energy of an object changes, energy is transferred to or from the object.",
+    "description": "Students explain energy transfer and transformation using evidence and reasoning.",
+    "keywords": ["kinetic energy", "energy transfer", "energy transformation", "motion"],
+    "example_activities": [
+      "Roller coaster energy lab",
+      "Pendulum investigations",
+      "Collision experiments",
+      "Energy transfer diagrams"
+    ]
+  },
+  {
+    "standard_id": "CCSS.ELA-LITERACY.RI.7.1",
+    "grade": "7",
+    "subject": "English Language Arts",
+    "domain": "Reading: Informational Text",
+    "standard": "Cite several pieces of textual evidence to support analysis of what the text says explicitly as well as inferences drawn from the text.",
+    "description": "Students use multiple pieces of evidence from informational texts to support their understanding and analysis.",
+    "keywords": ["informational text", "textual evidence", "inference", "analysis", "multiple sources"],
+    "example_activities": [
+      "Article annotation and analysis",
+      "Research paper with citations",
+      "Compare and contrast articles",
+      "Evidence-based presentations"
+    ]
+  },
+  {
+    "standard_id": "CCSS.MATH.CONTENT.8.EE.C.8",
+    "grade": "8",
+    "subject": "Mathematics",
+    "domain": "Expressions and Equations",
+    "standard": "Analyze and solve pairs of simultaneous linear equations.",
+    "description": "Students solve systems of linear equations using graphing, substitution, and elimination methods.",
+    "keywords": ["systems of equations", "linear equations", "graphing", "substitution", "elimination"],
+    "example_activities": [
+      "Real-world systems problems",
+      "Graphing systems on coordinate plane",
+      "Substitution method practice",
+      "Elimination method applications"
+    ]
+  },
+  {
+    "standard_id": "C3.D2.His.3.6-8",
+    "grade": "6-8",
+    "subject": "Social Studies",
+    "domain": "History",
+    "standard": "Use questions generated about individuals and groups to analyze why they, and the developments they shaped, are seen as historically significant.",
+    "description": "Students analyze historical significance by asking questions about individuals, groups, and events.",
+    "keywords": ["historical significance", "inquiry", "analysis", "cause and effect"],
+    "example_activities": [
+      "Historical figure biography project",
+      "Cause and effect timeline",
+      "Document-based questioning",
+      "Historical significance debate"
+    ]
+  }
+]

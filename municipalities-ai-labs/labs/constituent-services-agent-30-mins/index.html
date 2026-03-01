@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constituent Services Agent Lab - 30 mins</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="lab-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Back to Labs</a>
+            </div>
+            <div class="lab-title-nav">Constituent Services Agent</div>
+        </div>
+    </nav>
+
+    <main class="container lab-container">
+        <div class="lab-content">
+            <h1>🏛️ Build a Constituent Services Agent</h1>
+            
+            <div class="lab-meta">
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Duration: 30 minutes</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Level: Beginner</span>
+                </div>
+                <div class="meta-item">
+                    <span>🎯</span>
+                    <span>3 Challenges</span>
+                </div>
+            </div>
+
+            <section>
+                <h2>Overview</h2>
+                <p>In this hands-on lab, you'll build a declarative AI agent that helps city residents find information about permits, services, and city departments. Your agent will reduce repetitive inquiries to city staff while providing 24/7 access to government services.</p>
+                
+                <div class="info-box">
+                    <strong>💡 What You'll Learn:</strong>
+                    <ul>
+                        <li>How to design AI agents for civic engagement</li>
+                        <li>Grounding agents in authoritative government data</li>
+                        <li>Creating accessible, plain-language interfaces</li>
+                        <li>Implementing appropriate boundaries for government AI</li>
+                    </ul>
+                </div>
+
+                <div class="consulting-framework">
+                    <h3>Consulting Framework</h3>
+                    <ul>
+                        <li><strong>Customer:</strong> City of Maplewood residents (pop. 35,000)</li>
+                        <li><strong>Problem:</strong> City hall receives 200+ calls/emails daily with repetitive questions about permits, trash collection, utilities</li>
+                        <li><strong>Solution:</strong> AI agent that answers common questions 24/7, reducing staff burden by 40-60%</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Access to Microsoft Copilot Studio (or compatible AI platform)</li>
+                    <li>Basic understanding of AI agents and prompting</li>
+                    <li>Familiarity with local government operations (helpful but not required)</li>
+                    <li>Code editor (VS Code recommended)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Lab Scenario</h2>
+                <p>You're consulting for the <strong>City of Maplewood</strong>, a small municipality with limited IT budget and staff. The city receives hundreds of routine inquiries daily: "How do I get a building permit?", "When is my trash day?", "Who do I call about a pothole?"</p>
+                
+                <p>The City Manager wants to improve constituent service without hiring additional staff. Your task is to build an AI agent that provides accurate, accessible information while maintaining appropriate government transparency and accountability.</p>
+            </section>
+
+            <!-- Challenge 1 -->
+            <div class="challenge">
+                <h3>Challenge 1: "How Do I...?" Services Guide (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Scenario:</strong> Residents frequently ask "How do I get a permit?", "How do I report a problem?", "How do I pay my water bill?" Build an agent that guides them through common city services using authoritative city data.
+                </div>
+
+                <h4>Tasks</h4>
+                <ol>
+                    <li>Review the sample city services data structure below</li>
+                    <li>Create a declarative agent with a system prompt focused on civic service</li>
+                    <li>Configure the agent to provide step-by-step guidance</li>
+                    <li>Test with the sample queries provided</li>
+                </ol>
+
+                <h4>Sample City Services Data</h4>
+                <div class="code-block">{
+  "service_id": "building_permit",
+  "service_name": "Building Permit Application",
+  "category": "Permits & Licenses",
+  "description": "Required for new construction, additions, structural changes, or major renovations",
+  "who_needs_this": [
+    "Homeowners planning renovations",
+    "Contractors doing structural work",
+    "Businesses modifying buildings"
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "action": "Determine if you need a permit",
+      "details": "Contact Building Department at 555-0123 or visit city website permit lookup tool"
+    },
+    {
+      "step": 2,
+      "action": "Gather required documents",
+      "details": "Property survey, construction plans, contractor license (if applicable)"
+    },
+    {
+      "step": 3,
+      "action": "Submit application",
+      "details": "Submit in person at City Hall Room 201 or online at cityofmaplewood.gov/permits"
+    },
+    {
+      "step": 4,
+      "action": "Pay fees",
+      "details": "Fees vary by project scope. Calculator available at cityofmaplewood.gov/permitfees"
+    },
+    {
+      "step": 5,
+      "action": "Schedule inspection",
+      "details": "Call 555-0124 at least 48 hours before you need inspection"
+    }
+  ],
+  "required_documents": [
+    "Completed application form",
+    "Property survey or site plan",
+    "Construction drawings/blueprints",
+    "Contractor license and insurance (if using contractor)"
+  ],
+  "fees": "Varies by project: $50-$500. Use online calculator for estimate.",
+  "processing_time": "7-14 business days for review",
+  "contact": {
+    "department": "Building & Inspections",
+    "phone": "555-0123",
+    "email": "building@cityofmaplewood.gov",
+    "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+  },
+  "faq": [
+    {
+      "question": "Do I need a permit for a deck?",
+      "answer": "Yes, if the deck is over 30 inches high or attached to the house."
+    },
+    {
+      "question": "How long is my permit valid?",
+      "answer": "Permits are valid for 6 months. Extensions available upon request."
+    }
+  ]
+}</div>
+
+                <h4>Sample System Prompt</h4>
+                <div class="code-block">You are the City of Maplewood Virtual Assistant.
+You help residents find information about city services, permits, and departments.
+
+Your capabilities:
+- Provide step-by-step guidance for city services
+- Explain permit requirements and processes
+- Direct residents to the right department or staff member
+- Answer questions using authoritative city data
+
+When answering:
+- Use plain language (avoid government jargon)
+- Provide specific steps, not just general information
+- Always include contact information for follow-up
+- Mention both online and in-person options
+- State office hours and processing times
+
+What you CANNOT do:
+- Make decisions on permit approval
+- Provide legal advice
+- Access personal account information
+- Guarantee outcomes or timelines
+- Override city policies or ordinances
+
+Always remind residents:
+- This is general information; specific cases may vary
+- For complex situations, contact the department directly
+- Human staff are available during business hours
+
+Available data: City services database, permit information, 
+department contacts, FAQs, and city ordinances.</div>
+
+                <h4>Test Queries</h4>
+                <ul>
+                    <li>"How do I get a building permit?"</li>
+                    <li>"What documents do I need for a building permit?"</li>
+                    <li>"How much does a building permit cost?"</li>
+                    <li>"Do I need a permit to build a fence?"</li>
+                    <li>"Who do I call with questions about my permit application?"</li>
+                </ul>
+
+                <div class="success-criteria">
+                    <h4>✅ Success Criteria</h4>
+                    <ul>
+                        <li>Agent provides clear, step-by-step instructions</li>
+                        <li>Agent uses plain language (avoids jargon)</li>
+                        <li>Agent includes specific contact information</li>
+                        <li>Agent mentions both online and in-person options</li>
+                        <li>Agent clarifies limitations (doesn't guarantee approval)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Tip:</strong> Use grounding/RAG to connect your agent to city services data. In Copilot Studio, add your services JSON as a knowledge source. The agent should retrieve official information, not generate generic advice.
+                </div>
+
+                <div class="accessibility-box">
+                    <h4>♿ Accessibility Requirement</h4>
+                    <p><strong>Plain language is required for government communications.</strong> Your agent must use simple, clear language accessible to all reading levels. Avoid acronyms without explanation. Provide information in multiple formats (steps, phone, online).</p>
+                </div>
+            </div>
+
+            <!-- Challenge 2 -->
+            <div class="challenge">
+                <h3>Challenge 2: Department Routing Assistant (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Scenario:</strong> Residents often don't know which department to contact for their issue. "Who handles potholes?", "Where do I report a barking dog?", "Who do I talk to about my tax bill?" Build an agent that routes inquiries to the right department.
+                </div>
+
+                <h4>Tasks</h4>
+                <ol>
+                    <li>Review department contact and responsibility data</li>
+                    <li>Update your agent to handle department routing</li>
+                    <li>Configure the agent to match issues to departments</li>
+                    <li>Test with various constituent questions</li>
+                </ol>
+
+                <h4>Sample Department Contact Data</h4>
+                <div class="code-block">{
+  "department_id": "public_works",
+  "department_name": "Public Works",
+  "responsibilities": [
+    "Street maintenance and repair",
+    "Pothole repairs",
+    "Street sweeping",
+    "Snow removal",
+    "Traffic signs and signals",
+    "Storm water management",
+    "Sidewalk maintenance"
+  ],
+  "contact": {
+    "main_phone": "555-0150",
+    "emergency_phone": "555-0911",
+    "email": "publicworks@cityofmaplewood.gov",
+    "office_location": "City Services Building, 456 Main Street",
+    "hours": "Monday-Friday 7:00 AM - 3:30 PM"
+  },
+  "online_services": [
+    {
+      "service": "Report a Pothole",
+      "url": "cityofmaplewood.gov/report-pothole"
+    },
+    {
+      "service": "Request Street Repair",
+      "url": "cityofmaplewood.gov/street-repair"
+    }
+  ],
+  "response_time": "Non-emergency requests: 3-5 business days",
+  "emergency_contact": "For emergency road hazards, call 555-0911"
+}</div>
+
+                <h4>Extended System Prompt Addition</h4>
+                <div class="code-block">You also help residents find the right department for their needs.
+
+For department routing:
+- Match the resident's issue to the appropriate department
+- Provide specific contact information (phone, email, location)
+- Explain what that department handles
+- Mention online reporting options when available
+- Distinguish between routine and emergency contacts
+
+When routing:
+- Ask clarifying questions if the issue is unclear
+- Provide the department's hours of operation
+- Set realistic expectations for response times
+- Offer alternative contacts if primary is unavailable
+
+For emergencies:
+- Fire, medical, crime in progress → Call 911
+- After-hours urgent city issues → Call 555-0911
+- Never delay emergency calls to gather information</div>
+
+                <h4>Test Queries</h4>
+                <ul>
+                    <li>"Who do I call about a pothole on my street?"</li>
+                    <li>"There's a barking dog in my neighborhood. Who handles that?"</li>
+                    <li>"I have a question about my water bill"</li>
+                    <li>"Who do I contact about a broken street light?"</li>
+                    <li>"How do I report graffiti on city property?"</li>
+                    <li>"There's a tree down blocking the road" (emergency test)</li>
+                </ul>
+
+                <div class="success-criteria">
+                    <h4>✅ Success Criteria</h4>
+                    <ul>
+                        <li>Agent correctly matches issues to departments</li>
+                        <li>Agent provides complete contact information</li>
+                        <li>Agent distinguishes routine vs. emergency contacts</li>
+                        <li>Agent mentions online reporting options</li>
+                        <li>Agent sets appropriate expectations for response time</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Important:</strong> For true emergencies (fire, medical, crime in progress), the agent should immediately direct to 911. Don't delay emergency response by trying to gather details. Train your agent to recognize emergency keywords and prioritize safety.
+                </div>
+            </div>
+
+            <!-- Challenge 3 -->
+            <div class="challenge">
+                <h3>Challenge 3: Service Status & Explanations (10 mins)</h3>
+                
+                <div class="challenge-scenario">
+                    <strong>Scenario:</strong> Residents want to know the status of their requests or understand why something works a certain way. "Why hasn't my pothole been fixed?", "When will my street be paved?", "Why is my trash pickup on Tuesday?" Build an agent that provides status info and explanations.
+                </div>
+
+                <h4>Tasks</h4>
+                <ol>
+                    <li>Review service status and scheduling data</li>
+                    <li>Configure the agent to explain city processes</li>
+                    <li>Add capability to provide realistic timelines</li>
+                    <li>Test with status and "why" questions</li>
+                </ol>
+
+                <h4>Sample Service Status Data</h4>
+                <div class="code-block">{
+  "service_type": "pothole_repair",
+  "typical_timeline": {
+    "report_received": "Day 0",
+    "inspection": "Within 2 business days",
+    "priority_assessment": "Day 2-3",
+    "repair_scheduled": "Based on priority",
+    "repair_completed": "3-10 business days from report"
+  },
+  "priority_levels": {
+    "emergency": {
+      "description": "Hazard to traffic or safety",
+      "response_time": "Within 24 hours"
+    },
+    "high": {
+      "description": "Significant damage, high traffic area",
+      "response_time": "3-5 business days"
+    },
+    "medium": {
+      "description": "Moderate damage, moderate traffic",
+      "response_time": "5-10 business days"
+    },
+    "low": {
+      "description": "Minor damage, low traffic area",
+      "response_time": "Scheduled with other repairs in area"
+    }
+  },
+  "factors_affecting_timeline": [
+    "Weather conditions (can't repair in rain/freezing temps)",
+    "Availability of materials",
+    "Volume of requests citywide",
+    "Budget constraints",
+    "Seasonal factors (winter freeze-thaw creates more potholes)"
+  ],
+  "how_to_check_status": "Call Public Works at 555-0150 with your work order number or address"
+}</div>
+
+                <h4>Service Status System Prompt Addition</h4>
+                <div class="code-block">You also help residents understand service timelines and city processes.
+
+For status inquiries:
+- Explain typical timelines for services
+- Describe the process step-by-step
+- Identify factors that may affect timing
+- Provide ways to check specific status
+- Set realistic expectations
+
+When explaining "why":
+- Give clear, honest reasons for processes
+- Explain constraints (budget, weather, regulations)
+- Acknowledge resident frustration when appropriate
+- Focus on what the city IS doing, not just limitations
+
+Important principles:
+- Be transparent about limitations
+- Don't make promises you can't keep
+- Explain priority systems fairly
+- Offer specific ways to follow up
+- Use empathetic, respectful tone
+
+For specific cases:
+- Always direct to department for exact status of their request
+- Don't speculate on individual case outcomes
+- Provide general timelines, note specific cases may vary</div>
+
+                <h4>Test Queries</h4>
+                <ul>
+                    <li>"I reported a pothole last week. Why hasn't it been fixed?"</li>
+                    <li>"How long does it take to fix a pothole?"</li>
+                    <li>"Why does my street never get paved?"</li>
+                    <li>"When will the city fix the cracked sidewalk on Elm Street?"</li>
+                    <li>"How do I check the status of my service request?"</li>
+                </ul>
+
+                <div class="success-criteria">
+                    <h4>✅ Success Criteria</h4>
+                    <ul>
+                        <li>Agent explains typical timelines clearly</li>
+                        <li>Agent describes the process step-by-step</li>
+                        <li>Agent acknowledges factors that affect timing</li>
+                        <li>Agent provides ways to check specific status</li>
+                        <li>Agent maintains respectful, empathetic tone</li>
+                        <li>Agent doesn't make specific promises or guarantees</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <strong>💡 Communication Tip:</strong> Government AI must balance transparency with avoiding over-promises. Use phrases like "typically takes," "based on priority," and "factors that may affect timeline." Always provide a way to contact a human for specific case status.
+                </div>
+
+                <div class="accessibility-box">
+                    <h4>♿ Equity & Accessibility</h4>
+                    <p><strong>All residents deserve equal access to information.</strong> Your agent should explain priority systems fairly, acknowledge resource constraints honestly, and ensure that all neighborhoods receive the same quality of information and service guidance.</p>
+                </div>
+            </div>
+
+            <!-- Bonus Challenges -->
+            <div class="bonus-challenges">
+                <h3>🌟 Bonus Challenges</h3>
+                <p>If you complete the main challenges early, try these advanced scenarios:</p>
+                <ul>
+                    <li><strong>Multilingual Support:</strong> Add Spanish language capability for bilingual city</li>
+                    <li><strong>Hours & Closures:</strong> Agent knows when offices are closed and provides alternatives</li>
+                    <li><strong>Seasonal Information:</strong> Winter parking rules, summer pool hours, seasonal services</li>
+                    <li><strong>Accessibility Features:</strong> Support for screen readers, text-to-speech compatibility</li>
+                    <li><strong>Event Integration:</strong> Answer questions about city council meetings, public hearings, community events</li>
+                    <li><strong>Utility Account Info:</strong> Explain bills, payment options (without accessing specific accounts)</li>
+                </ul>
+            </div>
+
+            <!-- Resources -->
+            <div class="resources-section">
+                <h3>📚 Resources & References</h3>
+                <ul>
+                    <li><a href="https://www.plainlanguage.gov/" target="_blank">Plain Language Guidelines (Federal)</a></li>
+                    <li><a href="https://digital.gov/topics/customer-experience/" target="_blank">Digital.gov - Customer Experience</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank">Web Accessibility Guidelines (WCAG)</a></li>
+                    <li><a href="https://learn.microsoft.com/microsoft-copilot-studio/" target="_blank">Microsoft Copilot Studio Documentation</a></li>
+                    <li><a href="https://www.icma.org/" target="_blank">International City/County Management Association</a></li>
+                </ul>
+            </div>
+
+            <section>
+                <h2>Value Articulation</h2>
+                <p>Practice articulating the value of your agent using this municipal framework:</p>
+                
+                <div class="value-metrics">
+                    <div class="metric-card">
+                        <h4>Staff Time Saved</h4>
+                        <p><strong>15 hours per week</strong></p>
+                        <p>200 calls/week × 40% reduction × 4.5 min avg = 360 min (6 hrs)<br>
+                        Plus email reduction: ~9 hrs/week</p>
+                        <em>Annual savings: $19,500 at $25/hr avg staff cost</em>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Constituent Satisfaction</h4>
+                        <p><strong>24/7 service access</strong></p>
+                        <p>60% of inquiries occur outside business hours<br>
+                        Residents get immediate answers vs. waiting for callback</p>
+                        <em>Improved accessibility for working families</em>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Equity Improved</h4>
+                        <p><strong>Consistent information for all</strong></p>
+                        <p>All residents get same quality responses<br>
+                        Multilingual support reaches more residents<br>
+                        Reduces "who you know" advantage</p>
+                        <em>Levels playing field for city services</em>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Cost Avoidance</h4>
+                        <p><strong>Alternative to additional FTE</strong></p>
+                        <p>Agent vs. hiring front desk staff ($45K/year)<br>
+                        Or vs. call center contract ($30K+/year)</p>
+                        <em>Sustainable solution for small budget</em>
+                    </div>
+                </div>
+            </section>
+
+            <div class="lab-actions" style="margin-top: 40px; justify-content: center;">
+                <a href="../../index.html" class="btn btn-secondary">← Back to Labs</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Small Municipalities AI Labs. Built for hands-on learning with Microsoft Copilot Studio.</p>
+        </div>
+    </footer>
+
+    <script src="../../js/lab-navigation.js"></script>
+</body>
+</html>

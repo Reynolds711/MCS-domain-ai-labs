@@ -1,0 +1,310 @@
+[
+  {
+    "department_id": "public_works",
+    "department_name": "Public Works",
+    "responsibilities": [
+      "Street maintenance and repair",
+      "Pothole repairs",
+      "Street sweeping",
+      "Snow removal",
+      "Traffic signs and signals",
+      "Storm water management",
+      "Sidewalk maintenance",
+      "Street lighting",
+      "Right-of-way permits"
+    ],
+    "contact": {
+      "main_phone": "555-0150",
+      "emergency_phone": "555-0911",
+      "email": "publicworks@cityofmaplewood.gov",
+      "office_location": "City Services Building, 456 Main Street",
+      "hours": "Monday-Friday 7:00 AM - 3:30 PM"
+    },
+    "online_services": [
+      {
+        "service": "Report a Pothole",
+        "url": "cityofmaplewood.gov/report-pothole"
+      },
+      {
+        "service": "Request Street Repair",
+        "url": "cityofmaplewood.gov/street-repair"
+      },
+      {
+        "service": "Report Street Light Outage",
+        "url": "cityofmaplewood.gov/streetlight"
+      }
+    ],
+    "response_time": "Non-emergency requests: 3-5 business days",
+    "emergency_contact": "For emergency road hazards, call 555-0911",
+    "director": "Tom Martinez",
+    "staff_size": 12
+  },
+  {
+    "department_id": "building_inspections",
+    "department_name": "Building & Inspections",
+    "responsibilities": [
+      "Building permit review and issuance",
+      "Construction inspections",
+      "Code enforcement",
+      "Plan review",
+      "Certificate of occupancy",
+      "Property maintenance violations"
+    ],
+    "contact": {
+      "main_phone": "555-0123",
+      "inspection_line": "555-0124",
+      "email": "building@cityofmaplewood.gov",
+      "office_location": "City Hall, Room 201",
+      "hours": "Monday-Friday 8:00 AM - 4:30 PM"
+    },
+    "online_services": [
+      {
+        "service": "Building Permit Application",
+        "url": "cityofmaplewood.gov/permits"
+      },
+      {
+        "service": "Schedule Inspection",
+        "url": "cityofmaplewood.gov/inspections"
+      },
+      {
+        "service": "Permit Fee Calculator",
+        "url": "cityofmaplewood.gov/permitfees"
+      }
+    ],
+    "response_time": "Permit review: 7-14 business days. Inspections: 48-hour notice required",
+    "building_official": "Sarah Chen, CBO",
+    "inspectors": 3
+  },
+  {
+    "department_id": "planning_zoning",
+    "department_name": "Planning & Zoning",
+    "responsibilities": [
+      "Zoning regulations and compliance",
+      "Land use planning",
+      "Subdivision review",
+      "Variance requests",
+      "Fence permits",
+      "Sign permits",
+      "Historic preservation"
+    ],
+    "contact": {
+      "main_phone": "555-0130",
+      "email": "planning@cityofmaplewood.gov",
+      "office_location": "City Hall, Room 203",
+      "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+    },
+    "online_services": [
+      {
+        "service": "Zoning Map",
+        "url": "cityofmaplewood.gov/zoning-map"
+      },
+      {
+        "service": "Fence Permit Application",
+        "url": "cityofmaplewood.gov/forms/fence-permit"
+      }
+    ],
+    "response_time": "Zoning questions: Same day. Permit review: 3-5 business days",
+    "planning_director": "Michael Rodriguez",
+    "planning_commission_meetings": "First Tuesday of each month, 7:00 PM"
+  },
+  {
+    "department_id": "utility_billing",
+    "department_name": "Utility Billing",
+    "responsibilities": [
+      "Water and sewer billing",
+      "Payment processing",
+      "Account setup and closure",
+      "Payment plans",
+      "Meter reading",
+      "Usage inquiries"
+    ],
+    "contact": {
+      "main_phone": "555-0160",
+      "automated_payment": "555-0161",
+      "email": "utilities@cityofmaplewood.gov",
+      "office_location": "City Hall, Room 105",
+      "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+    },
+    "online_services": [
+      {
+        "service": "Pay Bill Online",
+        "url": "cityofmaplewood.gov/paybill"
+      },
+      {
+        "service": "View Account",
+        "url": "cityofmaplewood.gov/myaccount"
+      },
+      {
+        "service": "Report Leak",
+        "url": "cityofmaplewood.gov/report-leak"
+      }
+    ],
+    "payment_options": [
+      "Online (credit/debit, e-check)",
+      "Phone automated system",
+      "Mail (check or money order)",
+      "In person (cash, check, card)",
+      "Auto-pay enrollment"
+    ],
+    "billing_cycle": "Monthly, bills mailed around the 1st, due on the 15th",
+    "late_fee": "$10 if not paid by due date",
+    "supervisor": "Jennifer Kim"
+  },
+  {
+    "department_id": "police",
+    "department_name": "Police Department",
+    "responsibilities": [
+      "Law enforcement",
+      "Traffic enforcement",
+      "Animal control",
+      "Parking enforcement",
+      "Special event security",
+      "Crime prevention",
+      "Community policing"
+    ],
+    "contact": {
+      "emergency": "911",
+      "non_emergency": "555-0200",
+      "animal_control": "555-0205",
+      "records": "555-0201",
+      "email": "police@cityofmaplewood.gov",
+      "office_location": "Public Safety Building, 789 Oak Avenue",
+      "hours": "24/7 emergency. Office hours: Monday-Friday 8:00 AM - 5:00 PM"
+    },
+    "online_services": [
+      {
+        "service": "File Police Report Online",
+        "url": "cityofmaplewood.gov/police-report"
+      },
+      {
+        "service": "Request Records",
+        "url": "cityofmaplewood.gov/police-records"
+      }
+    ],
+    "response_priority": "Life-threatening emergencies: Immediate. Non-emergency: Within 1 hour.",
+    "chief": "Chief Robert Jackson",
+    "officers": 28
+  },
+  {
+    "department_id": "fire",
+    "department_name": "Fire Department",
+    "responsibilities": [
+      "Fire suppression",
+      "Emergency medical services",
+      "Fire prevention and inspection",
+      "Hazardous materials response",
+      "Fire safety education",
+      "Burn permits"
+    ],
+    "contact": {
+      "emergency": "911",
+      "non_emergency": "555-0300",
+      "fire_prevention": "555-0301",
+      "email": "fire@cityofmaplewood.gov",
+      "office_location": "Fire Station 1, 321 Elm Street",
+      "hours": "24/7 emergency. Office hours: Monday-Friday 8:00 AM - 5:00 PM"
+    },
+    "online_services": [
+      {
+        "service": "Request Fire Safety Inspection",
+        "url": "cityofmaplewood.gov/fire-inspection"
+      },
+      {
+        "service": "Burn Permit Application",
+        "url": "cityofmaplewood.gov/burn-permit"
+      }
+    ],
+    "fire_stations": [
+      {
+        "station": "Station 1",
+        "address": "321 Elm Street",
+        "areas_served": "Downtown, North Maplewood"
+      },
+      {
+        "station": "Station 2",
+        "address": "654 Pine Road",
+        "areas_served": "South Maplewood, Industrial Park"
+      }
+    ],
+    "fire_chief": "Chief Amanda Torres",
+    "firefighters": 24
+  },
+  {
+    "department_id": "parks_recreation",
+    "department_name": "Parks & Recreation",
+    "responsibilities": [
+      "Park maintenance",
+      "Recreation programs",
+      "Community events",
+      "Sports leagues",
+      "Park reservations",
+      "Trail maintenance",
+      "Community center operations"
+    ],
+    "contact": {
+      "main_phone": "555-0140",
+      "program_registration": "555-0141",
+      "email": "parks@cityofmaplewood.gov",
+      "office_location": "Community Center, 987 Park Drive",
+      "hours": "Monday-Friday 8:00 AM - 6:00 PM, Saturday 9:00 AM - 3:00 PM"
+    },
+    "online_services": [
+      {
+        "service": "Reserve Park Shelter",
+        "url": "cityofmaplewood.gov/park-reservations"
+      },
+      {
+        "service": "Register for Programs",
+        "url": "cityofmaplewood.gov/recreation"
+      },
+      {
+        "service": "Report Park Issue",
+        "url": "cityofmaplewood.gov/park-report"
+      }
+    ],
+    "facilities": [
+      "Community Center",
+      "5 neighborhood parks",
+      "2 sports complexes",
+      "Swimming pool (seasonal)",
+      "12 miles of trails"
+    ],
+    "director": "Lisa Nguyen",
+    "staff_size": 8
+  },
+  {
+    "department_id": "city_clerk",
+    "department_name": "City Clerk",
+    "responsibilities": [
+      "Business license processing",
+      "City council meeting agendas and minutes",
+      "Public records requests",
+      "Notary services",
+      "Elections administration",
+      "Passport acceptance"
+    ],
+    "contact": {
+      "main_phone": "555-0100",
+      "email": "cityclerk@cityofmaplewood.gov",
+      "office_location": "City Hall, Room 101",
+      "hours": "Monday-Friday 8:00 AM - 5:00 PM"
+    },
+    "online_services": [
+      {
+        "service": "Business License Application",
+        "url": "cityofmaplewood.gov/business-license"
+      },
+      {
+        "service": "View Council Agendas",
+        "url": "cityofmaplewood.gov/council-agendas"
+      },
+      {
+        "service": "Public Records Request",
+        "url": "cityofmaplewood.gov/records-request"
+      }
+    ],
+    "council_meetings": "Second and fourth Monday of each month, 7:00 PM at City Hall Council Chambers",
+    "city_clerk": "Patricia Moore",
+    "deputy_clerks": 2
+  }
+]

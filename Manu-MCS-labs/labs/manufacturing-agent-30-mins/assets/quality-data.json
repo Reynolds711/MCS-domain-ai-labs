@@ -1,0 +1,72 @@
+{
+  "inspection_period": "2026-01-08 to 2026-01-14",
+  "total_inspections": 1250,
+  "defects_found": 37,
+  "defect_rate": 0.0296,
+  "defect_rate_ppm": 29600,
+  "target_defect_rate": 0.02,
+  "defect_types": [
+    {
+      "type": "Surface finish",
+      "count": 15,
+      "percentage": 40.5,
+      "affected_products": ["Part-A127", "Part-B203"],
+      "severity": "minor",
+      "cost_per_defect": 25
+    },
+    {
+      "type": "Dimensional tolerance",
+      "count": 12,
+      "percentage": 32.4,
+      "affected_products": ["Part-C445"],
+      "severity": "major",
+      "cost_per_defect": 150
+    },
+    {
+      "type": "Material defect",
+      "count": 6,
+      "percentage": 16.2,
+      "affected_products": ["Part-A127"],
+      "severity": "critical",
+      "cost_per_defect": 300
+    },
+    {
+      "type": "Assembly error",
+      "count": 4,
+      "percentage": 10.8,
+      "affected_products": ["Part-D789"],
+      "severity": "major",
+      "cost_per_defect": 200
+    }
+  ],
+  "root_causes": [
+    {
+      "defect_type": "Surface finish",
+      "likely_cause": "Worn cutting tool on CNC-003",
+      "recommended_action": "Replace cutting tool, verify surface finish parameters",
+      "priority": "high"
+    },
+    {
+      "defect_type": "Dimensional tolerance",
+      "likely_cause": "Machine calibration drift on CNC-005",
+      "recommended_action": "Recalibrate machine, verify with CMM inspection",
+      "priority": "critical"
+    },
+    {
+      "defect_type": "Material defect",
+      "likely_cause": "Supplier quality issue - Batch #MX-2401",
+      "recommended_action": "Contact supplier, quarantine remaining batch material",
+      "priority": "critical"
+    },
+    {
+      "defect_type": "Assembly error",
+      "likely_cause": "Insufficient operator training on new procedure",
+      "recommended_action": "Conduct refresher training, update work instructions",
+      "priority": "medium"
+    }
+  ],
+  "trend": "increasing",
+  "previous_week_defect_rate": 0.0189,
+  "previous_week_defects_found": 24,
+  "total_defect_cost": 9875
+}

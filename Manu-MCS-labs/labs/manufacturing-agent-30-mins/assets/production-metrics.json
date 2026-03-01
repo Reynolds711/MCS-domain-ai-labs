@@ -1,0 +1,70 @@
+[
+  {
+    "line_id": "Assembly-002",
+    "shift": "day",
+    "date": "2026-01-14",
+    "metrics": {
+      "planned_production_time": 480,
+      "actual_production_time": 408,
+      "downtime_minutes": 72,
+      "ideal_cycle_time": 2.5,
+      "total_units_produced": 145,
+      "defective_units": 3,
+      "oee": {
+        "availability": 0.85,
+        "performance": 0.89,
+        "quality": 0.98,
+        "overall": 0.74
+      }
+    },
+    "downtime_reasons": [
+      {
+        "reason": "Tool change",
+        "duration_minutes": 25
+      },
+      {
+        "reason": "Material shortage",
+        "duration_minutes": 35
+      },
+      {
+        "reason": "Equipment adjustment",
+        "duration_minutes": 12
+      }
+    ],
+    "bottleneck_detected": true,
+    "bottleneck_station": "Welding Station 2",
+    "bottleneck_impact": "Reduces line throughput by 15%"
+  },
+  {
+    "line_id": "Production-003",
+    "shift": "day",
+    "date": "2026-01-14",
+    "metrics": {
+      "planned_production_time": 480,
+      "actual_production_time": 456,
+      "downtime_minutes": 24,
+      "ideal_cycle_time": 1.8,
+      "total_units_produced": 238,
+      "defective_units": 5,
+      "oee": {
+        "availability": 0.95,
+        "performance": 0.93,
+        "quality": 0.98,
+        "overall": 0.86
+      }
+    },
+    "downtime_reasons": [
+      {
+        "reason": "Planned break",
+        "duration_minutes": 15
+      },
+      {
+        "reason": "Quality inspection",
+        "duration_minutes": 9
+      }
+    ],
+    "bottleneck_detected": false,
+    "bottleneck_station": null,
+    "bottleneck_impact": null
+  }
+]

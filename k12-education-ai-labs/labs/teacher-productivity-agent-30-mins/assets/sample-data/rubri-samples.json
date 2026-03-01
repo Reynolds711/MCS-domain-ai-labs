@@ -1,0 +1,334 @@
+[
+  {
+    "rubric_id": "persuasive_essay_8th",
+    "assignment": "Persuasive Essay - 8th Grade ELA",
+    "aligned_standards": ["CCSS.ELA-LITERACY.W.8.1"],
+    "total_points": 20,
+    "criteria": [
+      {
+        "criterion": "Thesis Statement",
+        "weight": 4,
+        "levels": {
+          "exemplary": {
+            "points": 4,
+            "descriptor": "Clear, compelling thesis with nuanced claim that addresses counterarguments"
+          },
+          "proficient": {
+            "points": 3,
+            "descriptor": "Clear thesis statement with identifiable claim"
+          },
+          "developing": {
+            "points": 2,
+            "descriptor": "Thesis present but unclear or too broad"
+          },
+          "beginning": {
+            "points": 1,
+            "descriptor": "Thesis missing or does not make a claim"
+          }
+        }
+      },
+      {
+        "criterion": "Evidence & Citations",
+        "weight": 5,
+        "levels": {
+          "exemplary": {
+            "points": 5,
+            "descriptor": "Multiple relevant sources cited correctly; evidence strongly supports claim"
+          },
+          "proficient": {
+            "points": 4,
+            "descriptor": "Sources cited with minor errors; evidence supports claim"
+          },
+          "developing": {
+            "points": 3,
+            "descriptor": "Some sources cited; evidence partially supports claim"
+          },
+          "beginning": {
+            "points": 1,
+            "descriptor": "Few or no sources; weak connection to claim"
+          }
+        }
+      },
+      {
+        "criterion": "Organization",
+        "weight": 4,
+        "levels": {
+          "exemplary": {
+            "points": 4,
+            "descriptor": "Logical flow with clear introduction, body paragraphs, and conclusion; smooth transitions"
+          },
+          "proficient": {
+            "points": 3,
+            "descriptor": "Clear structure with introduction, body, and conclusion"
+          },
+          "developing": {
+            "points": 2,
+            "descriptor": "Basic structure present but transitions are weak"
+          },
+          "beginning": {
+            "points": 1,
+            "descriptor": "Lacks clear organization"
+          }
+        }
+      },
+      {
+        "criterion": "Language & Conventions",
+        "weight": 3,
+        "levels": {
+          "exemplary": {
+            "points": 3,
+            "descriptor": "Sophisticated vocabulary; no grammar/spelling errors"
+          },
+          "proficient": {
+            "points": 2,
+            "descriptor": "Appropriate vocabulary; minor grammar/spelling errors"
+          },
+          "developing": {
+            "points": 1,
+            "descriptor": "Basic vocabulary; multiple errors that don't impede understanding"
+          },
+          "beginning": {
+            "points": 0,
+            "descriptor": "Limited vocabulary; errors impede understanding"
+          }
+        }
+      },
+      {
+        "criterion": "Counterargument",
+        "weight": 4,
+        "levels": {
+          "exemplary": {
+            "points": 4,
+            "descriptor": "Acknowledges and refutes counterarguments effectively"
+          },
+          "proficient": {
+            "points": 3,
+            "descriptor": "Acknowledges counterargument with basic refutation"
+          },
+          "developing": {
+            "points": 2,
+            "descriptor": "Mentions counterargument but doesn't refute"
+          },
+          "beginning": {
+            "points": 1,
+            "descriptor": "No counterargument addressed"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "rubric_id": "science_lab_report_7th",
+    "assignment": "Science Lab Report - 7th Grade",
+    "aligned_standards": ["NGSS.MS-LS1-6"],
+    "total_points": 24,
+    "criteria": [
+      {
+        "criterion": "Research Question/Hypothesis",
+        "weight": 4,
+        "levels": {
+          "exemplary": {
+            "points": 4,
+            "descriptor": "Clear, testable hypothesis with scientific reasoning"
+          },
+          "proficient": {
+            "points": 3,
+            "descriptor": "Clear hypothesis that is testable"
+          },
+          "developing": {
+            "points": 2,
+            "descriptor": "Hypothesis present but not clearly testable"
+          },
+          "beginning": {
+            "points": 1,
+            "descriptor": "Hypothesis missing or not testable"
+          }
+        }
+      },
+      {
+        "criterion": "Procedure",
+        "weight": 4,
+        "levels": {
+          "exemplary": {
+            "points": 4,
+            "descriptor": "Detailed, replicable steps with safety considerations noted"
+          },
+          "proficient": {
+            "points": 3,
+            "descriptor": "Clear steps that could be followed"
+          },
+          "developing": {
+            "points": 2,
+            "descriptor": "Steps present but missing key details"
+          },
+          "beginning": {
+            "points": 1,
+            "descriptor": "Procedure unclear or incomplete"
+          }
+        }
+      },
+      {
+        "criterion": "Data Collection & Analysis",
+        "weight": 6,
+        "levels": {
+          "exemplary": {
+            "points": 6,
+            "descriptor": "Accurate data in tables/graphs; thorough analysis with patterns identified"
+          },
+          "proficient": {
+            "points": 5,
+            "descriptor": "Data organized in tables/graphs; basic analysis present"
+          },
+          "developing": {
+            "points": 3,
+            "descriptor": "Some data recorded; minimal analysis"
+          },
+          "beginning": {
+            "points": 1,
+            "descriptor": "Data incomplete or analysis missing"
+          }
+        }
+      },
+      {
+        "criterion": "Conclusion",
+        "weight": 6,
+        "levels": {
+          "exemplary": {
+            "points": 6,
+            "descriptor": "Connects results to hypothesis; explains sources of error; suggests improvements"
+          },
+          "proficient": {
+            "points": 5,
+            "descriptor": "States whether hypothesis was supported with evidence"
+          },
+          "developing": {
+            "points": 3,
+            "descriptor": "Conclusion present but doesn't clearly connect to hypothesis"
+          },
+          "beginning": {
+            "points": 1,
+            "descriptor": "Conclusion missing or doesn't address hypothesis"
+          }
+        }
+      },
+      {
+        "criterion": "Scientific Language & Conventions",
+        "weight": 4,
+        "levels": {
+          "exemplary": {
+            "points": 4,
+            "descriptor": "Precise scientific vocabulary; proper format; no errors"
+          },
+          "proficient": {
+            "points": 3,
+            "descriptor": "Appropriate scientific vocabulary; proper format; minor errors"
+          },
+          "developing": {
+            "points": 2,
+            "descriptor": "Some scientific vocabulary; format issues; multiple errors"
+          },
+          "beginning": {
+            "points": 1,
+            "descriptor": "Limited scientific vocabulary; format incorrect"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "rubric_id": "math_problem_solving_7th",
+    "assignment": "Multi-Step Problem Solving - 7th Grade Math",
+    "aligned_standards": ["CCSS.MATH.CONTENT.7.RP.A.2"],
+    "total_points": 16,
+    "criteria": [
+      {
+        "criterion": "Understanding the Problem",
+        "weight": 3,
+        "levels": {
+          "exemplary": {
+            "points": 3,
+            "descriptor": "Identifies all relevant information; restates problem in own words"
+          },
+          "proficient": {
+            "points": 2,
+            "descriptor": "Identifies key information from the problem"
+          },
+          "developing": {
+            "points": 1,
+            "descriptor": "Identifies some information but misses key details"
+          },
+          "beginning": {
+            "points": 0,
+            "descriptor": "Does not demonstrate understanding of the problem"
+          }
+        }
+      },
+      {
+        "criterion": "Strategy Selection",
+        "weight": 4,
+        "levels": {
+          "exemplary": {
+            "points": 4,
+            "descriptor": "Selects efficient strategy; explains why strategy is appropriate"
+          },
+          "proficient": {
+            "points": 3,
+            "descriptor": "Selects appropriate strategy for the problem"
+          },
+          "developing": {
+            "points": 2,
+            "descriptor": "Attempts a strategy but not most efficient"
+          },
+          "beginning": {
+            "points": 1,
+            "descriptor": "Strategy is inappropriate or missing"
+          }
+        }
+      },
+      {
+        "criterion": "Execution & Computation",
+        "weight": 5,
+        "levels": {
+          "exemplary": {
+            "points": 5,
+            "descriptor": "All calculations correct; work shown clearly step-by-step"
+          },
+          "proficient": {
+            "points": 4,
+            "descriptor": "Minor calculation errors; work mostly shown"
+          },
+          "developing": {
+            "points": 3,
+            "descriptor": "Multiple calculation errors; some work shown"
+          },
+          "beginning": {
+            "points": 1,
+            "descriptor": "Significant errors; minimal work shown"
+          }
+        }
+      },
+      {
+        "criterion": "Explanation & Reasoning",
+        "weight": 4,
+        "levels": {
+          "exemplary": {
+            "points": 4,
+            "descriptor": "Clear written explanation using math vocabulary; justifies answer"
+          },
+          "proficient": {
+            "points": 3,
+            "descriptor": "Explains thinking with some math vocabulary"
+          },
+          "developing": {
+            "points": 2,
+            "descriptor": "Brief explanation; limited math vocabulary"
+          },
+          "beginning": {
+            "points": 1,
+            "descriptor": "No explanation or unclear reasoning"
+          }
+        }
+      }
+    ]
+  }
+]
