@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grant Intake Workflow Agent (30 mins)</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="lab-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Back to Labs</a>
+            </div>
+            <div class="lab-title-nav">Grant Intake Workflow Agent (30 mins)</div>
+        </div>
+    </nav>
+
+    <main class="container lab-container">
+        <div class="lab-content">
+            <h1>🏗️ Build a Grant Intake Workflow Agent</h1>
+
+            <div class="lab-meta">
+                <div class="meta-item"><span>⏱️</span><span>Duration: 30 minutes</span></div>
+                <div class="meta-item"><span>🧭</span><span>Scenario: Development Operations</span></div>
+                <div class="meta-item"><span>📂</span><span>Data: Funder Criteria + Program Priorities</span></div>
+            </div>
+
+            <section>
+                <h2>Scenario</h2>
+                <p>Development teams lose time qualifying low-fit grant opportunities. Build an agent that asks the right questions, validates eligibility, and outputs a go/no-go recommendation.</p>
+            </section>
+
+            <section>
+                <h2>Challenge 1: Build Intake Flow (10 mins)</h2>
+                <ul>
+                    <li>Collect required fields: funder, amount range, deadline, program fit.</li>
+                    <li>Ask follow-up questions only when criteria are missing.</li>
+                    <li>Capture uncertainty for incomplete opportunities.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Challenge 2: Add Qualification Rules (10 mins)</h2>
+                <ul>
+                    <li>Score opportunity against mission/program priorities.</li>
+                    <li>Flag disqualifiers (eligibility mismatch, timing risk).</li>
+                    <li>Route medium-confidence opportunities for human review.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Challenge 3: Generate Decision Brief (10 mins)</h2>
+                <ul>
+                    <li>Output go/no-go recommendation with rationale.</li>
+                    <li>List missing evidence and next actions.</li>
+                    <li>Produce a one-page brief for leadership review.</li>
+                </ul>
+                <div class="success-criteria">
+                    <h4>✅ Complete When</h4>
+                    <ul>
+                        <li>Agent collects complete intake details in multi-turn chat</li>
+                        <li>Qualification output is consistent across 3 sample grants</li>
+                        <li>Decision brief supports faster team alignment</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Deliverable</h2>
+                <p>Submit 3 generated go/no-go briefs and note one workflow improvement based on testing.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Nonprofit AI Labs</p>
+        </div>
+    </footer>
+
+    <script src="../../js/lab-navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Services Case Orchestration Agent (30 mins)</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="lab-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Back to Labs</a>
+            </div>
+            <div class="lab-title-nav">Student Services Case Orchestration Agent (30 mins)</div>
+        </div>
+    </nav>
+
+    <main class="container lab-container">
+        <div class="lab-content">
+            <h1>🏗️ Build a Student Services Case Orchestration Agent</h1>
+
+            <div class="lab-meta">
+                <div class="meta-item"><span>⏱️</span><span>Duration: 30 minutes</span></div>
+                <div class="meta-item"><span>🧭</span><span>Scenario: Cross-Functional Student Services</span></div>
+                <div class="meta-item"><span>📂</span><span>Data: Policy Docs + Institutional FAQs</span></div>
+            </div>
+
+            <section>
+                <h2>Scenario</h2>
+                <p>Student requests often span multiple offices. Build an agent that clarifies intent, collects missing context, and routes each case with a clean summary to the correct team.</p>
+            </section>
+
+            <section>
+                <h2>Challenge 1: Design Multi-Turn Intake (10 mins)</h2>
+                <ul>
+                    <li>Start with request category detection (advising, registrar, aid).</li>
+                    <li>Ask follow-up questions only when critical fields are missing.</li>
+                    <li>Confirm student objective before routing.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Challenge 2: Add Routing and Escalation Logic (10 mins)</h2>
+                <ul>
+                    <li>Route by policy ownership and issue type.</li>
+                    <li>Escalate urgent time-bound issues (deadlines, status holds).</li>
+                    <li>Use explicit "needs human review" conditions.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Challenge 3: Produce Handoff Summaries (10 mins)</h2>
+                <ul>
+                    <li>Generate a concise case summary for staff.</li>
+                    <li>Include student goal, constraints, and required next action.</li>
+                    <li>Add confidence and source notes where helpful.</li>
+                </ul>
+                <div class="success-criteria">
+                    <h4>✅ Complete When</h4>
+                    <ul>
+                        <li>Agent runs multi-turn intake without unnecessary questions</li>
+                        <li>Routing is consistent across 3 test scenarios</li>
+                        <li>Handoff summary is clear enough for immediate staff action</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Deliverable</h2>
+                <p>Submit 3 test conversations and the generated handoff summaries (one per department path).</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Higher Education AI Labs</p>
+        </div>
+    </footer>
+
+    <script src="../../js/lab-navigation.js"></script>
+</body>
+</html>
