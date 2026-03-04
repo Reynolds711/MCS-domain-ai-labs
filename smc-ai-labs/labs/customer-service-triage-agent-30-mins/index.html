@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMC Customer Service Triage Agent (30 mins)</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="lab-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Back to Labs</a>
+            </div>
+            <div class="lab-title-nav">Customer Service Triage Agent (30 mins)</div>
+        </div>
+    </nav>
+
+    <main class="container lab-container">
+        <div class="lab-content">
+            <h1>🎧 Build an SMC Customer Service Triage Agent</h1>
+
+            <div class="lab-meta">
+                <div class="meta-item"><span>⏱️</span><span>Duration: 30 minutes</span></div>
+                <div class="meta-item"><span>🧭</span><span>Scenario: Service Operations</span></div>
+                <div class="meta-item"><span>📂</span><span>Data: Sample JSON + Policy Docs</span></div>
+            </div>
+
+            <section>
+                <h2>Scenario</h2>
+                <p>Your SMB support team handles high ticket volume with limited staff. Build an agent that triages requests, drafts first responses, and escalates urgent cases with context.</p>
+            </section>
+
+            <section>
+                <h2>Challenge 1: Define Routing Logic (10 mins)</h2>
+                <p>Configure intents and urgency levels:</p>
+                <ul>
+                    <li><strong>Billing:</strong> refund, invoice, payment failure</li>
+                    <li><strong>Technical:</strong> outage, bug, login issue</li>
+                    <li><strong>Service Change:</strong> upgrade, downgrade, cancellation</li>
+                </ul>
+                <p>Set priority to <strong>High</strong> for outage and account access blockers.</p>
+            </section>
+
+            <section>
+                <h2>Challenge 2: Ground Response Templates (10 mins)</h2>
+                <p>Use approved language from policy docs and sample data in this lab's assets.</p>
+                <ul>
+                    <li>Draft short, empathetic first responses</li>
+                    <li>Include next-step expectations and timing</li>
+                    <li>Avoid commitments outside published policy</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Challenge 3: Test SLA Outcomes (10 mins)</h2>
+                <p>Run test tickets and compare before/after handling time:</p>
+                <ul>
+                    <li>First-response time</li>
+                    <li>Correct routing accuracy</li>
+                    <li>Escalation quality (contains needed context)</li>
+                </ul>
+                <div class="reflection-box">
+                    <h4>Target</h4>
+                    <p>Achieve at least 40% faster first response while maintaining policy consistency.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Deliverable</h2>
+                <p>Submit a triage matrix and 3 sample ticket flows (normal, high-priority, escalation).</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 SMC AI Labs</p>
+        </div>
+    </footer>
+
+    <script src="../../js/lab-navigation.js"></script>
+</body>
+</html>

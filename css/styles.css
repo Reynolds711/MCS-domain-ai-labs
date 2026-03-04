@@ -8,6 +8,8 @@
     --higher-ed-gold: #c5a000;
     --nonprofit-color: #2d7d46;
     --nonprofit-orange: #e07c24;
+    --smc-color: #6a5acd;
+    --smc-accent: #00a3a3;
     --success-color: #107c10;
     --warning-color: #ff8c00;
     --bg-light: #f3f2f1;
@@ -240,6 +242,14 @@ main {
     border-top: 4px solid var(--nonprofit-orange);
 }
 
+.domain-card.smc .domain-header h3 {
+    color: var(--smc-color);
+}
+
+.domain-card.smc {
+    border-top: 4px solid var(--smc-accent);
+}
+
 .domain-description {
     color: var(--text-secondary);
     margin-bottom: 20px;
@@ -361,6 +371,16 @@ main {
 
 .btn-nonprofit:hover {
     background-color: #1e5a32;
+    transform: scale(1.02);
+}
+
+.btn-smc {
+    background-color: var(--smc-color);
+    color: white;
+}
+
+.btn-smc:hover {
+    background-color: #5948bf;
     transform: scale(1.02);
 }
 

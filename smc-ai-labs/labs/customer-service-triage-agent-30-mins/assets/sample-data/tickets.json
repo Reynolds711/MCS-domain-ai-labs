@@ -1,0 +1,23 @@
+[
+  {
+    "ticket_id": "T-1001",
+    "customer": "Northwind Bikes",
+    "category": "billing",
+    "priority": "normal",
+    "message": "Our renewal invoice has a duplicate line item."
+  },
+  {
+    "ticket_id": "T-1002",
+    "customer": "Contoso Retail",
+    "category": "technical",
+    "priority": "high",
+    "message": "All team members are locked out of the dashboard."
+  },
+  {
+    "ticket_id": "T-1003",
+    "customer": "Tailwind Studio",
+    "category": "service-change",
+    "priority": "normal",
+    "message": "We want to upgrade to the next plan this month."
+  }
+]

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1B: File-Grounded SMB Operations Knowledge Agent</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="lab-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Back to Labs</a>
+            </div>
+            <div class="lab-title-nav">Lab 1B: File-Grounded Operations Knowledge Agent</div>
+        </div>
+    </nav>
+
+    <main class="container lab-container">
+        <div class="lab-content">
+            <h1>📁 Lab 1B: Build a File-Grounded SMB Operations Knowledge Agent</h1>
+
+            <div class="lab-meta">
+                <div class="meta-item"><span>⏱️</span><span>Duration: 30 minutes</span></div>
+                <div class="meta-item"><span>📊</span><span>Level: 100 - Beginner</span></div>
+                <div class="meta-item"><span>📄</span><span>Grounding: Uploaded Files</span></div>
+            </div>
+
+            <section>
+                <h2>Overview</h2>
+                <p>In this lab, you will build an internal operations assistant grounded on your own business documents so team members can get consistent answers instantly.</p>
+                <div class="consulting-framework">
+                    <h3>Consulting Framework</h3>
+                    <ul>
+                        <li><strong>Customer:</strong> Operations manager and frontline staff</li>
+                        <li><strong>Problem:</strong> Repeat policy/process questions consume team capacity</li>
+                        <li><strong>Solution:</strong> File-grounded agent with clear escalation rules</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Challenge 1: Upload Knowledge Files (10 mins)</h2>
+                <p>Use the files in the <strong>assets</strong> folder for this lab:</p>
+                <ul>
+                    <li><code>sop-playbook.md</code></li>
+                    <li><code>pricing-and-discounts.md</code></li>
+                    <li><code>service-policies.md</code></li>
+                </ul>
+                <p>In Copilot Studio, upload these files as your agent knowledge sources.</p>
+            </section>
+
+            <section>
+                <h2>Challenge 2: Configure Instructions (10 mins)</h2>
+                <p>Set your instructions so the agent:</p>
+                <ul>
+                    <li>Answers only from uploaded documents</li>
+                    <li>Cites which document informed the answer</li>
+                    <li>States "I don't find that in current documents" when needed</li>
+                    <li>Escalates approvals and exceptions to a human lead</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Challenge 3: Validate Team Scenarios (10 mins)</h2>
+                <p>Test with these scenarios:</p>
+                <ul>
+                    <li>"Can I approve a 15% discount for a returning customer?"</li>
+                    <li>"What is the standard onboarding process for a new service account?"</li>
+                    <li>"How should we handle a refund request after 45 days?"</li>
+                </ul>
+                <div class="success-criteria">
+                    <h4>✅ Complete When</h4>
+                    <ul>
+                        <li>Answers are grounded in uploaded files</li>
+                        <li>Agent declines unsupported policy interpretations</li>
+                        <li>Escalation language is clear and consistent</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Deliverable</h2>
+                <p>Create a short demo transcript showing one policy answer, one escalation, and one "not in docs" response.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 SMC AI Labs</p>
+        </div>
+    </footer>
+
+    <script src="../../js/lab-navigation.js"></script>
+</body>
+</html>
