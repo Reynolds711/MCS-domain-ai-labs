@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Advising Agent (35 mins)</title>
+    <title>Lab 301-1: Academic Advising Agent</title>
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body>
@@ -12,79 +12,192 @@
             <div class="breadcrumb">
                 <a href="../../index.html">← Back to Labs</a>
             </div>
-            <div class="lab-title-nav">Academic Advising Agent (35 mins)</div>
+            <div class="lab-title-nav">Lab 301-1: Academic Advising Agent</div>
         </div>
     </nav>
 
     <main class="container lab-container">
         <div class="lab-content">
-            <h1>🏗️ Build an Academic Advising Agent</h1>
+            <h1>🎓 Lab 301-1: Build an Academic Advising Agent</h1>
 
             <div class="lab-meta">
                 <div class="meta-item"><span>⏱️</span><span>Duration: 35 minutes</span></div>
-                <div class="meta-item"><span>🧭</span><span>Scenario: Degree Planning + Advising Triage</span></div>
-                <div class="meta-item"><span>📂</span><span>Data: Degree Map + Course Catalog + Advising Policies</span></div>
+                <div class="meta-item"><span>📊</span><span>Level: 300 - Advanced</span></div>
+                <div class="meta-item"><span>🧠</span><span>Pattern: Multi-Turn + Policy Grounding + Handoff</span></div>
             </div>
 
-            <section>
-                <h2>Scenario</h2>
-                <p>Advisors spend too much time on repetitive degree-audit questions. Build an agent that captures student context, identifies requirement gaps, and proposes a next-term schedule that can be reviewed by an advisor.</p>
+            <section class="concept-intro">
+                <h2>What This Lab Builds</h2>
+                <p>You will build a multi-turn advising agent that collects student context, identifies degree requirement gaps, and produces an advisor-ready handoff summary instead of generic recommendations.</p>
+                <div class="info-box">
+                    <strong>💡 Why This Matters for Higher Ed</strong>
+                    <p>Advising offices face recurring planning questions. A strong intake and routing agent reduces repetitive back-and-forth, shortens appointment prep time, and gives advisors more time for complex student needs.</p>
+                </div>
             </section>
 
             <section>
-                <h2>Challenge 1: Build Multi-Turn Intake (10 mins)</h2>
-                <ul>
-                    <li>Collect program, completed credits, transfer credits, and target graduation term.</li>
-                    <li>Capture constraints: work schedule, modality preference, max course load.</li>
-                    <li>Confirm student priorities before generating recommendations.</li>
-                </ul>
-            </section>
+                <h2>Overview</h2>
+                <p>In this lab, you will configure an advising agent in Copilot Studio, ground it on degree maps and advising policies, test it against common and edge-case student scenarios, and tune escalation logic for high-risk pathways.</p>
 
-            <section>
-                <h2>Challenge 2: Add Degree-Gap Logic (10 mins)</h2>
-                <ul>
-                    <li>Map completed coursework to degree requirements.</li>
-                    <li>Return clear "complete", "in progress", and "remaining" sections.</li>
-                    <li>Flag unresolved transfer-credit ambiguity for human advisor review.</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Challenge 3: Generate Next-Term Schedule (10 mins)</h2>
-                <ul>
-                    <li>Recommend 3 to 5 courses with rationale tied to requirement completion.</li>
-                    <li>Respect prerequisites and student time constraints.</li>
-                    <li>Include a risk note when a recommendation may delay graduation.</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Challenge 4: Build Handoff Summary (5 mins)</h2>
-                <ul>
-                    <li>Output a one-page advising summary: goals, gaps, plan, and open questions.</li>
-                    <li>Add escalation triggers for probation risk or failed prerequisite chain.</li>
-                    <li>End with advisor approval step before final registration action.</li>
-                </ul>
-                <div class="success-criteria">
-                    <h4>✅ Complete When</h4>
+                <div class="consulting-framework">
+                    <h3>Consulting Framework</h3>
                     <ul>
-                        <li>Agent asks only required follow-up questions</li>
-                        <li>Degree-gap summary is accurate across 3 test student profiles</li>
-                        <li>Course recommendations align to prerequisites and constraints</li>
+                        <li><strong>Customer:</strong> Academic advising team for first- and second-year undergraduates</li>
+                        <li><strong>Problem:</strong> Advisors spend 15 to 20 minutes per case collecting baseline context before they can deliver guidance</li>
+                        <li><strong>Solution:</strong> Agent-led intake, degree-gap summary, and structured advisor handoff</li>
                     </ul>
                 </div>
             </section>
 
             <section>
-                <h2>Deliverable</h2>
-                <p>Submit 3 advising simulations, each with intake transcript, degree-gap output, and final advisor handoff summary.</p>
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Access to <a href="https://copilotstudio.microsoft.com" target="_blank">Microsoft Copilot Studio</a></li>
+                    <li>Sample advising inputs: degree map, catalog rules, prerequisite chart, registration timeline</li>
+                    <li>Understanding of one target major (for realistic testing)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Lab Scenario</h2>
+                <p>The advising office is overloaded before registration. Students ask similar questions about required courses, sequence, and graduation timing. The office wants an agent that does early triage and hands advisors a clean summary with known risks.</p>
+            </section>
+
+            <div class="challenge">
+                <h3>Challenge 1: Configure Agent and Intake Flow (12 mins)</h3>
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Build a multi-turn intake that captures enough context to produce useful, reviewable recommendations.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                <div class="step-by-step">
+                    <div class="step"><div class="step-number">1</div><div class="step-content"><h5>Create Agent</h5><p>Name: <strong>Academic Advising Assistant</strong>. Description: Intake and planning support for degree progression.</p></div></div>
+                    <div class="step"><div class="step-number">2</div><div class="step-content"><h5>Add Knowledge Sources</h5><p>Upload degree checklist, catalog prerequisites, transfer policy, and registration dates.</p></div></div>
+                    <div class="step"><div class="step-number">3</div><div class="step-content"><h5>Build Intake Questions</h5><p>Collect major, completed credits, transfer credits, target graduation term, work schedule constraints, and preferred modality.</p></div></div>
+                    <div class="step"><div class="step-number">4</div><div class="step-content"><h5>Define Output Contract</h5><p>Require sections: Student Goal, Completed vs Remaining Requirements, Recommended Next-Term Courses, Risk Flags, Advisor Follow-Up Questions.</p></div></div>
+                </div>
+
+                <h4>Agent Instructions (System Prompt)</h4>
+                <div class="code-block">You are Academic Advising Assistant for undergraduate planning support.
+
+## Your Role
+- Collect planning context before giving guidance
+- Compare student record details against policy-grounded requirements
+- Recommend next-term options with rationale and risk notes
+- Produce advisor-ready handoff summaries
+
+## Response Rules
+- Ask only essential follow-up questions
+- Separate confirmed facts from assumptions
+- Cite which policy or planning artifact informed your recommendation
+- Use clear, student-friendly language
+
+## Required Output Format
+1) Student Goal
+2) Requirement Status (Complete, In Progress, Remaining)
+3) Recommended Next-Term Courses with rationale
+4) Risk Flags and timeline concerns
+5) Advisor Follow-Up Questions
+
+## Boundaries
+- Do not finalize registration decisions
+- Do not overrule degree policy or advisor judgment
+- Escalate unclear transfer-credit mapping and probation-risk scenarios</div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 1 Complete When:</h4>
+                    <ul>
+                        <li>Agent captures all required intake fields in a structured flow</li>
+                        <li>Recommendations are returned in the exact output format</li>
+                        <li>At least one policy source is referenced in responses</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="challenge">
+                <h3>Challenge 2: Evaluate Degree-Gap and Schedule Quality (12 mins)</h3>
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Validate recommendation quality across common and complex advising scenarios.
+                </div>
+
+                <h4>Test Queries</h4>
+                <table class="test-table">
+                    <thead><tr><th>Scenario</th><th>Expected Behavior</th></tr></thead>
+                    <tbody>
+                        <tr><td>First-year student missing math prerequisite</td><td>Recommends prerequisite path and explains sequencing impact</td></tr>
+                        <tr><td>Transfer student with ambiguous equivalent credit</td><td>Flags ambiguity and escalates for advisor review</td></tr>
+                        <tr><td>Student working 30 hrs/week asks for 18 credits</td><td>Suggests load adjustment and risk note with rationale</td></tr>
+                        <tr><td>Student near graduation with one missing capstone requirement</td><td>Highlights capstone dependency and urgency timeline</td></tr>
+                        <tr><td>Student asks "just tell me what to register for" with missing context</td><td>Requests key intake details before recommending</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Quality Checks</h4>
+                <ul>
+                    <li><strong>Accuracy:</strong> Requirement mapping matches provided policy docs.</li>
+                    <li><strong>Actionability:</strong> Next steps include owner and timing.</li>
+                    <li><strong>Risk Awareness:</strong> Graduation delay risks are clearly surfaced.</li>
+                    <li><strong>Escalation:</strong> Ambiguous cases route to human advisors.</li>
+                </ul>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 2 Complete When:</h4>
+                    <ul>
+                        <li>At least 4 of 5 scenarios return policy-aligned recommendations</li>
+                        <li>All ambiguous cases contain explicit escalation language</li>
+                        <li>Every response includes a clear next action for the student</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="challenge">
+                <h3>Challenge 3: Refine Escalation and Handoff Summary (11 mins)</h3>
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Improve trust by ensuring advisors receive concise, high-signal case summaries.
+                </div>
+
+                <h4>Refinement Tasks</h4>
+                <ul>
+                    <li>Add escalation triggers for probation risk, unresolved transfer credit, and prerequisite conflicts.</li>
+                    <li>Require a one-paragraph advisor handoff summary with student goal, blockers, and decision points.</li>
+                    <li>Add confidence labeling: High, Medium, or Needs Human Review.</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>🎯 Stakeholder Pitch Prompt</strong>
+                    <p>"This advising agent handles structured intake and policy-grounded first-pass planning. It does not replace advisors. It reduces repetitive intake time so advisors can focus on nuanced student decisions."</p>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 3 Complete When:</h4>
+                    <ul>
+                        <li>Advisor handoff summary is readable in under 60 seconds</li>
+                        <li>Escalation triggers fire consistently in edge cases</li>
+                        <li>Confidence labels align with case ambiguity</li>
+                    </ul>
+                </div>
+            </div>
+
+            <section>
+                <h2>⚠️ Responsible Use</h2>
+                <ul>
+                    <li>The agent supports planning; advisors approve final academic decisions.</li>
+                    <li>Do not infer sensitive student status not present in provided data.</li>
+                    <li>Surface policy uncertainty instead of guessing.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>🎉 Lab Complete</h2>
+                <p>You built an advising workflow agent with policy grounding, quality validation, and practical handoff support for real advising operations.</p>
+                <p><a href="../../index.html">← Back to All Labs</a></p>
             </section>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Higher Education AI Labs</p>
+            <p>&copy; 2026 Higher Education AI Labs. Built for guided practice with Microsoft Copilot.</p>
         </div>
     </footer>
 

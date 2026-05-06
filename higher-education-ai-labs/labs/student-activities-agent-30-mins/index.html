@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Activities Agent (30 mins)</title>
+    <title>Lab 301-4: Student Activities Agent</title>
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body>
@@ -12,70 +12,191 @@
             <div class="breadcrumb">
                 <a href="../../index.html">← Back to Labs</a>
             </div>
-            <div class="lab-title-nav">Student Activities Agent (30 mins)</div>
+            <div class="lab-title-nav">Lab 301-4: Student Activities Agent</div>
         </div>
     </nav>
 
     <main class="container lab-container">
         <div class="lab-content">
-            <h1>🏗️ Build a Student Activities Agent</h1>
+            <h1>🎓 Lab 301-4: Build a Student Activities Agent</h1>
 
             <div class="lab-meta">
                 <div class="meta-item"><span>⏱️</span><span>Duration: 30 minutes</span></div>
-                <div class="meta-item"><span>🧭</span><span>Scenario: Event Planning and Approval Workflow</span></div>
-                <div class="meta-item"><span>📂</span><span>Data: Event Policy + Room Booking Rules + Student Org Handbook</span></div>
+                <div class="meta-item"><span>📊</span><span>Level: 300 - Advanced</span></div>
+                <div class="meta-item"><span>🧠</span><span>Pattern: Workflow Intake + Compliance Routing + Task Plan</span></div>
             </div>
 
-            <section>
-                <h2>Scenario</h2>
-                <p>Student org leaders lose time navigating event policies and approval steps. Build an agent that gathers event details, validates requirements, and returns a checklist with owners and deadlines.</p>
+            <section class="concept-intro">
+                <h2>What This Lab Builds</h2>
+                <p>You will build an event-planning operations agent that gathers event requirements, validates policy needs, and outputs an owner-based action plan for student organizations and campus staff.</p>
+                <div class="info-box">
+                    <strong>💡 Why This Matters for Higher Ed</strong>
+                    <p>Student org leaders lose momentum when approval processes are unclear. A structured activities agent reduces confusion, improves compliance, and speeds event execution.</p>
+                </div>
             </section>
 
             <section>
-                <h2>Challenge 1: Build Event Intake (10 mins)</h2>
-                <ul>
-                    <li>Collect organization name, event type, audience size, date, and location preference.</li>
-                    <li>Ask for budget status, external speakers, food, and safety considerations.</li>
-                    <li>Confirm whether event is on-campus, virtual, or hybrid.</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Challenge 2: Add Compliance and Approval Logic (10 mins)</h2>
-                <ul>
-                    <li>Map intake details to required approvals and lead times.</li>
-                    <li>Flag missing forms and policy conflicts before submission.</li>
-                    <li>Escalate high-risk events for staff review.</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Challenge 3: Generate Action Plan (10 mins)</h2>
-                <ul>
-                    <li>Produce a checklist with due dates and owner by task.</li>
-                    <li>Include room booking, marketing, accessibility, and risk-management steps.</li>
-                    <li>Provide a communication template for advisor sign-off.</li>
-                </ul>
-                <div class="success-criteria">
-                    <h4>✅ Complete When</h4>
+                <h2>Overview</h2>
+                <p>In this lab, you configure a student activities agent in Copilot Studio, connect policy documents, test multiple event types, and tune escalation for high-risk or incomplete submissions.</p>
+                <div class="consulting-framework">
+                    <h3>Consulting Framework</h3>
                     <ul>
-                        <li>Agent captures all required event intake fields</li>
-                        <li>Approval checklist matches policy across 3 event scenarios</li>
-                        <li>Output provides a clear owner and deadline for each task</li>
+                        <li><strong>Customer:</strong> Student affairs and organization leadership teams</li>
+                        <li><strong>Problem:</strong> Event requests are delayed by incomplete forms, unclear ownership, and policy confusion</li>
+                        <li><strong>Solution:</strong> Agent-led intake, compliance checks, and deadline-oriented action plan output</li>
                     </ul>
                 </div>
             </section>
 
             <section>
-                <h2>Deliverable</h2>
-                <p>Submit 3 event scenarios with generated compliance checklist and final approval action plan.</p>
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Access to <a href="https://copilotstudio.microsoft.com" target="_blank">Microsoft Copilot Studio</a></li>
+                    <li>Event policy documents, room reservation rules, risk and safety requirements, funding request forms</li>
+                    <li>At least 3 example event types for testing</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Lab Scenario</h2>
+                <p>The activities office receives repeated event setup questions from student orgs. Build an agent that clarifies requirements quickly and returns a complete execution checklist with owners and due dates.</p>
+            </section>
+
+            <div class="challenge">
+                <h3>Challenge 1: Build Event Intake and Policy Mapping (10 mins)</h3>
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Capture all required event context and map it to compliance requirements.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                <div class="step-by-step">
+                    <div class="step"><div class="step-number">1</div><div class="step-content"><h5>Create Agent</h5><p>Name: <strong>Student Activities Planner</strong>. Description: Event planning and policy compliance assistant.</p></div></div>
+                    <div class="step"><div class="step-number">2</div><div class="step-content"><h5>Add Knowledge Sources</h5><p>Upload student org handbook, event approval workflow, room booking policy, and funding rules.</p></div></div>
+                    <div class="step"><div class="step-number">3</div><div class="step-content"><h5>Build Intake Flow</h5><p>Collect event type, date, location, attendance, budget, external vendors, food, and accessibility needs.</p></div></div>
+                    <div class="step"><div class="step-number">4</div><div class="step-content"><h5>Define Checklist Output</h5><p>Require sections: Required Approvals, Forms Needed, Owners, Deadlines, Risk Flags, Final Submission Readiness.</p></div></div>
+                </div>
+
+                <h4>Agent Instructions (System Prompt)</h4>
+                <div class="code-block">You are Student Activities Planner supporting campus event execution.
+
+## Your Role
+- Gather complete event details before giving guidance
+- Map event details to policy-driven approval requirements
+- Provide an owner-by-owner action checklist with deadlines
+- Escalate high-risk or incomplete requests to student affairs staff
+
+## Response Rules
+- Ask only missing required questions
+- Separate required steps from optional recommendations
+- Cite the policy source behind each required approval
+- Use concise, operational language
+
+## Required Output Format
+1) Event Summary
+2) Required Approvals and Forms
+3) Owner and Deadline by Task
+4) Risk Flags and Escalation Needs
+5) Submission Readiness Status
+
+## Boundaries
+- Do not approve events on behalf of staff
+- Do not bypass safety, accessibility, or risk requirements
+- Escalate policy conflicts and late submissions</div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 1 Complete When:</h4>
+                    <ul>
+                        <li>All required intake fields are collected for each event type</li>
+                        <li>Checklist output includes owners and deadlines</li>
+                        <li>Policy citations are present in approval guidance</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="challenge">
+                <h3>Challenge 2: Test Across Event Scenarios (10 mins)</h3>
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Validate that the agent is reliable for different event complexity levels.
+                </div>
+
+                <h4>Test Queries</h4>
+                <table class="test-table">
+                    <thead><tr><th>Scenario</th><th>Expected Behavior</th></tr></thead>
+                    <tbody>
+                        <tr><td>Small on-campus club meeting</td><td>Returns minimal required steps and fast-track checklist</td></tr>
+                        <tr><td>Large event with external speaker and catering</td><td>Adds vendor, risk, and food compliance requirements</td></tr>
+                        <tr><td>Late submission one week before event</td><td>Flags timeline risk and escalates for staff review</td></tr>
+                        <tr><td>Hybrid event with accessibility accommodations needed</td><td>Includes accessibility tasks with owner and due date</td></tr>
+                        <tr><td>Org asks to skip required approval due to urgency</td><td>Refuses bypass and provides escalation path</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Quality Checks</h4>
+                <ul>
+                    <li><strong>Completeness:</strong> No required form or approval is missing.</li>
+                    <li><strong>Operational Clarity:</strong> Every task has an owner and deadline.</li>
+                    <li><strong>Policy Integrity:</strong> No response recommends bypassing required process.</li>
+                    <li><strong>Escalation:</strong> Time-risk and safety-risk events trigger human review.</li>
+                </ul>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 2 Complete When:</h4>
+                    <ul>
+                        <li>At least 4 of 5 scenarios produce complete compliant plans</li>
+                        <li>All urgent or non-compliant scenarios trigger escalation</li>
+                        <li>Student-facing output is understandable without staff translation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="challenge">
+                <h3>Challenge 3: Refine for Adoption and Operations (10 mins)</h3>
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Make the output ready for real student-affairs deployment.
+                </div>
+
+                <h4>Refinement Tasks</h4>
+                <ul>
+                    <li>Add a "Missing Information" section when intake is incomplete.</li>
+                    <li>Add "Critical by Date" warnings for short lead-time events.</li>
+                    <li>Include one communication template for advisor or office approval requests.</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>🎯 Stakeholder Pitch Prompt</strong>
+                    <p>"This activities agent does first-pass planning, compliance mapping, and task ownership in minutes. It reduces incomplete submissions and keeps staff focused on exceptions, not routine intake."</p>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 3 Complete When:</h4>
+                    <ul>
+                        <li>Incomplete requests are clearly flagged with required follow-up fields</li>
+                        <li>Deadline warnings are visible and actionable</li>
+                        <li>Approval communication template is ready to send</li>
+                    </ul>
+                </div>
+            </div>
+
+            <section>
+                <h2>⚠️ Responsible Use</h2>
+                <ul>
+                    <li>The agent guides process; staff own final approvals.</li>
+                    <li>Safety and accessibility requirements cannot be bypassed.</li>
+                    <li>When policy conflicts appear, escalate instead of guessing.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>🎉 Lab Complete</h2>
+                <p>You built a practical operations agent that turns policy-heavy event planning into a clear, actionable workflow.</p>
+                <p><a href="../../index.html">← Back to All Labs</a></p>
             </section>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Higher Education AI Labs</p>
+            <p>&copy; 2026 Higher Education AI Labs. Built for guided practice with Microsoft Copilot.</p>
         </div>
     </footer>
 

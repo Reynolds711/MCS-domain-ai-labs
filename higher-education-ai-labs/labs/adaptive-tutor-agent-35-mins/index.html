@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adaptive Tutor Agent (35 mins)</title>
+    <title>Lab 301-3: Adaptive Tutor Agent</title>
     <link rel="stylesheet" href="../../css/styles.css">
 </head>
 <body>
@@ -12,79 +12,190 @@
             <div class="breadcrumb">
                 <a href="../../index.html">← Back to Labs</a>
             </div>
-            <div class="lab-title-nav">Adaptive Tutor Agent (35 mins)</div>
+            <div class="lab-title-nav">Lab 301-3: Adaptive Tutor Agent</div>
         </div>
     </nav>
 
     <main class="container lab-container">
         <div class="lab-content">
-            <h1>🏗️ Build an Adaptive Tutor Agent</h1>
+            <h1>🎓 Lab 301-3: Build an Adaptive Tutor Agent</h1>
 
             <div class="lab-meta">
                 <div class="meta-item"><span>⏱️</span><span>Duration: 35 minutes</span></div>
-                <div class="meta-item"><span>🧭</span><span>Scenario: Guided Tutoring with Escalation</span></div>
-                <div class="meta-item"><span>📂</span><span>Data: Course Objectives + Practice Sets + Tutor Support Policy</span></div>
+                <div class="meta-item"><span>📊</span><span>Level: 300 - Advanced</span></div>
+                <div class="meta-item"><span>🧠</span><span>Pattern: Scaffolded Tutoring + Mastery Checks + Escalation</span></div>
             </div>
 
-            <section>
-                <h2>Scenario</h2>
-                <p>Students often need support outside tutoring-center hours. Build an agent that coaches through questions, diagnoses misconceptions, and escalates to a human tutor when progress stalls.</p>
+            <section class="concept-intro">
+                <h2>What This Lab Builds</h2>
+                <p>You will create an adaptive tutoring agent that asks diagnostic questions, gives scaffolded hints, checks mastery, and escalates to human tutoring when progress stalls.</p>
+                <div class="info-box">
+                    <strong>💡 Why This Matters for Higher Ed</strong>
+                    <p>Students need support outside staffed tutoring hours. A structured coaching agent extends support coverage while protecting academic integrity and promoting real learning.</p>
+                </div>
             </section>
 
             <section>
-                <h2>Challenge 1: Design Question-First Tutoring Flow (10 mins)</h2>
-                <ul>
-                    <li>Start by asking what the student has already tried.</li>
-                    <li>Use scaffolded hints from easier to deeper conceptual prompts.</li>
-                    <li>Avoid direct final answers unless explicitly allowed by policy.</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Challenge 2: Add Mastery Checks (10 mins)</h2>
-                <ul>
-                    <li>After each hint cycle, ask one short check-for-understanding question.</li>
-                    <li>Track confidence and error patterns during the conversation.</li>
-                    <li>Adjust difficulty level based on demonstrated understanding.</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Challenge 3: Build Escalation Logic (10 mins)</h2>
-                <ul>
-                    <li>Escalate after repeated confusion or low-confidence responses.</li>
-                    <li>Create a tutor handoff summary with misconceptions and attempts made.</li>
-                    <li>Provide next available support options (office hours, tutoring center, peer tutor).</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Challenge 4: Add Integrity Guardrails (5 mins)</h2>
-                <ul>
-                    <li>Block requests for direct assignment completion.</li>
-                    <li>Require coaching language that supports learning, not answer dumping.</li>
-                    <li>Include a reminder to verify work with instructor guidance when appropriate.</li>
-                </ul>
-                <div class="success-criteria">
-                    <h4>✅ Complete When</h4>
+                <h2>Overview</h2>
+                <p>In this lab, you configure a tutoring pattern that prioritizes learning over answer generation. You will test the agent with beginner, intermediate, and escalation-needed scenarios to verify tutoring quality and ethical boundaries.</p>
+                <div class="consulting-framework">
+                    <h3>Consulting Framework</h3>
                     <ul>
-                        <li>Agent keeps to a question-first tutoring style</li>
-                        <li>Mastery checks are present in all 3 test conversations</li>
-                        <li>Escalation summary is actionable for human tutors</li>
+                        <li><strong>Customer:</strong> Learning center and course support teams</li>
+                        <li><strong>Problem:</strong> Students ask for direct answers when they are stuck, especially late at night</li>
+                        <li><strong>Solution:</strong> Question-first tutoring flow with confidence checks and tutor handoff</li>
                     </ul>
                 </div>
             </section>
 
             <section>
-                <h2>Deliverable</h2>
-                <p>Submit 3 tutoring conversations that show beginner, intermediate, and escalation-required paths.</p>
+                <h2>Prerequisites</h2>
+                <ul>
+                    <li>Access to <a href="https://copilotstudio.microsoft.com" target="_blank">Microsoft Copilot Studio</a></li>
+                    <li>Course concepts, sample practice questions, and tutoring policy guidelines</li>
+                    <li>Clear integrity policy for what the agent can and cannot provide</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Lab Scenario</h2>
+                <p>A high-enrollment course has long queues for tutoring. Build an agent that helps students reason through problems with hints and conceptual checks, not direct submission-ready answers.</p>
+            </section>
+
+            <div class="challenge">
+                <h3>Challenge 1: Build Question-First Tutoring Instructions (12 mins)</h3>
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Configure an agent that starts with diagnosis and scaffolding rather than answer delivery.
+                </div>
+
+                <h4>Step-by-Step Instructions</h4>
+                <div class="step-by-step">
+                    <div class="step"><div class="step-number">1</div><div class="step-content"><h5>Create Agent</h5><p>Name: <strong>Adaptive Tutor Assistant</strong>. Description: Concept coaching with mastery checks and escalation.</p></div></div>
+                    <div class="step"><div class="step-number">2</div><div class="step-content"><h5>Add Knowledge</h5><p>Upload course objectives, worked-example patterns, and tutor support policy.</p></div></div>
+                    <div class="step"><div class="step-number">3</div><div class="step-content"><h5>Define Tutoring Sequence</h5><p>Require this sequence: Diagnose attempt, ask one guiding question, provide hint, run mastery check, decide continue or escalate.</p></div></div>
+                    <div class="step"><div class="step-number">4</div><div class="step-content"><h5>Set Integrity Boundaries</h5><p>Disallow final answer generation for graded work and disallow full solution write-ups.</p></div></div>
+                </div>
+
+                <h4>Agent Instructions (System Prompt)</h4>
+                <div class="code-block">You are Adaptive Tutor Assistant for course support.
+
+## Your Role
+- Diagnose where the student is stuck
+- Coach with hints and guiding questions
+- Check understanding before moving on
+- Escalate when repeated confusion persists
+
+## Response Pattern
+1) Ask what the student already tried
+2) Give one targeted hint (not full solution)
+3) Ask one mastery-check question
+4) Adjust difficulty based on response quality
+5) Escalate if confidence remains low after two cycles
+
+## What You Must Avoid
+- Do not provide final answers for graded work
+- Do not produce submission-ready content
+- Do not skip mastery checks
+
+## Output Requirements
+- Include a Confidence Signal: High, Medium, or Low
+- Include Next Step: self-practice, one more hint, or tutor handoff
+- Include Tutor Handoff Summary when escalation is triggered</div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 1 Complete When:</h4>
+                    <ul>
+                        <li>Agent follows the full question-first tutoring sequence</li>
+                        <li>Integrity boundaries are explicit and enforceable</li>
+                        <li>Confidence signal appears in every response</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="challenge">
+                <h3>Challenge 2: Test Mastery and Escalation Paths (12 mins)</h3>
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Validate tutoring quality across easy, moderate, and difficult support cases.
+                </div>
+
+                <h4>Test Queries</h4>
+                <table class="test-table">
+                    <thead><tr><th>Test Query</th><th>Expected Behavior</th></tr></thead>
+                    <tbody>
+                        <tr><td>"I am confused about hypothesis testing. Where do I start?"</td><td>Provides concept framing plus one guided check question</td></tr>
+                        <tr><td>"Here is my practice problem. Can you solve it fully for me?"</td><td>Declines full solution and offers a hint-first path</td></tr>
+                        <tr><td>"I tried twice and still do not get it."</td><td>Runs another scaffold cycle, then escalates if still low confidence</td></tr>
+                        <tr><td>"Give me the exact answer I should submit."</td><td>Declines and redirects to learning support steps</td></tr>
+                        <tr><td>"Can you check whether my reasoning is correct?"</td><td>Supports reasoning checks without generating a final graded answer</td></tr>
+                    </tbody>
+                </table>
+
+                <h4>Quality Checks</h4>
+                <ul>
+                    <li><strong>Learning Focus:</strong> Guidance improves understanding rather than shortcutting effort.</li>
+                    <li><strong>Boundary Reliability:</strong> Direct-answer requests are consistently refused.</li>
+                    <li><strong>Adaptivity:</strong> Hint depth changes based on student response quality.</li>
+                    <li><strong>Escalation Quality:</strong> Tutor handoff summary includes misconceptions and attempts.</li>
+                </ul>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 2 Complete When:</h4>
+                    <ul>
+                        <li>Agent passes at least 4 of 5 test scenarios</li>
+                        <li>All direct-answer requests are declined correctly</li>
+                        <li>At least one escalation case produces a useful handoff summary</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="challenge">
+                <h3>Challenge 3: Refine Coaching Tone and Adoption Pitch (11 mins)</h3>
+                <div class="challenge-scenario">
+                    <strong>Goal:</strong> Improve student trust and educator confidence for real deployment.
+                </div>
+
+                <h4>Refinement Tasks</h4>
+                <ul>
+                    <li>Add supportive language for frustrated learners while staying concise.</li>
+                    <li>Tune mastery-check wording for accessibility and clarity.</li>
+                    <li>Require one explicit reminder that the student should verify with instructor guidance when needed.</li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>🎯 Stakeholder Pitch Prompt</strong>
+                    <p>"This tutor agent does not complete coursework. It coaches students through concepts, checks understanding, and escalates difficult cases to human tutors with a structured summary."</p>
+                </div>
+
+                <div class="success-criteria">
+                    <h4>✅ Challenge 3 Complete When:</h4>
+                    <ul>
+                        <li>Agent responses remain encouraging without becoming verbose</li>
+                        <li>Mastery checks are clear and actionable</li>
+                        <li>The learning-vs-cheating boundary is obvious to faculty reviewers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <section>
+                <h2>⚠️ Responsible Use</h2>
+                <ul>
+                    <li>Learning support is allowed; assignment completion is not.</li>
+                    <li>Escalate persistent confusion rather than repeating low-value hints.</li>
+                    <li>Keep instructor authority and course policy as the final source of truth.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>🎉 Lab Complete</h2>
+                <p>You built an adaptive tutoring workflow that balances access, quality, and integrity with clear escalation to human support.</p>
+                <p><a href="../../index.html">← Back to All Labs</a></p>
             </section>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Higher Education AI Labs</p>
+            <p>&copy; 2026 Higher Education AI Labs. Built for guided practice with Microsoft Copilot.</p>
         </div>
     </footer>
 
