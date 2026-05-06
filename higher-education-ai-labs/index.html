@@ -4,426 +4,421 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Higher Education AI Labs</title>
-    <style>
-        :root {
-            --page-bg: #f4efe7;
-            --surface: #fffdf9;
-            --surface-alt: #f8f1e5;
-            --ink: #1c2430;
-            --muted: #5d6878;
-            --accent: #0e5a61;
-            --accent-soft: #d7ece8;
-            --border: #d7cfc1;
-            --shadow: 0 18px 48px rgba(28, 36, 48, 0.08);
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: "Segoe UI", "Aptos", sans-serif;
-            color: var(--ink);
-            background:
-                radial-gradient(circle at top left, rgba(14, 90, 97, 0.18), transparent 28%),
-                linear-gradient(180deg, #fbf7f1 0%, var(--page-bg) 55%, #efe6da 100%);
-        }
-
-        .page-shell {
-            width: min(1180px, calc(100% - 48px));
-            margin: 0 auto;
-            padding: 40px 0 72px;
-        }
-
-        .hero {
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 28px;
-            background: linear-gradient(135deg, rgba(14, 90, 97, 0.95), rgba(20, 48, 86, 0.92));
-            color: #f8fbfc;
-            box-shadow: var(--shadow);
-        }
-
-        .hero-kicker {
-            display: inline-block;
-            margin-bottom: 14px;
-            padding: 6px 12px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.14);
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .hero h1 {
-            margin: 0;
-            font-size: clamp(2.5rem, 4vw, 4.4rem);
-            line-height: 1;
-        }
-
-        .hero p {
-            max-width: 820px;
-            margin: 18px 0 0;
-            font-size: 1.08rem;
-            line-height: 1.65;
-            color: rgba(248, 251, 252, 0.86);
-        }
-
-        .section {
-            margin-top: 32px;
-            padding: 28px;
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            background: rgba(255, 253, 249, 0.92);
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(10px);
-        }
-
-        .section-heading {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 16px;
-            align-items: end;
-            margin-bottom: 22px;
-        }
-
-        .section-label {
-            margin: 0 0 8px;
-            color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        .section h2 {
-            margin: 0;
-            font-size: clamp(1.8rem, 2.6vw, 2.4rem);
-        }
-
-        .section-description {
-            max-width: 760px;
-            margin: 0;
-            color: var(--muted);
-            line-height: 1.65;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-        }
-
-        .lab-card {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            min-height: 100%;
-            padding: 22px;
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            background: var(--surface);
-            box-shadow: 0 10px 28px rgba(28, 36, 48, 0.06);
-        }
-
-        .lab-level {
-            display: inline-flex;
-            align-self: flex-start;
-            padding: 6px 11px;
-            border-radius: 999px;
-            background: var(--accent-soft);
-            color: var(--accent);
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-
-        .lab-card h3 {
-            margin: 0;
-            font-size: 1.32rem;
-            line-height: 1.3;
-        }
-
-        .lab-title-wrap p {
-            margin: 10px 0 0;
-            color: var(--muted);
-            line-height: 1.6;
-        }
-
-        .lab-meta {
-            display: grid;
-            gap: 12px;
-        }
-
-        .meta-block {
-            padding: 14px 15px;
-            border-radius: 16px;
-            background: var(--surface-alt);
-        }
-
-        .meta-label {
-            margin: 0 0 6px;
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.07em;
-            text-transform: uppercase;
-            color: var(--accent);
-        }
-
-        .meta-value {
-            margin: 0;
-            line-height: 1.55;
-            color: var(--ink);
-        }
-
-        @media (max-width: 720px) {
-            .page-shell {
-                width: min(100% - 24px, 1180px);
-                padding-top: 24px;
-            }
-
-            .hero,
-            .section {
-                padding: 22px;
-                border-radius: 22px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="page-shell">
-        <div class="hero">
-            <div class="hero-kicker">Domain AI Labs</div>
-            <h1>Higher Education AI Labs</h1>
-            <p>Demo-ready lab catalog for higher education teams, organized by Copilot 101, 201, and 301. This page reflects only the Higher Education section from the source architecture and keeps each lab in a consistent card format with title, persona, strategic goal, and ROI.</p>
+    <header>
+        <div class="container">
+            <h1>🎓 Higher Education AI Labs</h1>
+            <p class="tagline">Hands-on labs for building AI agents that improve student success, faculty workflows, and institutional operations</p>
         </div>
+    </header>
 
-        <div class="section">
-            <div class="section-heading">
-                <div>
-                    <p class="section-label">Copilot 101</p>
-                    <h2>Prompt Engineering</h2>
-                </div>
-                <p class="section-description">Short prompting labs focused on improving output quality through role, audience, constraints, and specificity.</p>
+    <main class="container">
+        <section class="intro">
+            <h2>Welcome to Higher Education AI Labs</h2>
+            <p>These labs combine strategic outcomes from the periodic table of agents with practical guided practice. Learners do not just read cards; they run walkthroughs, test prompts, and build grounded agents in 101, 201, and 301 progression.</p>
+
+            <div class="student-empowerment">
+                <h3>🚀 Guided Practice Model</h3>
+                <ul>
+                    <li><strong>Learn by doing:</strong> Every lab includes a try-it sequence and sample input.</li>
+                    <li><strong>Build toward outcomes:</strong> Each scenario maps directly to a strategic goal and ROI signal.</li>
+                    <li><strong>Practice transfer:</strong> Extension prompts help teams adapt the same pattern to new use cases.</li>
+                    <li><strong>Keep ethics in scope:</strong> Labs include boundaries for responsible use in higher education.</li>
+                </ul>
             </div>
+
+            <div class="consulting-framework">
+                <h3>Consulting Framework</h3>
+                <p>Each lab is intentionally framed around three questions:</p>
+                <ul>
+                    <li><strong>Who is the customer?</strong> Students, faculty, advisors, or service teams.</li>
+                    <li><strong>What repetitive, high-volume challenge exists?</strong> A specific bottleneck with measurable impact.</li>
+                    <li><strong>What agent pattern removes friction?</strong> Prompting, Studio Lite, or multi-turn Copilot Studio.</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>💡 How to use this page</strong>
+                <p>Start with one 101 lab, then one 201 build, then one 301 orchestration. Facilitators can run each card as a mini-lab in 15 to 35 minutes using the Guided Practice bullets.</p>
+            </div>
+
+            <div class="info-box">
+                <strong>🎯 Periodic Table Goal Alignment (HED)</strong>
+                <p>Goal set aligned to the HED periodic table: Improve Student Retention &amp; Completion, Increase Enrollment &amp; Yield, Accelerate Research &amp; Innovation, Reduce Administrative Burden, and Enhance Student Experience.</p>
+            </div>
+        </section>
+
+        <section class="featured-labs">
+            <h2>🧠 Copilot 101: Prompt Engineering</h2>
+            <p class="section-intro">Prompt-only labs for fast skill gains in audience awareness, specificity, and output control.</p>
+
+            <div class="labs-grid">
+                <div class="lab-card">
+                    <div class="lab-header">
+                        <h3>101-A: Financial Aid FAQ Persona</h3>
+                        <span class="duration">⏱️ 15 mins</span>
+                    </div>
+                    <p><strong>Persona:</strong> Financial Aid Counselor or Student</p>
+                    <p>Practice transforming a generic FAFSA response into a plain-language, student-centered answer with one clear next step.</p>
+                    <ul class="lab-highlights">
+                        <li><strong>Guided Practice:</strong> Start with "Explain FAFSA" then add audience context (first-generation student).</li>
+                        <li><strong>Guided Practice:</strong> Add constraints (under 200 words, no jargon, one action step).</li>
+                        <li><strong>Guided Practice:</strong> Add deadline and document specificity, then compare before/after quality.</li>
+                    </ul>
+                    <div class="lab-meta-info">
+                        <strong>Strategic Goal:</strong> Improve Student Retention &amp; Completion<br>
+                        <strong>ROI:</strong> Consistent, accessible financial aid communication at scale
+                    </div>
+                </div>
+
+                <div class="lab-card">
+                    <div class="lab-header">
+                        <h3>101-B: Faculty Grading Feedback Drafting</h3>
+                        <span class="duration">⏱️ 15 mins</span>
+                    </div>
+                    <p><strong>Persona:</strong> Faculty Instructor</p>
+                    <p>Draft useful grading feedback from rubric criteria while preserving an encouraging, honest tone.</p>
+                    <ul class="lab-highlights">
+                        <li><strong>Guided Practice:</strong> Begin with generic "Give feedback on this paper" prompt.</li>
+                        <li><strong>Guided Practice:</strong> Add rubric dimensions and student level (undergraduate, first attempt).</li>
+                        <li><strong>Guided Practice:</strong> Require one strength, one specific improvement, and one actionable next step.</li>
+                    </ul>
+                    <div class="lab-meta-info">
+                        <strong>Strategic Goal:</strong> Enhance Student Experience<br>
+                        <strong>ROI:</strong> Meaningful feedback drafted in 3 minutes instead of 20
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-labs">
+            <h2>🧭 Copilot 201: Agent Academy (Studio Lite)</h2>
+            <p class="section-intro">Single-agent builds with one primary grounding pattern and a clear measurable output.</p>
+
+            <div class="cards-grid">
+                <div class="lab-card featured">
+                    <div class="lab-badge">Start Here</div>
+                    <div class="lab-header">
+                        <h3>201-A: Academic Research Assistant</h3>
+                        <span class="duration">⏱️ 30 mins</span>
+                    </div>
+                    <p><strong>Persona:</strong> Student Researcher</p>
+                    <p>Build a web-grounded assistant using Purdue OWL and university library sources to guide research method and citations.</p>
+                    <ul class="lab-highlights">
+                        <li><strong>Guided Practice:</strong> Add web grounding and define clear answer format (method, source type, citation style).</li>
+                        <li><strong>Guided Practice:</strong> Test with three queries: method choice, source quality, and citation correction.</li>
+                        <li><strong>Guided Practice:</strong> Tune instructions to avoid fabricated sources and require confidence wording.</li>
+                    </ul>
+                    <div class="lab-meta-info">
+                        <strong>Strategic Goal:</strong> Accelerate Research &amp; Innovation<br>
+                        <strong>ROI:</strong> 45 minutes saved per assignment on research methodology questions
+                    </div>
+                    <div class="lab-actions">
+                        <a href="labs/lab-1a-web-grounded-research-agent/index.html" class="btn btn-primary">Start Guided Lab</a>
+                        <span class="difficulty">Beginner</span>
+                    </div>
+                </div>
+
+                <div class="lab-card featured">
+                    <div class="lab-badge">After 201-A</div>
+                    <div class="lab-header">
+                        <h3>201-B: Course Designer Agent</h3>
+                        <span class="duration">⏱️ 30 mins</span>
+                    </div>
+                    <p><strong>Persona:</strong> Instructor</p>
+                    <p>Build a file-grounded design assistant from syllabus, rubrics, and objectives to generate differentiated learning variants.</p>
+                    <ul class="lab-highlights">
+                        <li><strong>Guided Practice:</strong> Upload core course documents and define desired output template.</li>
+                        <li><strong>Guided Practice:</strong> Test one topic for three learner profiles (struggling, on-level, advanced).</li>
+                        <li><strong>Guided Practice:</strong> Add guardrails for "not found in docs" and citation-backed responses.</li>
+                    </ul>
+                    <div class="lab-meta-info">
+                        <strong>Strategic Goal:</strong> Enhance Student Experience<br>
+                        <strong>ROI:</strong> Faster differentiation, more consistent instructional quality across sections
+                    </div>
+                    <div class="lab-actions">
+                        <a href="labs/lab-1b-file-grounded-course-agent/index.html" class="btn btn-primary">Start Guided Lab</a>
+                        <span class="difficulty">Beginner</span>
+                    </div>
+                </div>
+
+                <div class="lab-card featured" id="lab-201c-guide">
+                    <div class="lab-badge">Then 201-C</div>
+                    <div class="lab-header">
+                        <h3>201-C: Financial Aid Navigator</h3>
+                        <span class="duration">⏱️ 30 mins</span>
+                    </div>
+                    <p><strong>Persona:</strong> Student</p>
+                    <p>Build a file-grounded aid policy agent that answers eligibility, deadlines, and award-letter questions with policy clarity.</p>
+                    <ul class="lab-highlights">
+                        <li><strong>Guided Practice:</strong> Ground on aid policy docs, FAFSA guide, and award letter template.</li>
+                        <li><strong>Guided Practice:</strong> Test edge cases: mixed eligibility, missing document, deadline conflict.</li>
+                        <li><strong>Guided Practice:</strong> Add escalation language for counselor follow-up when policy is ambiguous.</li>
+                    </ul>
+                    <div class="lab-meta-info">
+                        <strong>Strategic Goal:</strong> Improve Student Retention &amp; Completion<br>
+                        <strong>ROI:</strong> 3x inquiry handling capacity during peak FAFSA season
+                    </div>
+                    <div class="lab-actions">
+                        <a href="#" class="btn btn-secondary">Facilitator Build Script</a>
+                        <span class="difficulty">Beginner</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="additional-labs">
+            <h2>🏗️ Copilot 301: Copilot Studio</h2>
+            <p class="section-intro">Multi-turn and multi-source labs with build-order context, routing logic, and human handoff points.</p>
+
             <div class="cards-grid">
                 <div class="lab-card">
-                    <div class="lab-level">101-A</div>
-                    <div class="lab-title-wrap">
-                        <h3>Financial Aid FAQ Persona</h3>
+                    <div class="lab-header">
+                        <h3>301-1: Academic Advising Agent (Da + Mr)</h3>
+                        <span class="duration">⏱️ 35 mins</span>
                     </div>
-                    <div class="lab-meta">
-                        <div class="meta-block">
-                            <p class="meta-label">Persona</p>
-                            <p class="meta-value">Financial Aid Counselor or Student</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">Strategic Goal</p>
-                            <p class="meta-value">Improve Student Retention &amp; Completion</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">ROI</p>
-                            <p class="meta-value">Consistent, accessible financial aid communication at scale</p>
-                        </div>
+                    <p><strong>Persona:</strong> Student and Academic Advisor</p>
+                    <p>Build a multi-turn advisor that performs degree-audit logic and then recommends next-term courses from goals and completed credits.</p>
+                    <ul class="lab-highlights">
+                        <li><strong>Guided Practice:</strong> Ask major, completed credits, constraints, and academic goals in sequence.</li>
+                        <li><strong>Guided Practice:</strong> Produce degree-gap summary plus recommended schedule with rationale.</li>
+                        <li><strong>Build Order:</strong> Before Ae (Period 2), this Da+Mr (Period 4-5), after Re (Period 6).</li>
+                    </ul>
+                    <div class="lab-meta-info">
+                        <strong>Strategic Goal:</strong> Improve Student Retention &amp; Completion<br>
+                        <strong>ROI:</strong> 40% of advising appointment time recovered for complex cases
+                    </div>
+                    <div class="lab-actions">
+                        <a href="#" class="btn btn-secondary">Facilitator Build Script</a>
+                        <span class="difficulty">Intermediate</span>
                     </div>
                 </div>
 
                 <div class="lab-card">
-                    <div class="lab-level">101-B</div>
-                    <div class="lab-title-wrap">
-                        <h3>Faculty Grading Feedback Drafting</h3>
+                    <div class="lab-header">
+                        <h3>301-2: Student Services Case Intake Agent (Ci)</h3>
+                        <span class="duration">⏱️ 30 mins</span>
                     </div>
-                    <div class="lab-meta">
-                        <div class="meta-block">
-                            <p class="meta-label">Persona</p>
-                            <p class="meta-value">Faculty Instructor</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">Strategic Goal</p>
-                            <p class="meta-value">Enhance Student Experience</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">ROI</p>
-                            <p class="meta-value">Meaningful feedback drafted in 3 minutes instead of 20</p>
-                        </div>
+                    <p><strong>Persona:</strong> Student Services Staff</p>
+                    <p>Build a triage and routing agent that collects request type, urgency, and prior contact before producing a handoff summary.</p>
+                    <ul class="lab-highlights">
+                        <li><strong>Guided Practice:</strong> Create topic branches for advising, registrar, and financial aid routing.</li>
+                        <li><strong>Guided Practice:</strong> Test three scenarios and validate route plus escalation quality.</li>
+                        <li><strong>Build Order:</strong> Before He (Period 2), this Ci (Period 4), after Ca (Period 5).</li>
+                    </ul>
+                    <div class="lab-meta-info">
+                        <strong>Strategic Goal:</strong> Enhance Student Experience<br>
+                        <strong>ROI:</strong> Faster case resolution, fewer misrouted requests
+                    </div>
+                    <div class="lab-actions">
+                        <a href="labs/student-services-case-orchestration-agent-30-mins/index.html" class="btn btn-primary">Start Guided Lab</a>
+                        <span class="difficulty">Intermediate</span>
+                    </div>
+                </div>
+
+                <div class="lab-card">
+                    <div class="lab-header">
+                        <h3>301-3: Adaptive Tutor Agent (At)</h3>
+                        <span class="duration">⏱️ 35 mins</span>
+                    </div>
+                    <p><strong>Persona:</strong> Student</p>
+                    <p>Build a tutoring agent that asks guiding questions, surfaces gaps, and escalates to a human tutor when needed.</p>
+                    <ul class="lab-highlights">
+                        <li><strong>Guided Practice:</strong> Design question-first tutoring flow that avoids direct answer dumping.</li>
+                        <li><strong>Guided Practice:</strong> Include escalation protocol for persistent confusion or high-risk scenarios.</li>
+                        <li><strong>Build Order:</strong> Before Cd (Period 4), this At (Period 4), after Rt (Period 5).</li>
+                    </ul>
+                    <div class="lab-meta-info">
+                        <strong>Strategic Goal:</strong> Enhance Student Experience<br>
+                        <strong>ROI:</strong> Extended learning support hours without staffing costs
+                    </div>
+                    <div class="lab-actions">
+                        <a href="#" class="btn btn-secondary">Facilitator Build Script</a>
+                        <span class="difficulty">Intermediate</span>
+                    </div>
+                </div>
+
+                <div class="lab-card">
+                    <div class="lab-header">
+                        <h3>301-4: Student Activities Agent (Sj)</h3>
+                        <span class="duration">⏱️ 30 mins</span>
+                    </div>
+                    <p><strong>Persona:</strong> Student Organization Leader</p>
+                    <p>Build a multi-turn events assistant for approvals, room reservations, budget checks, and marketing steps.</p>
+                    <ul class="lab-highlights">
+                        <li><strong>Guided Practice:</strong> Intake event type, org name, date, and expected attendance.</li>
+                        <li><strong>Guided Practice:</strong> Return compliance checklist, approval path, and next-action owner.</li>
+                        <li><strong>Build Order:</strong> Before Ci (Period 4), this Sj (Period 6), after Oj (Period 7).</li>
+                    </ul>
+                    <div class="lab-meta-info">
+                        <strong>Strategic Goal:</strong> Enhance Student Experience<br>
+                        <strong>ROI:</strong> Faster event approval, higher student organization participation
+                    </div>
+                    <div class="lab-actions">
+                        <a href="#" class="btn btn-secondary">Facilitator Build Script</a>
+                        <span class="difficulty">Intermediate</span>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <section class="institutional-agents">
+            <h2>💡 Extension Ideas (High ROI) by Persona</h2>
+            <p>After running the core labs, teams can extend patterns to adjacent higher-ed workflows without redesigning from scratch.</p>
+
+            <div class="persona-section">
+                <div class="persona-header">
+                    <h3>👔 Advising and Services Extensions</h3>
+                    <p class="persona-tagline">Scale case quality and routing consistency while preserving human judgment for complex issues.</p>
+                </div>
+                <div class="use-case-grid">
+                    <div class="use-case-card institutional">
+                        <h4>Enrollment Yield Concierge</h4>
+                        <p><strong>Persona Focus:</strong> Admissions and Enrollment Teams</p>
+                        <p><strong>Problem:</strong> Prospective students drop off when next steps are unclear across aid, deadlines, and requirements.</p>
+                        <span class="use-case-roi">ROI: Better applicant progression and improved yield support</span>
+                    </div>
+                    <div class="use-case-card institutional">
+                        <h4>Retention Signals Assistant</h4>
+                        <p><strong>Persona Focus:</strong> Academic Coaches, Advisors</p>
+                        <p><strong>Problem:</strong> Risk indicators are spread across systems and discovered late.</p>
+                        <span class="use-case-roi">ROI: Earlier interventions and improved persistence</span>
+                    </div>
+                    <div class="use-case-card institutional">
+                        <h4>Transfer Credit Triage Agent</h4>
+                        <p><strong>Persona Focus:</strong> Registrar and Advising Teams</p>
+                        <p><strong>Problem:</strong> Transfer inquiries are repetitive and require policy cross-checking.</p>
+                        <span class="use-case-roi">ROI: Faster transfer evaluations and fewer misroutes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="persona-section">
+                <div class="persona-header">
+                    <h3>👩‍🏫 Faculty and Teaching Extensions</h3>
+                    <p class="persona-tagline">Turn instructional design patterns into repeatable, quality-controlled support.</p>
+                </div>
+                <div class="use-case-grid">
+                    <div class="use-case-card institutional">
+                        <h4>Administrative Workflow Copilot</h4>
+                        <p><strong>Persona Focus:</strong> Department Coordinators and Program Staff</p>
+                        <p><strong>Problem:</strong> Routine process questions and handoffs consume staff time across departments.</p>
+                        <span class="use-case-roi">ROI: Reduced administrative burden and faster workflow completion</span>
+                    </div>
+                    <div class="use-case-card institutional">
+                        <h4>Assessment Feedback Coach</h4>
+                        <p><strong>Persona Focus:</strong> Faculty, Teaching Assistants</p>
+                        <p><strong>Problem:</strong> Constructive feedback is time-intensive and inconsistent across sections.</p>
+                        <span class="use-case-roi">ROI: Faster, more consistent formative feedback</span>
+                    </div>
+                    <div class="use-case-card institutional">
+                        <h4>Rubric Alignment Assistant</h4>
+                        <p><strong>Persona Focus:</strong> Course Coordinators</p>
+                        <p><strong>Problem:</strong> Assignment prompts drift from outcomes and rubric criteria.</p>
+                        <span class="use-case-roi">ROI: Stronger alignment and reduced rework</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="persona-section">
+                <div class="persona-header">
+                    <h3>🎒 Student Success Extensions</h3>
+                    <p class="persona-tagline">Extend guided tutoring and planning support beyond office hours.</p>
+                </div>
+                <div class="use-case-grid">
+                    <div class="use-case-card institutional">
+                        <h4>Study Planning Agent</h4>
+                        <p><strong>Persona Focus:</strong> Students</p>
+                        <p><strong>Problem:</strong> Learners struggle to turn course goals into weekly study plans.</p>
+                        <span class="use-case-roi">ROI: Better self-management and improved completion rates</span>
+                    </div>
+                    <div class="use-case-card institutional">
+                        <h4>Resource Matching Navigator</h4>
+                        <p><strong>Persona Focus:</strong> Students, Student Success Teams</p>
+                        <p><strong>Problem:</strong> Students do not know when to use tutoring, writing center, or counseling supports.</p>
+                        <span class="use-case-roi">ROI: Higher resource utilization and faster support matching</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="getting-started">
+            <h2>Getting Started</h2>
+
+            <div class="prerequisites">
+                <h3>Prerequisites</h3>
+                <ul>
+                    <li>Access to Copilot Chat and Copilot Studio.</li>
+                    <li>Sample files for the selected lab track (syllabus, rubric, policy, or service docs).</li>
+                    <li>A facilitator who can timebox each guided practice segment.</li>
+                </ul>
+            </div>
+
+            <div class="learning-path">
+                <h3>Recommended Learning Path</h3>
+                <ol>
+                    <li>Run one 101 prompt lab to establish prompt quality habits.</li>
+                    <li>Run one 201 Studio Lite build to practice grounding and validation.</li>
+                    <li>Run one 301 orchestration lab with escalation and handoff logic.</li>
+                    <li>Choose one extension idea and adapt it into a pilot scenario.</li>
+                </ol>
+            </div>
+
+            <div class="pitch-to-faculty">
+                <h3>🎯 Facilitation Tips</h3>
+                <ol>
+                    <li>Keep practice data realistic but de-identified.</li>
+                    <li>Have teams compare first output versus final output to show improvement.</li>
+                    <li>Capture one metric per lab: time saved, quality score, or routing accuracy.</li>
+                    <li>End each lab with one extension challenge for transfer learning.</li>
+                </ol>
+            </div>
+
+            <div class="ethical-guidelines">
+                <h3>⚠️ Responsible AI Boundaries</h3>
+                <ul>
+                    <li>Assist learning and workflows, do not replace human judgment in high-stakes decisions.</li>
+                    <li>Do not generate assignment answers for students in adaptive tutoring scenarios.</li>
+                    <li>Require transparent citations for policy-grounded and file-grounded responses.</li>
+                    <li>Escalate ambiguous or sensitive cases to human staff.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="value-framework">
+            <h2>Measuring Agent Impact</h2>
+            <p>Track impact with simple, repeatable metrics during pilots.</p>
+            <div class="value-metrics">
+                <div class="metric-card">
+                    <h4>Time Saved</h4>
+                    <p>Minutes recovered per case, feedback cycle, or advising interaction.</p>
+                </div>
+                <div class="metric-card">
+                    <h4>Quality Gain</h4>
+                    <p>Rubric-aligned outputs, clearer guidance, and better handoff summaries.</p>
+                </div>
+                <div class="metric-card">
+                    <h4>Access Coverage</h4>
+                    <p>24/7 support availability beyond office hours and peak queue periods.</p>
+                </div>
+                <div class="metric-card">
+                    <h4>Resolution Accuracy</h4>
+                    <p>Correct route, correct policy interpretation, fewer misrouted requests.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Higher Education AI Labs. Built for guided practice with Microsoft Copilot.</p>
+            <p class="footer-note">Aligned to periodic table outcomes for Copilot 101, 201, and 301 pathways.</p>
         </div>
+    </footer>
 
-        <div class="section">
-            <div class="section-heading">
-                <div>
-                    <p class="section-label">Copilot 201</p>
-                    <h2>Agent Academy</h2>
-                </div>
-                <p class="section-description">Studio Lite labs using either web grounding or file grounding to produce one clear, practical outcome without system connectivity.</p>
-            </div>
-            <div class="cards-grid">
-                <div class="lab-card">
-                    <div class="lab-level">201-A</div>
-                    <div class="lab-title-wrap">
-                        <h3>Academic Research Assistant</h3>
-                    </div>
-                    <div class="lab-meta">
-                        <div class="meta-block">
-                            <p class="meta-label">Persona</p>
-                            <p class="meta-value">Student or Researcher</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">Strategic Goal</p>
-                            <p class="meta-value">Accelerate Research &amp; Innovation</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">ROI</p>
-                            <p class="meta-value">45 minutes saved per assignment on research methodology questions</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lab-card">
-                    <div class="lab-level">201-B</div>
-                    <div class="lab-title-wrap">
-                        <h3>Course Designer Agent</h3>
-                    </div>
-                    <div class="lab-meta">
-                        <div class="meta-block">
-                            <p class="meta-label">Persona</p>
-                            <p class="meta-value">Instructor</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">Strategic Goal</p>
-                            <p class="meta-value">Enhance Student Experience</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">ROI</p>
-                            <p class="meta-value">Faster differentiation, more consistent instructional quality across sections</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lab-card">
-                    <div class="lab-level">201-C</div>
-                    <div class="lab-title-wrap">
-                        <h3>Financial Aid Navigator</h3>
-                    </div>
-                    <div class="lab-meta">
-                        <div class="meta-block">
-                            <p class="meta-label">Persona</p>
-                            <p class="meta-value">Student</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">Strategic Goal</p>
-                            <p class="meta-value">Improve Student Retention &amp; Completion</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">ROI</p>
-                            <p class="meta-value">3x inquiry handling capacity during peak FAFSA season</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-heading">
-                <div>
-                    <p class="section-label">Copilot 301</p>
-                    <h2>Copilot Studio</h2>
-                </div>
-                <p class="section-description">Multi-turn and multi-source labs aligned to higher education outcomes, with each build moving beyond a single prompt into guided orchestration.</p>
-            </div>
-            <div class="cards-grid">
-                <div class="lab-card">
-                    <div class="lab-level">301-1</div>
-                    <div class="lab-title-wrap">
-                        <h3>Academic Advising Agent</h3>
-                    </div>
-                    <div class="lab-meta">
-                        <div class="meta-block">
-                            <p class="meta-label">Persona</p>
-                            <p class="meta-value">Student or Academic Advisor</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">Strategic Goal</p>
-                            <p class="meta-value">Improve Student Retention &amp; Completion</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">ROI</p>
-                            <p class="meta-value">40% of advising appointment time recovered for complex cases</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lab-card">
-                    <div class="lab-level">301-2</div>
-                    <div class="lab-title-wrap">
-                        <h3>Student Services Case Intake Agent</h3>
-                    </div>
-                    <div class="lab-meta">
-                        <div class="meta-block">
-                            <p class="meta-label">Persona</p>
-                            <p class="meta-value">Student Services Staff</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">Strategic Goal</p>
-                            <p class="meta-value">Enhance Student Experience</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">ROI</p>
-                            <p class="meta-value">Faster case resolution, fewer misrouted requests</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lab-card">
-                    <div class="lab-level">301-3</div>
-                    <div class="lab-title-wrap">
-                        <h3>Adaptive Tutor Agent</h3>
-                    </div>
-                    <div class="lab-meta">
-                        <div class="meta-block">
-                            <p class="meta-label">Persona</p>
-                            <p class="meta-value">Student</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">Strategic Goal</p>
-                            <p class="meta-value">Improve Student Achievement</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">ROI</p>
-                            <p class="meta-value">Extended learning support hours without staffing costs</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="lab-card">
-                    <div class="lab-level">301-4</div>
-                    <div class="lab-title-wrap">
-                        <h3>Student Activities Agent</h3>
-                    </div>
-                    <div class="lab-meta">
-                        <div class="meta-block">
-                            <p class="meta-label">Persona</p>
-                            <p class="meta-value">Student or Student Organization Leader</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">Strategic Goal</p>
-                            <p class="meta-value">Enhance Student Experience</p>
-                        </div>
-                        <div class="meta-block">
-                            <p class="meta-label">ROI</p>
-                            <p class="meta-value">Faster event approval, higher student org participation</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <script src="js/lab-navigation.js"></script>
 </body>
 </html>
                     </div>
