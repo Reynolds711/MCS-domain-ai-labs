@@ -3,309 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K-12 Education AI Labs</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>K12 Domain AI Labs</title>
+    <style>
+        :root {
+            --bg: #f7f8fa;
+            --surface: #ffffff;
+            --text: #1c2430;
+            --muted: #5a6776;
+            --line: #dde3ea;
+            --accent: #0f5ea8;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.45;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 28px 18px 44px;
+        }
+
+        .header {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0 0 8px;
+            font-size: 1.8rem;
+        }
+
+        .header p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .level-section {
+            margin-top: 24px;
+        }
+
+        .level-title {
+            margin: 0 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--line);
+            font-size: 1.35rem;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 14px;
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+            font-size: 1.05rem;
+            color: var(--accent);
+        }
+
+        .field {
+            margin: 6px 0;
+            color: var(--text);
+        }
+
+        .field strong {
+            display: inline-block;
+            min-width: 108px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>📚 K-12 Education AI Labs</h1>
-            <p class="tagline">Hands-on labs for building AI agents that support teachers and students</p>
+    <div class="page">
+        <div class="header">
+            <h1>K12 Domain AI Labs</h1>
+            <p>Extracted from the K12 section of the domain architecture source. Labs are grouped by 101, 201, and 301.</p>
         </div>
-    </header>
 
-    <main class="container">
-        <section class="intro">
-            <h2>Welcome to K-12 Education AI Labs</h2>
-            <p>Learn to build declarative AI agents designed for K-12 education challenges. These hands-on labs guide you through creating practical solutions for teacher productivity, school operations, and student support—all while maintaining appropriate ethical boundaries and focusing on augmentation, not replacement.</p>
-            
-            <div class="consulting-framework">
-                <h3>Consulting Framework</h3>
-                <p>Each lab answers three critical questions:</p>
-                <ul>
-                    <li><strong>Who is the customer?</strong> Teachers, administrators, or students</li>
-                    <li><strong>What repetitive, high-volume problem exists?</strong> Clear pain points</li>
-                    <li><strong>What agent can remove friction using existing data?</strong> Measurable solutions</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="featured-labs">
-            <h2>🧠 Copilot 101: Prompt Engineering – Chat Fundamentals</h2>
-            <p>Learn the art of prompting. Explore how to guide Copilot Chat with precision, creativity, and clarity across Microsoft 365.</p>
-            <p><strong>Prompt Pattern:</strong> Role + Objective + Context + Constraints + Output Format + Quality Bar</p>
-            <div class="labs-grid">
-                <div class="lab-card">
-                    <div class="lab-header"><h3>Prompt Lab 101-A: Teacher Persona</h3><span class="duration">⏱️ 15 mins</span></div>
-                    <p><strong>Persona Focus:</strong> Classroom Teacher</p>
-                    <p><strong>Prompt Pattern:</strong> Role + Objective + Context + Constraints + Output Format + Quality Bar</p>
-                    <ul class="lab-highlights">
-                        <li>Prompt Copilot Chat to draft a differentiated lesson outline</li>
-                        <li>Constrain output by grade level, time block, and standards</li>
-                        <li>Refine for inclusive language and practical classroom steps</li>
-                    </ul>
-                    <div class="lab-meta-info"><strong>ROI Signal:</strong> Reduced prep time and improved lesson quality</div>
+        <div class="level-section">
+            <h2 class="level-title">Copilot 101 - Prompt Engineering</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>101-A: Lesson Plan to Sub Plan Journey</h3>
+                    <div class="field"><strong>Persona:</strong> Classroom Teacher</div>
+                    <div class="field"><strong>Strategic Goal:</strong> Give Teachers Time Back</div>
+                    <div class="field"><strong>ROI:</strong> Sub plan drafted in 5 minutes instead of 45</div>
                 </div>
-                <div class="lab-card">
-                    <div class="lab-header"><h3>Prompt Lab 101-B: School Leader Persona</h3><span class="duration">⏱️ 15 mins</span></div>
-                    <p><strong>Persona Focus:</strong> Assistant Principal</p>
-                    <p><strong>Prompt Pattern:</strong> Role + Objective + Context + Constraints + Output Format + Quality Bar</p>
-                    <ul class="lab-highlights">
-                        <li>Prompt Copilot Chat to draft a family communication plan</li>
-                        <li>Require tone options: supportive, urgent, and informational</li>
-                        <li>Iterate for clarity, accessibility, and action-oriented messaging</li>
-                    </ul>
-                    <div class="lab-meta-info"><strong>ROI Signal:</strong> Faster family outreach and more consistent communication</div>
+                <div class="card">
+                    <h3>101-B: Letter of Recommendation</h3>
+                    <div class="field"><strong>Persona:</strong> Classroom Teacher</div>
+                    <div class="field"><strong>Strategic Goal:</strong> Give Teachers Time Back</div>
+                    <div class="field"><strong>ROI:</strong> Letter drafted in 10 minutes, personalized and ready to review</div>
                 </div>
             </div>
-        </section>
-
-        <!-- Copilot 201 Labs: Start Here -->
-        <section class="featured-labs">
-            <h2>🧭 Copilot 201: Agent Academy – Copilot Studio Lite</h2>
-            <p>Step into the Copilot Chat Agent Builder and construct your first intelligent agent. Learn to define intents (topics) and connect to data sources using instruction, web, or file grounding.</p>
-            
-            <div class="labs-grid">
-                <div class="lab-card featured">
-                    <div class="lab-badge">Start Here</div>
-                    <div class="lab-header">
-                        <h3>Lab 1A: Web-Grounded Standards Navigator</h3>
-                        <span class="duration">⏱️ 30 mins</span>
-                    </div>
-                    <p>Build your first declarative agent using public educational standards websites. Help teachers quickly find and understand Common Core, NGSS, and ISTE standards.</p>
-                    <ul class="lab-highlights">
-                        <li>Create agent in Copilot Studio</li>
-                        <li>Ground on public web sources</li>
-                        <li>Use evaluation tools to test</li>
-                        <li>Set ethical boundaries</li>
-                    </ul>
-                    <div class="lab-meta-info">
-                        <strong>Customer:</strong> Middle School Teachers<br>
-                        <strong>Grounding:</strong> Web Sources (corestandards.org, nextgenscience.org)<br>
-                        <strong>ROI:</strong> 30 min saved per lesson on standards research
-                    </div>
-                    <div class="lab-actions">
-                        <a href="labs/lab-1a-web-grounded-standards-agent/index.html" class="btn btn-primary">Start Lab 1A</a>
-                        <span class="difficulty">Beginner</span>
-                    </div>
-                </div>
-
-                <div class="lab-card featured">
-                    <div class="lab-badge">After Lab 1A</div>
-                    <div class="lab-header">
-                        <h3>Lab 1B: File-Grounded Lesson Planning Agent</h3>
-                        <span class="duration">⏱️ 30 mins</span>
-                    </div>
-                    <p>Build an agent grounded on your school's actual documents—lesson templates, rubrics, and curriculum guides. Help teachers access institutional knowledge instantly.</p>
-                    <ul class="lab-highlights">
-                        <li>Upload document knowledge sources</li>
-                        <li>Test cross-document retrieval</li>
-                        <li>Handle "not in documents" scenarios</li>
-                        <li>Validate grounding accuracy</li>
-                    </ul>
-                    <div class="lab-meta-info">
-                        <strong>Customer:</strong> Teachers & Instructional Coaches<br>
-                        <strong>Grounding:</strong> Uploaded Files (templates, rubrics, crosswalks)<br>
-                        <strong>ROI:</strong> New teacher onboarding 50% faster
-                    </div>
-                    <div class="lab-actions">
-                        <a href="labs/lab-1b-file-grounded-lesson-agent/index.html" class="btn btn-primary">Start Lab 1B</a>
-                        <span class="difficulty">Beginner</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Copilot 301 Labs -->
-        <section class="additional-labs">
-            <h2>🏗️ Copilot 301: Agent Academy – Copilot Studio</h2>
-            <p>Design multi-turn conversations, orchestrate workflows, and publish enterprise-ready agents with Copilot Studio. This level focuses on 200-level builds that can combine multiple knowledge sources.</p>
-            
-            <div class="labs-grid">
-                <div class="lab-card">
-                    <div class="lab-header">
-                        <h3>Teacher Productivity Agent</h3>
-                        <span class="duration">⏱️ 30 mins</span>
-                    </div>
-                    <p>Build AI agents that save teachers time on lesson planning, rubric creation, and parent communications—allowing more focus on actual teaching.</p>
-                    <ul class="lab-highlights">
-                        <li>Lesson plan alignment to standards</li>
-                        <li>Automated rubric generation</li>
-                        <li>Parent communication drafting</li>
-                    </ul>
-                    <div class="lab-meta-info">
-                        <strong>Customer:</strong> K-12 Teachers<br>
-                        <strong>ROI:</strong> 3-5 hours saved per week per teacher
-                    </div>
-                    <div class="lab-actions">
-                        <a href="labs/teacher-productivity-agent-30-mins/index.html?event=k12-bootcamp" class="btn btn-primary">Start Lab</a>
-                        <span class="difficulty">Beginner</span>
-                    </div>
-                </div>
-
-                <div class="lab-card">
-                    <div class="lab-header">
-                        <h3>School Operations Agent</h3>
-                        <span class="duration">⏱️ 30 mins</span>
-                    </div>
-                    <p>Create agents that answer common policy questions, handle attendance inquiries, and manage school event information.</p>
-                    <ul class="lab-highlights">
-                        <li>School policy Q&A system</li>
-                        <li>Attendance explanation handling</li>
-                        <li>Event calendar assistance</li>
-                    </ul>
-                    <div class="lab-meta-info">
-                        <strong>Customer:</strong> School Administrators & Staff<br>
-                        <strong>ROI:</strong> Reduced repetitive inquiries by 60%
-                    </div>
-                    <div class="lab-actions">
-                        <a href="#" class="btn btn-primary">Coming Soon</a>
-                        <span class="difficulty">Beginner</span>
-                    </div>
-                </div>
-
-                <div class="lab-card">
-                    <div class="lab-header">
-                        <h3>Student Support Navigator</h3>
-                        <span class="duration">⏱️ 35 mins</span>
-                    </div>
-                    <p>Develop agents that help students navigate school resources, develop study skills, and explore career pathways—without replacing human guidance.</p>
-                    <ul class="lab-highlights">
-                        <li>"Who do I contact?" routing</li>
-                        <li>Study skills coaching</li>
-                        <li>College & career exploration</li>
-                    </ul>
-                    <div class="lab-meta-info">
-                        <strong>Customer:</strong> Students & Counselors<br>
-                        <strong>ROI:</strong> Improved student access to support
-                    </div>
-                    <div class="lab-actions">
-                        <a href="#" class="btn btn-primary">Coming Soon</a>
-                        <span class="difficulty">Intermediate</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="additional-labs">
-            <h2>💡 Extension Ideas (High ROI) by Persona</h2>
-            <p>Use these 200-level extension ideas to align persona needs to district-level outcomes and measurable ROI.</p>
-            <div class="labs-grid">
-                <div class="lab-card">
-                    <div class="lab-header"><h3>Lesson Differentiation Copilot</h3><span class="duration">Frontline</span></div>
-                    <p><strong>Persona Focus:</strong> Classroom Teachers</p>
-                    <p><strong>Org Impact Lens:</strong> Instructional quality, teacher productivity</p>
-                    <p><strong>Business Problem:</strong> Teachers spend significant after-hours time differentiating materials.</p>
-                    <p><strong>Agent Type:</strong> Instructional content assistant</p>
-                    <p><strong>KPI / ROI Signal:</strong> 3-5 hours/week saved per teacher; faster lesson prep cycle.</p>
-                </div>
-                <div class="lab-card">
-                    <div class="lab-header"><h3>Family Communication Drafting Agent</h3><span class="duration">Frontline</span></div>
-                    <p><strong>Persona Focus:</strong> Teachers, Grade-Level Teams</p>
-                    <p><strong>Org Impact Lens:</strong> Family engagement, communication consistency</p>
-                    <p><strong>Business Problem:</strong> Parent communication quality and frequency varies by teacher workload.</p>
-                    <p><strong>Agent Type:</strong> Tone-controlled drafting assistant</p>
-                    <p><strong>KPI / ROI Signal:</strong> Faster outbound updates; improved family response rates.</p>
-                </div>
-                <div class="lab-card">
-                    <div class="lab-header"><h3>Attendance Intervention Navigator</h3><span class="duration">Manager</span></div>
-                    <p><strong>Persona Focus:</strong> Assistant Principals, Counselors</p>
-                    <p><strong>Org Impact Lens:</strong> Student success, chronic absenteeism reduction</p>
-                    <p><strong>Business Problem:</strong> At-risk attendance signals are reviewed too late for early intervention.</p>
-                    <p><strong>Agent Type:</strong> Multi-source intervention workflow agent</p>
-                    <p><strong>KPI / ROI Signal:</strong> Lower chronic absenteeism; faster intervention follow-through.</p>
-                </div>
-                <div class="lab-card">
-                    <div class="lab-header"><h3>MTSS Case Summary Agent</h3><span class="duration">Manager</span></div>
-                    <p><strong>Persona Focus:</strong> Instructional Coaches, Student Support Leads</p>
-                    <p><strong>Org Impact Lens:</strong> Service quality, team throughput</p>
-                    <p><strong>Business Problem:</strong> Case notes and interventions are scattered across systems.</p>
-                    <p><strong>Agent Type:</strong> Case synthesis + next-step assistant</p>
-                    <p><strong>KPI / ROI Signal:</strong> Reduced admin time per case; more consistent support plans.</p>
-                </div>
-                <div class="lab-card">
-                    <div class="lab-header"><h3>Policy & Compliance Q&A Agent</h3><span class="duration">Ops/Compliance</span></div>
-                    <p><strong>Persona Focus:</strong> District Operations, HR, Compliance Leads</p>
-                    <p><strong>Org Impact Lens:</strong> Risk reduction, policy consistency</p>
-                    <p><strong>Business Problem:</strong> Policy interpretation differs across schools and teams.</p>
-                    <p><strong>Agent Type:</strong> File-grounded policy agent</p>
-                    <p><strong>KPI / ROI Signal:</strong> Fewer policy exceptions; reduced escalations to central office.</p>
-                </div>
-                <div class="lab-card">
-                    <div class="lab-header"><h3>State Reporting Prep Agent</h3><span class="duration">Ops/Compliance</span></div>
-                    <p><strong>Persona Focus:</strong> Data Coordinators, District Administrators</p>
-                    <p><strong>Org Impact Lens:</strong> Reporting accuracy, administrative efficiency</p>
-                    <p><strong>Business Problem:</strong> State reporting cycles require repetitive, manual validation work.</p>
-                    <p><strong>Agent Type:</strong> Workflow checklist + validation assistant</p>
-                    <p><strong>KPI / ROI Signal:</strong> Faster reporting cycles; fewer submission corrections.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="getting-started">
-            <h2>Getting Started</h2>
-            
-            <div class="prerequisites">
-                <h3>Prerequisites</h3>
-                <ul>
-                    <li>Access to Microsoft Copilot Studio (or compatible AI platform)</li>
-                    <li>Basic understanding of declarative agents and AI prompting</li>
-                    <li>Familiarity with K-12 education context (helpful but not required)</li>
-                </ul>
-            </div>
-
-            <div class="learning-path">
-                <h3>Recommended Learning Path</h3>
-                <ol>
-                    <li><strong>Start with:</strong> Teacher Productivity Agent (30 mins)</li>
-                    <li><strong>Then try:</strong> School Operations Agent (30 mins)</li>
-                    <li><strong>Advance to:</strong> Student Support Navigator (35 mins)</li>
-                </ol>
-            </div>
-
-            <div class="ethical-guidelines">
-                <h3>⚠️ Ethical Guidelines for K-12 AI Agents</h3>
-                <p>All labs emphasize responsible AI practices:</p>
-                <ul>
-                    <li><strong>Augment, don't replace:</strong> Agents assist educators, never make decisions</li>
-                    <li><strong>Transparency:</strong> Always disclose when AI is being used</li>
-                    <li><strong>Privacy first:</strong> Never use real student data in labs</li>
-                    <li><strong>Human oversight:</strong> Teachers review all AI-generated content</li>
-                    <li><strong>Equity focus:</strong> Ensure agents serve all students and families</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="value-framework">
-            <h2>Measuring Agent Impact</h2>
-            <p>Students learn to articulate value using this framework:</p>
-            <div class="value-metrics">
-                <div class="metric-card">
-                    <h4>Time Saved</h4>
-                    <p>Hours per week recovered for high-value activities</p>
-                </div>
-                <div class="metric-card">
-                    <h4>Cost Avoided</h4>
-                    <p>Reduction in manual processing or external services</p>
-                </div>
-                <div class="metric-card">
-                    <h4>Equity Improved</h4>
-                    <p>Increased access to information and support</p>
-                </div>
-                <div class="metric-card">
-                    <h4>Consistency Gained</h4>
-                    <p>Standardized responses and processes</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 K-12 Education AI Labs. Built for hands-on learning with Microsoft Copilot Studio.</p>
         </div>
-    </footer>
 
-    <script src="js/lab-navigation.js"></script>
+        <div class="level-section">
+            <h2 class="level-title">Copilot 201 - Agent Academy (Studio Lite)</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Lab 1A: Standards-Grounded Lesson Planning Agent</h3>
+                    <div class="field"><strong>Persona:</strong> Classroom Teacher</div>
+                    <div class="field"><strong>Strategic Goal:</strong> Give Teachers Time Back</div>
+                    <div class="field"><strong>ROI:</strong> 30 minutes saved per lesson plan on standards research and alignment</div>
+                </div>
+                <div class="card">
+                    <h3>Lab 1B: Family Communication Agent</h3>
+                    <div class="field"><strong>Persona:</strong> Classroom Teacher</div>
+                    <div class="field"><strong>Strategic Goal:</strong> Engage Every Family</div>
+                    <div class="field"><strong>ROI:</strong> Consistent family communication regardless of teacher workload</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="level-section">
+            <h2 class="level-title">Copilot 301 - Copilot Studio</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Lab 1: Lesson Planner Agent (Lp)</h3>
+                    <div class="field"><strong>Persona:</strong> Classroom Teacher</div>
+                    <div class="field"><strong>Strategic Goal:</strong> Give Teachers Time Back</div>
+                    <div class="field"><strong>ROI:</strong> 3-5 hours saved per week per teacher</div>
+                </div>
+                <div class="card">
+                    <h3>Lab 2: Attendance Triage Agent (At)</h3>
+                    <div class="field"><strong>Persona:</strong> Attendance Team or Counselor</div>
+                    <div class="field"><strong>Strategic Goal:</strong> Catch Students Early</div>
+                    <div class="field"><strong>ROI:</strong> Earlier intervention, lower chronic absenteeism</div>
+                </div>
+                <div class="card">
+                    <h3>Lab 3: MTSS Intake Agent (Mi)</h3>
+                    <div class="field"><strong>Persona:</strong> MTSS Coordinator or Counselor</div>
+                    <div class="field"><strong>Strategic Goal:</strong> Catch Students Early</div>
+                    <div class="field"><strong>ROI:</strong> Faster triage, more consistent support plans</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
