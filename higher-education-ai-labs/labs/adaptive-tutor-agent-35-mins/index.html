@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptive Tutor Agent (35 mins)</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="lab-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Back to Labs</a>
+            </div>
+            <div class="lab-title-nav">Adaptive Tutor Agent (35 mins)</div>
+        </div>
+    </nav>
+
+    <main class="container lab-container">
+        <div class="lab-content">
+            <h1>🏗️ Build an Adaptive Tutor Agent</h1>
+
+            <div class="lab-meta">
+                <div class="meta-item"><span>⏱️</span><span>Duration: 35 minutes</span></div>
+                <div class="meta-item"><span>🧭</span><span>Scenario: Guided Tutoring with Escalation</span></div>
+                <div class="meta-item"><span>📂</span><span>Data: Course Objectives + Practice Sets + Tutor Support Policy</span></div>
+            </div>
+
+            <section>
+                <h2>Scenario</h2>
+                <p>Students often need support outside tutoring-center hours. Build an agent that coaches through questions, diagnoses misconceptions, and escalates to a human tutor when progress stalls.</p>
+            </section>
+
+            <section>
+                <h2>Challenge 1: Design Question-First Tutoring Flow (10 mins)</h2>
+                <ul>
+                    <li>Start by asking what the student has already tried.</li>
+                    <li>Use scaffolded hints from easier to deeper conceptual prompts.</li>
+                    <li>Avoid direct final answers unless explicitly allowed by policy.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Challenge 2: Add Mastery Checks (10 mins)</h2>
+                <ul>
+                    <li>After each hint cycle, ask one short check-for-understanding question.</li>
+                    <li>Track confidence and error patterns during the conversation.</li>
+                    <li>Adjust difficulty level based on demonstrated understanding.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Challenge 3: Build Escalation Logic (10 mins)</h2>
+                <ul>
+                    <li>Escalate after repeated confusion or low-confidence responses.</li>
+                    <li>Create a tutor handoff summary with misconceptions and attempts made.</li>
+                    <li>Provide next available support options (office hours, tutoring center, peer tutor).</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Challenge 4: Add Integrity Guardrails (5 mins)</h2>
+                <ul>
+                    <li>Block requests for direct assignment completion.</li>
+                    <li>Require coaching language that supports learning, not answer dumping.</li>
+                    <li>Include a reminder to verify work with instructor guidance when appropriate.</li>
+                </ul>
+                <div class="success-criteria">
+                    <h4>✅ Complete When</h4>
+                    <ul>
+                        <li>Agent keeps to a question-first tutoring style</li>
+                        <li>Mastery checks are present in all 3 test conversations</li>
+                        <li>Escalation summary is actionable for human tutors</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Deliverable</h2>
+                <p>Submit 3 tutoring conversations that show beginner, intermediate, and escalation-required paths.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Higher Education AI Labs</p>
+        </div>
+    </footer>
+
+    <script src="../../js/lab-navigation.js"></script>
+</body>
+</html>

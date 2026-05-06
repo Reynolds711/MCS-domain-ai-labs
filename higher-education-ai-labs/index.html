@@ -52,7 +52,17 @@
 
         <section class="featured-labs">
             <h2>🧠 Copilot 101: Prompt Engineering</h2>
-            <p class="section-intro">Prompt-only labs for fast skill gains in audience awareness, specificity, and output control.</p>
+            <p class="section-intro">Prompt-only labs for fast skill gains in audience awareness, specificity, output control, and measurable quality improvement.</p>
+
+            <div class="info-box">
+                <strong>🧩 101 Prompt Playbook (Outcome Focused)</strong>
+                <p>Use this sequence in every 101 exercise: define the role and audience, define the exact output format, define guardrails and constraints, then define a quality bar with a scoring checklist. Teams should track first-output quality versus final-output quality and time-to-usable draft.</p>
+                <ul>
+                    <li><strong>Prompt Frame:</strong> Role + audience + context + task + output template + constraints.</li>
+                    <li><strong>Quality Bar:</strong> Accuracy, clarity, actionability, tone fit, and policy alignment (score 1 to 5).</li>
+                    <li><strong>Outcome Metric:</strong> Minutes to usable draft and percentage of outputs accepted without rewrite.</li>
+                </ul>
+            </div>
 
             <div class="labs-grid">
                 <div class="lab-card">
@@ -63,13 +73,16 @@
                     <p><strong>Persona:</strong> Financial Aid Counselor or Student</p>
                     <p>Practice transforming a generic FAFSA response into a plain-language, student-centered answer with one clear next step.</p>
                     <ul class="lab-highlights">
-                        <li><strong>Guided Practice:</strong> Start with "Explain FAFSA" then add audience context (first-generation student).</li>
-                        <li><strong>Guided Practice:</strong> Add constraints (under 200 words, no jargon, one action step).</li>
-                        <li><strong>Guided Practice:</strong> Add deadline and document specificity, then compare before/after quality.</li>
+                        <li><strong>Step 1 - Baseline Prompt:</strong> Start with "Explain FAFSA" and capture output quality score across clarity and actionability.</li>
+                        <li><strong>Step 2 - Audience + Context:</strong> Add learner profile (first-generation, transfer, adult learner) and expected tone.</li>
+                        <li><strong>Step 3 - Output Contract:</strong> Require sections: What it means, What to do this week, Required documents, Deadline risk.</li>
+                        <li><strong>Step 4 - Guardrails:</strong> Under 180 words, no jargon, one escalation line for counselor follow-up, and no policy guessing.</li>
+                        <li><strong>Step 5 - Outcome Check:</strong> Compare v1 and v2 on readability and next-step completion confidence.</li>
                     </ul>
                     <div class="lab-meta-info">
                         <strong>Strategic Goal:</strong> Improve Student Retention &amp; Completion<br>
-                        <strong>ROI:</strong> Consistent, accessible financial aid communication at scale
+                        <strong>ROI:</strong> Consistent, accessible financial aid communication at scale<br>
+                        <strong>Lab Outcome:</strong> 80% of test outputs are student-ready without major rewrite
                     </div>
                 </div>
 
@@ -81,13 +94,16 @@
                     <p><strong>Persona:</strong> Faculty Instructor</p>
                     <p>Draft useful grading feedback from rubric criteria while preserving an encouraging, honest tone.</p>
                     <ul class="lab-highlights">
-                        <li><strong>Guided Practice:</strong> Begin with generic "Give feedback on this paper" prompt.</li>
-                        <li><strong>Guided Practice:</strong> Add rubric dimensions and student level (undergraduate, first attempt).</li>
-                        <li><strong>Guided Practice:</strong> Require one strength, one specific improvement, and one actionable next step.</li>
+                        <li><strong>Step 1 - Baseline Prompt:</strong> Start with "Give feedback on this paper" and capture generic output limitations.</li>
+                        <li><strong>Step 2 - Rubric Grounding:</strong> Add rubric dimensions, performance band, and assignment learning objective.</li>
+                        <li><strong>Step 3 - Feedback Structure:</strong> Require one strength, one high-impact revision, one model sentence, and one next action.</li>
+                        <li><strong>Step 4 - Tone Control:</strong> Enforce constructive coaching tone for undergraduate first-attempt submissions.</li>
+                        <li><strong>Step 5 - Outcome Check:</strong> Validate that feedback can be delivered in under 90 seconds and drives revision quality.</li>
                     </ul>
                     <div class="lab-meta-info">
                         <strong>Strategic Goal:</strong> Enhance Student Experience<br>
-                        <strong>ROI:</strong> Meaningful feedback drafted in 3 minutes instead of 20
+                        <strong>ROI:</strong> Meaningful feedback drafted in 3 minutes instead of 20<br>
+                        <strong>Lab Outcome:</strong> Feedback quality score improves by 2 points (1 to 5 rubric)
                     </div>
                 </div>
             </div>
@@ -191,7 +207,7 @@
                         <strong>ROI:</strong> 40% of advising appointment time recovered for complex cases
                     </div>
                     <div class="lab-actions">
-                        <a href="#" class="btn btn-secondary">Facilitator Build Script</a>
+                        <a href="labs/academic-advising-agent-35-mins/index.html" class="btn btn-primary">Start Guided Lab</a>
                         <span class="difficulty">Intermediate</span>
                     </div>
                 </div>
@@ -235,7 +251,7 @@
                         <strong>ROI:</strong> Extended learning support hours without staffing costs
                     </div>
                     <div class="lab-actions">
-                        <a href="#" class="btn btn-secondary">Facilitator Build Script</a>
+                        <a href="labs/adaptive-tutor-agent-35-mins/index.html" class="btn btn-primary">Start Guided Lab</a>
                         <span class="difficulty">Intermediate</span>
                     </div>
                 </div>
@@ -257,7 +273,7 @@
                         <strong>ROI:</strong> Faster event approval, higher student organization participation
                     </div>
                     <div class="lab-actions">
-                        <a href="#" class="btn btn-secondary">Facilitator Build Script</a>
+                        <a href="labs/student-activities-agent-30-mins/index.html" class="btn btn-primary">Start Guided Lab</a>
                         <span class="difficulty">Intermediate</span>
                     </div>
                 </div>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Advising Agent (35 mins)</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <nav class="lab-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../index.html">← Back to Labs</a>
+            </div>
+            <div class="lab-title-nav">Academic Advising Agent (35 mins)</div>
+        </div>
+    </nav>
+
+    <main class="container lab-container">
+        <div class="lab-content">
+            <h1>🏗️ Build an Academic Advising Agent</h1>
+
+            <div class="lab-meta">
+                <div class="meta-item"><span>⏱️</span><span>Duration: 35 minutes</span></div>
+                <div class="meta-item"><span>🧭</span><span>Scenario: Degree Planning + Advising Triage</span></div>
+                <div class="meta-item"><span>📂</span><span>Data: Degree Map + Course Catalog + Advising Policies</span></div>
+            </div>
+
+            <section>
+                <h2>Scenario</h2>
+                <p>Advisors spend too much time on repetitive degree-audit questions. Build an agent that captures student context, identifies requirement gaps, and proposes a next-term schedule that can be reviewed by an advisor.</p>
+            </section>
+
+            <section>
+                <h2>Challenge 1: Build Multi-Turn Intake (10 mins)</h2>
+                <ul>
+                    <li>Collect program, completed credits, transfer credits, and target graduation term.</li>
+                    <li>Capture constraints: work schedule, modality preference, max course load.</li>
+                    <li>Confirm student priorities before generating recommendations.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Challenge 2: Add Degree-Gap Logic (10 mins)</h2>
+                <ul>
+                    <li>Map completed coursework to degree requirements.</li>
+                    <li>Return clear "complete", "in progress", and "remaining" sections.</li>
+                    <li>Flag unresolved transfer-credit ambiguity for human advisor review.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Challenge 3: Generate Next-Term Schedule (10 mins)</h2>
+                <ul>
+                    <li>Recommend 3 to 5 courses with rationale tied to requirement completion.</li>
+                    <li>Respect prerequisites and student time constraints.</li>
+                    <li>Include a risk note when a recommendation may delay graduation.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Challenge 4: Build Handoff Summary (5 mins)</h2>
+                <ul>
+                    <li>Output a one-page advising summary: goals, gaps, plan, and open questions.</li>
+                    <li>Add escalation triggers for probation risk or failed prerequisite chain.</li>
+                    <li>End with advisor approval step before final registration action.</li>
+                </ul>
+                <div class="success-criteria">
+                    <h4>✅ Complete When</h4>
+                    <ul>
+                        <li>Agent asks only required follow-up questions</li>
+                        <li>Degree-gap summary is accurate across 3 test student profiles</li>
+                        <li>Course recommendations align to prerequisites and constraints</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>Deliverable</h2>
+                <p>Submit 3 advising simulations, each with intake transcript, degree-gap output, and final advisor handoff summary.</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Higher Education AI Labs</p>
+        </div>
+    </footer>
+
+    <script src="../../js/lab-navigation.js"></script>
+</body>
+</html>
